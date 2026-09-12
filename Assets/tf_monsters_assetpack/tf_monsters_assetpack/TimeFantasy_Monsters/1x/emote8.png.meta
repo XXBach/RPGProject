@@ -1,0 +1,2639 @@
+fileFormatVersion: 2
+guid: 6200687e31351f04c870ff21168e12aa
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2976727859504339130
+    second: emote8_0
+  - first:
+      213: 1827817840659989740
+    second: emote8_1
+  - first:
+      213: -5980681414683281588
+    second: emote8_2
+  - first:
+      213: 4262826843740893115
+    second: emote8_3
+  - first:
+      213: 4077042167368402340
+    second: emote8_4
+  - first:
+      213: -3750127793802331191
+    second: emote8_5
+  - first:
+      213: -4924198804655682567
+    second: emote8_6
+  - first:
+      213: -2538763013725275928
+    second: emote8_7
+  - first:
+      213: -7240102856253810958
+    second: emote8_8
+  - first:
+      213: -2555841812425320146
+    second: emote8_9
+  - first:
+      213: -1508529099051973063
+    second: emote8_10
+  - first:
+      213: -1707822138033108374
+    second: emote8_11
+  - first:
+      213: 5203515207308311963
+    second: emote8_12
+  - first:
+      213: 2840964881132274574
+    second: emote8_13
+  - first:
+      213: -6715489388727676093
+    second: emote8_14
+  - first:
+      213: -4851651784324095108
+    second: emote8_15
+  - first:
+      213: -7136148817977656746
+    second: emote8_16
+  - first:
+      213: 556244125307713978
+    second: emote8_17
+  - first:
+      213: -3976023017586900748
+    second: emote8_18
+  - first:
+      213: 2281347131596006887
+    second: emote8_19
+  - first:
+      213: 5915135693892400681
+    second: emote8_20
+  - first:
+      213: 1306939509161676530
+    second: emote8_21
+  - first:
+      213: 1769618848597771919
+    second: emote8_22
+  - first:
+      213: 6783917188303620139
+    second: emote8_23
+  - first:
+      213: -6496389151865527813
+    second: emote8_24
+  - first:
+      213: -6937181460615804190
+    second: emote8_25
+  - first:
+      213: 8110663069595129409
+    second: emote8_26
+  - first:
+      213: -1956346108573111069
+    second: emote8_27
+  - first:
+      213: -108439626193062929
+    second: emote8_28
+  - first:
+      213: 742476789884682003
+    second: emote8_29
+  - first:
+      213: -4127784784443179313
+    second: emote8_30
+  - first:
+      213: -5459894035612923987
+    second: emote8_31
+  - first:
+      213: 1660996301422489336
+    second: emote8_32
+  - first:
+      213: 8770447093582092906
+    second: emote8_33
+  - first:
+      213: 7324885772433158651
+    second: emote8_34
+  - first:
+      213: -9137186082208403417
+    second: emote8_35
+  - first:
+      213: -379720572988038252
+    second: emote8_36
+  - first:
+      213: -2039276558025873651
+    second: emote8_37
+  - first:
+      213: -7985463188573977682
+    second: emote8_38
+  - first:
+      213: -5947554058665492954
+    second: emote8_39
+  - first:
+      213: -7324653434833561052
+    second: emote8_40
+  - first:
+      213: -7778476194402523553
+    second: emote8_41
+  - first:
+      213: 6743870315272164384
+    second: emote8_42
+  - first:
+      213: 4413606897854179334
+    second: emote8_43
+  - first:
+      213: 3351655548285809366
+    second: emote8_44
+  - first:
+      213: 4985908190669385015
+    second: emote8_45
+  - first:
+      213: 5447755161990521485
+    second: emote8_46
+  - first:
+      213: 9067480518120097355
+    second: emote8_47
+  - first:
+      213: -7307309709028728006
+    second: emote8_48
+  - first:
+      213: 2361381685828142986
+    second: emote8_49
+  - first:
+      213: 7166327446733274807
+    second: emote8_50
+  - first:
+      213: 1499942084381664711
+    second: emote8_51
+  - first:
+      213: 289393683395731026
+    second: emote8_52
+  - first:
+      213: -3998807462473530316
+    second: emote8_53
+  - first:
+      213: -7335304982356531709
+    second: emote8_54
+  - first:
+      213: 9142304732385036604
+    second: emote8_55
+  - first:
+      213: -7637556231380744585
+    second: emote8_56
+  - first:
+      213: 5200861015476594784
+    second: emote8_57
+  - first:
+      213: 6031229007446763087
+    second: emote8_58
+  - first:
+      213: 3987478710731695804
+    second: emote8_59
+  - first:
+      213: 8856980308109085610
+    second: emote8_60
+  - first:
+      213: 3389565957363460841
+    second: emote8_61
+  - first:
+      213: -5306272930047131067
+    second: emote8_62
+  - first:
+      213: 6508018511506769473
+    second: emote8_63
+  - first:
+      213: -7633555594489127093
+    second: emote8_64
+  - first:
+      213: -501849211409259301
+    second: emote8_65
+  - first:
+      213: -3934554901743835037
+    second: emote8_66
+  - first:
+      213: -6171954090819583
+    second: emote8_67
+  - first:
+      213: -5092175056889588016
+    second: emote8_68
+  - first:
+      213: -586939658479154424
+    second: emote8_69
+  - first:
+      213: 7142448685354621752
+    second: emote8_70
+  - first:
+      213: 2388807326318312042
+    second: emote8_71
+  - first:
+      213: -7624664137569506570
+    second: emote8_72
+  - first:
+      213: -1362337819446325672
+    second: emote8_73
+  - first:
+      213: 8457397233237367427
+    second: emote8_74
+  - first:
+      213: 6257631226789966701
+    second: emote8_75
+  - first:
+      213: 1856139597089328569
+    second: emote8_76
+  - first:
+      213: 5652177201281727111
+    second: emote8_77
+  - first:
+      213: -8497470890172182082
+    second: emote8_78
+  - first:
+      213: 6691201694321636796
+    second: emote8_79
+  - first:
+      213: -7626273844961460345
+    second: emote8_80
+  - first:
+      213: 2382643108678754686
+    second: emote8_81
+  - first:
+      213: 577586452195170183
+    second: emote8_82
+  - first:
+      213: 8310589118471586867
+    second: emote8_83
+  - first:
+      213: 2133834715070859183
+    second: emote8_84
+  - first:
+      213: -2346710690460194225
+    second: emote8_85
+  - first:
+      213: -674868441046788485
+    second: emote8_86
+  - first:
+      213: 6077491574876396633
+    second: emote8_87
+  - first:
+      213: -5915270897762579700
+    second: emote8_88
+  - first:
+      213: -2862038503129333010
+    second: emote8_89
+  - first:
+      213: 5395181937939023968
+    second: emote8_90
+  - first:
+      213: -1582539786932333056
+    second: emote8_91
+  - first:
+      213: 416038568054674952
+    second: emote8_92
+  - first:
+      213: -4750448308465416864
+    second: emote8_93
+  - first:
+      213: -7559388685940001019
+    second: emote8_94
+  - first:
+      213: 3587437997352873629
+    second: emote8_95
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: emote8_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 251
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab8d3c287367f4920800000000000000
+      internalID: 2976727859504339130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_1
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 251
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce409a254a6bd5910800000000000000
+      internalID: 1827817840659989740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_2
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 251
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c47b50bb0f9500da0800000000000000
+      internalID: -5980681414683281588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_3
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 251
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbfec20dd6a982b30800000000000000
+      internalID: 4262826843740893115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_4
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 251
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a548480040949830800000000000000
+      internalID: 4077042167368402340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_5
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 251
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cbb71cf3aed4fbc0800000000000000
+      internalID: -3750127793802331191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_6
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 251
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fb4815d64bb9abb0800000000000000
+      internalID: -4924198804655682567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_7
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 251
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e8310e6d7084ccd0800000000000000
+      internalID: -2538763013725275928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_8
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 251
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f653bbdfccf58b90800000000000000
+      internalID: -7240102856253810958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_9
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 251
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e295c4cb963d78cd0800000000000000
+      internalID: -2555841812425320146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_10
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 251
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 936caa5e6c0a01be0800000000000000
+      internalID: -1508529099051973063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_11
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 251
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6a0dfa50d89c48e0800000000000000
+      internalID: -1707822138033108374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 215
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9d74faf289963840800000000000000
+      internalID: 5203515207308311963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_13
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 215
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e83cf3fd1822d6720800000000000000
+      internalID: 2840964881132274574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_14
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 215
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3435bfb2bf9cdc2a0800000000000000
+      internalID: -6715489388727676093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_15
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 215
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c73e87548687bacb0800000000000000
+      internalID: -4851651784324095108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_16
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 215
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65a3e10857e47fc90800000000000000
+      internalID: -7136148817977656746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_17
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 215
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab93d59b51d28b700800000000000000
+      internalID: 556244125307713978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_18
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 215
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f0c4f1a12452d8c0800000000000000
+      internalID: -3976023017586900748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_19
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 215
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e5e22c0129f8af10800000000000000
+      internalID: 2281347131596006887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_20
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 215
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 926b0b8e298c61250800000000000000
+      internalID: 5915135693892400681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_21
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 215
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fe41822f8e232210800000000000000
+      internalID: 1306939509161676530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_22
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 215
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f86818a87f2fe8810800000000000000
+      internalID: 1769618848597771919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_23
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 215
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2801827db0552e50800000000000000
+      internalID: 6783917188303620139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_24
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 179
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf1aa585c7038d5a0800000000000000
+      internalID: -6496389151865527813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_25
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 179
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2eac191673e2abf90800000000000000
+      internalID: -6937181460615804190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_26
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 179
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 146d814f61dde8070800000000000000
+      internalID: 8110663069595129409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_27
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 179
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ec28c45499a9d4e0800000000000000
+      internalID: -1956346108573111069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_28
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 179
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe3bf290cbebe7ef0800000000000000
+      internalID: -108439626193062929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_29
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 179
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31f7c03e4becd4a00800000000000000
+      internalID: 742476789884682003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_30
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 179
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fce7006cb9927b6c0800000000000000
+      internalID: -4127784784443179313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_31
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 179
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da784086d4f8a34b0800000000000000
+      internalID: -5459894035612923987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_32
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 179
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fe6687f55b0d0710800000000000000
+      internalID: 1660996301422489336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_33
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 179
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6a515ee923e6b970800000000000000
+      internalID: 8770447093582092906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_34
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 179
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf1f0361dc837a560800000000000000
+      internalID: 7324885772433158651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_35
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 179
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 720335b4ba1323180800000000000000
+      internalID: -9137186082208403417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_36
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 143
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 493e3259626fabaf0800000000000000
+      internalID: -379720572988038252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_37
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 143
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d07261866c803b3e0800000000000000
+      internalID: -2039276558025873651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_38
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 143
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea3071ee98fed2190800000000000000
+      internalID: -7985463188573977682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_39
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 143
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62e7fca581b067da0800000000000000
+      internalID: -5947554058665492954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_40
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 143
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42a96e9328a995a90800000000000000
+      internalID: -7324653434833561052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_41
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 143
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f562ec20d1d4d0490800000000000000
+      internalID: -7778476194402523553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_42
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 143
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0245919325a079d50800000000000000
+      internalID: 6743870315272164384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_43
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 143
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 608efccd618404d30800000000000000
+      internalID: 4413606897854179334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_44
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 143
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d2fa0d96f8738e20800000000000000
+      internalID: 3351655548285809366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_45
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 143
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73d2f8b3511813540800000000000000
+      internalID: 4985908190669385015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_46
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 143
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d82eeb5d4705a9b40800000000000000
+      internalID: 5447755161990521485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_47
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 143
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b46c25a5d7926dd70800000000000000
+      internalID: 9067480518120097355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_48
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 107
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3364911988379a90800000000000000
+      internalID: -7307309709028728006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_49
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 107
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8746e2d12055c020800000000000000
+      internalID: 2361381685828142986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_50
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 107
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7be3bae08d8e37360800000000000000
+      internalID: 7166327446733274807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_51
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 107
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c56a33f06dd0d410800000000000000
+      internalID: 1499942084381664711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_52
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 107
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25e5b039502240400800000000000000
+      internalID: 289393683395731026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_53
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 107
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 434851aacc16188c0800000000000000
+      internalID: -3998807462473530316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_54
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 107
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3066c7f8bf2c33a90800000000000000
+      internalID: -7335304982356531709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_55
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 107
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c39ce2257bdffde70800000000000000
+      internalID: 9142304732385036604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_56
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 107
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 776ca74b213f10690800000000000000
+      internalID: -7637556231380744585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_57
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 107
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 068e8a9c98b2d2840800000000000000
+      internalID: 5200861015476594784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_58
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 107
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4665e3d3da33b350800000000000000
+      internalID: 6031229007446763087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_59
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 107
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb66896c2ce565730800000000000000
+      internalID: 3987478710731695804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_60
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 71
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aabc877f9a05aea70800000000000000
+      internalID: 8856980308109085610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_61
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 71
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eae76f87482a0f20800000000000000
+      internalID: 3389565957363460841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_62
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 71
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 542054b42e45c56b0800000000000000
+      internalID: -5306272930047131067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_63
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 71
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1460702fa50215a50800000000000000
+      internalID: 6508018511506769473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_64
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 71
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4f974191a9201690800000000000000
+      internalID: -7633555594489127093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_65
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 71
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd424271dc21909f0800000000000000
+      internalID: -501849211409259301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_66
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 71
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 368694cb927a569c0800000000000000
+      internalID: -3934554901743835037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_67
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 71
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 100c8d4f3a21aeff0800000000000000
+      internalID: -6171954090819583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_68
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 71
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d6ddf7e3c5f459b0800000000000000
+      internalID: -5092175056889588016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_69
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 71
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80bc2c78d75cad7f0800000000000000
+      internalID: -586939658479154424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_70
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 71
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83b940dac331f1360800000000000000
+      internalID: 7142448685354621752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_71
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 71
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6abd0a5b9fb62120800000000000000
+      internalID: 2388807326318312042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_72
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 35
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fa62843d50cf2690800000000000000
+      internalID: -7624664137569506570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_73
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 35
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85e42df98f0081de0800000000000000
+      internalID: -1362337819446325672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_74
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 35
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38a1c7379f5be5570800000000000000
+      internalID: 8457397233237367427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_75
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 35
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d633538427297d650800000000000000
+      internalID: 6257631226789966701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_76
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 35
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bdcb0a112552c910800000000000000
+      internalID: 1856139597089328569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_77
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 35
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78a75f1d731907e40800000000000000
+      internalID: 5652177201281727111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_78
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 35
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb190163f3be21a80800000000000000
+      internalID: -8497470890172182082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_79
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 35
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb5788e4d7cebdc50800000000000000
+      internalID: 6691201694321636796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_80
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 35
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78f383ff7580a2690800000000000000
+      internalID: -7626273844961460345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_81
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 35
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7164579849d01120800000000000000
+      internalID: 2382643108678754686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_82
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 35
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 787db2e61dff30800800000000000000
+      internalID: 577586452195170183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_83
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 35
+        width: 19
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 334c9b895c4255370800000000000000
+      internalID: 8310589118471586867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_84
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa702392e57ec9d10800000000000000
+      internalID: 2133834715070859183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_85
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 0
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4a22887f0fce6fd0800000000000000
+      internalID: -2346710690460194225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_86
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 0
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b76d84d7ab262a6f0800000000000000
+      internalID: -674868441046788485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_87
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 0
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95cdfed2366975450800000000000000
+      internalID: 6077491574876396633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_88
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 0
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0bc7ac757cb8eda0800000000000000
+      internalID: -5915270897762579700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_89
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 0
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee24c77252ff748d0800000000000000
+      internalID: -2862038503129333010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_90
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 0
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 068857d33698fda40800000000000000
+      internalID: 5395181937939023968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_91
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 0
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 006d9fcc270b90ae0800000000000000
+      internalID: -1582539786932333056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_92
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 0
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 806d2c59fd016c500800000000000000
+      internalID: 416038568054674952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_93
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 0
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0654012be64031eb0800000000000000
+      internalID: -4750448308465416864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_94
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 0
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 507707f9a08a71790800000000000000
+      internalID: -7559388685940001019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote8_95
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 0
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9ee4fdf9d329c130800000000000000
+      internalID: 3587437997352873629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      emote8_0: 2976727859504339130
+      emote8_1: 1827817840659989740
+      emote8_10: -1508529099051973063
+      emote8_11: -1707822138033108374
+      emote8_12: 5203515207308311963
+      emote8_13: 2840964881132274574
+      emote8_14: -6715489388727676093
+      emote8_15: -4851651784324095108
+      emote8_16: -7136148817977656746
+      emote8_17: 556244125307713978
+      emote8_18: -3976023017586900748
+      emote8_19: 2281347131596006887
+      emote8_2: -5980681414683281588
+      emote8_20: 5915135693892400681
+      emote8_21: 1306939509161676530
+      emote8_22: 1769618848597771919
+      emote8_23: 6783917188303620139
+      emote8_24: -6496389151865527813
+      emote8_25: -6937181460615804190
+      emote8_26: 8110663069595129409
+      emote8_27: -1956346108573111069
+      emote8_28: -108439626193062929
+      emote8_29: 742476789884682003
+      emote8_3: 4262826843740893115
+      emote8_30: -4127784784443179313
+      emote8_31: -5459894035612923987
+      emote8_32: 1660996301422489336
+      emote8_33: 8770447093582092906
+      emote8_34: 7324885772433158651
+      emote8_35: -9137186082208403417
+      emote8_36: -379720572988038252
+      emote8_37: -2039276558025873651
+      emote8_38: -7985463188573977682
+      emote8_39: -5947554058665492954
+      emote8_4: 4077042167368402340
+      emote8_40: -7324653434833561052
+      emote8_41: -7778476194402523553
+      emote8_42: 6743870315272164384
+      emote8_43: 4413606897854179334
+      emote8_44: 3351655548285809366
+      emote8_45: 4985908190669385015
+      emote8_46: 5447755161990521485
+      emote8_47: 9067480518120097355
+      emote8_48: -7307309709028728006
+      emote8_49: 2361381685828142986
+      emote8_5: -3750127793802331191
+      emote8_50: 7166327446733274807
+      emote8_51: 1499942084381664711
+      emote8_52: 289393683395731026
+      emote8_53: -3998807462473530316
+      emote8_54: -7335304982356531709
+      emote8_55: 9142304732385036604
+      emote8_56: -7637556231380744585
+      emote8_57: 5200861015476594784
+      emote8_58: 6031229007446763087
+      emote8_59: 3987478710731695804
+      emote8_6: -4924198804655682567
+      emote8_60: 8856980308109085610
+      emote8_61: 3389565957363460841
+      emote8_62: -5306272930047131067
+      emote8_63: 6508018511506769473
+      emote8_64: -7633555594489127093
+      emote8_65: -501849211409259301
+      emote8_66: -3934554901743835037
+      emote8_67: -6171954090819583
+      emote8_68: -5092175056889588016
+      emote8_69: -586939658479154424
+      emote8_7: -2538763013725275928
+      emote8_70: 7142448685354621752
+      emote8_71: 2388807326318312042
+      emote8_72: -7624664137569506570
+      emote8_73: -1362337819446325672
+      emote8_74: 8457397233237367427
+      emote8_75: 6257631226789966701
+      emote8_76: 1856139597089328569
+      emote8_77: 5652177201281727111
+      emote8_78: -8497470890172182082
+      emote8_79: 6691201694321636796
+      emote8_8: -7240102856253810958
+      emote8_80: -7626273844961460345
+      emote8_81: 2382643108678754686
+      emote8_82: 577586452195170183
+      emote8_83: 8310589118471586867
+      emote8_84: 2133834715070859183
+      emote8_85: -2346710690460194225
+      emote8_86: -674868441046788485
+      emote8_87: 6077491574876396633
+      emote8_88: -5915270897762579700
+      emote8_89: -2862038503129333010
+      emote8_9: -2555841812425320146
+      emote8_90: 5395181937939023968
+      emote8_91: -1582539786932333056
+      emote8_92: 416038568054674952
+      emote8_93: -4750448308465416864
+      emote8_94: -7559388685940001019
+      emote8_95: 3587437997352873629
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,767 @@
+fileFormatVersion: 2
+guid: 9e70b7d792fd71a4fbb10fe5f318d7f7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2183154358610831652
+    second: $monster_phoenix_0
+  - first:
+      213: 9098982762639524304
+    second: $monster_phoenix_1
+  - first:
+      213: 6124484949998036701
+    second: $monster_phoenix_2
+  - first:
+      213: -3081973740411800088
+    second: $monster_phoenix_3
+  - first:
+      213: -1834240334231301468
+    second: $monster_phoenix_4
+  - first:
+      213: 3600177901218182212
+    second: $monster_phoenix_5
+  - first:
+      213: 7805382329383307629
+    second: $monster_phoenix_6
+  - first:
+      213: -2533493527443538039
+    second: $monster_phoenix_7
+  - first:
+      213: -1480811366654831250
+    second: $monster_phoenix_8
+  - first:
+      213: -837530129392166846
+    second: $monster_phoenix_9
+  - first:
+      213: -45608182315787505
+    second: $monster_phoenix_10
+  - first:
+      213: 7403698299547559736
+    second: $monster_phoenix_11
+  - first:
+      213: -2406168295373459352
+    second: $monster_phoenix_12
+  - first:
+      213: 3589729872714079337
+    second: $monster_phoenix_13
+  - first:
+      213: -116753413598337476
+    second: $monster_phoenix_14
+  - first:
+      213: 6303518949205259466
+    second: $monster_phoenix_15
+  - first:
+      213: -1379004496455318903
+    second: $monster_phoenix_16
+  - first:
+      213: -9147412229958754961
+    second: $monster_phoenix_17
+  - first:
+      213: 8367694171051543806
+    second: $monster_phoenix_18
+  - first:
+      213: 3911787244732499367
+    second: $monster_phoenix_19
+  - first:
+      213: -6333396788289446511
+    second: $monster_phoenix_20
+  - first:
+      213: 2710300861684751371
+    second: $monster_phoenix_21
+  - first:
+      213: -4094320134635522520
+    second: $monster_phoenix_22
+  - first:
+      213: 3668563096383250099
+    second: $monster_phoenix_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: $monster_phoenix_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 530
+        width: 164
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd6d72d7da0e3b1e0800000000000000
+      internalID: -2183154358610831652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_1
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 533
+        width: 164
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d108883d94164e70800000000000000
+      internalID: 9098982762639524304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_2
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 536
+        width: 170
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd6ebd4fc9a8ef450800000000000000
+      internalID: 6124484949998036701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_3
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 512
+        width: 59
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e53cab4631aa35d0800000000000000
+      internalID: -3081973740411800088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_4
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 512
+        width: 59
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a2137d52287b86e0800000000000000
+      internalID: -1834240334231301468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_5
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 512
+        width: 59
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44432520ab666f130800000000000000
+      internalID: 3600177901218182212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_6
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 359
+        width: 134
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d69c007bfd9425c60800000000000000
+      internalID: 7805382329383307629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_7
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 362
+        width: 140
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98ff9ff4f0937dcd0800000000000000
+      internalID: -2533493527443538039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_8
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 365
+        width: 143
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e659d2f58e9137be0800000000000000
+      internalID: -1480811366654831250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_9
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 341
+        width: 59
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24894e4e8ce7064f0800000000000000
+      internalID: -837530129392166846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_10
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 341
+        width: 59
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0b573e8997fd5ff0800000000000000
+      internalID: -45608182315787505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_11
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 341
+        width: 59
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83722b080683fb660800000000000000
+      internalID: 7403698299547559736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_12
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 194
+        width: 143
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 860357c0fa29b9ed0800000000000000
+      internalID: -2406168295373459352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_13
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 191
+        width: 140
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96c1bbecc4841d130800000000000000
+      internalID: 3589729872714079337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_14
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 188
+        width: 134
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3628209365316ef0800000000000000
+      internalID: -116753413598337476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_15
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 170
+        width: 59
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac4b25a36199a7750800000000000000
+      internalID: 6303518949205259466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_16
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 170
+        width: 59
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9824d1d77baccdce0800000000000000
+      internalID: -1379004496455318903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_17
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 170
+        width: 59
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6d9e3bba0ddd0180800000000000000
+      internalID: -9147412229958754961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_18
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 17
+        width: 164
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efc42aeb385002470800000000000000
+      internalID: 8367694171051543806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_19
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 20
+        width: 164
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a54f2706c5794630800000000000000
+      internalID: 3911787244732499367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_20
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 23
+        width: 158
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19d58644d214b18a0800000000000000
+      internalID: -6333396788289446511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_21
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 0
+        width: 59
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0c972f164cec9520800000000000000
+      internalID: 2710300861684751371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_22
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 0
+        width: 59
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 826f15ab78d0e27c0800000000000000
+      internalID: -4094320134635522520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: $monster_phoenix_23
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 0
+        width: 59
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bed70403ba59e230800000000000000
+      internalID: 3668563096383250099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      $monster_phoenix_0: -2183154358610831652
+      $monster_phoenix_1: 9098982762639524304
+      $monster_phoenix_10: -45608182315787505
+      $monster_phoenix_11: 7403698299547559736
+      $monster_phoenix_12: -2406168295373459352
+      $monster_phoenix_13: 3589729872714079337
+      $monster_phoenix_14: -116753413598337476
+      $monster_phoenix_15: 6303518949205259466
+      $monster_phoenix_16: -1379004496455318903
+      $monster_phoenix_17: -9147412229958754961
+      $monster_phoenix_18: 8367694171051543806
+      $monster_phoenix_19: 3911787244732499367
+      $monster_phoenix_2: 6124484949998036701
+      $monster_phoenix_20: -6333396788289446511
+      $monster_phoenix_21: 2710300861684751371
+      $monster_phoenix_22: -4094320134635522520
+      $monster_phoenix_23: 3668563096383250099
+      $monster_phoenix_3: -3081973740411800088
+      $monster_phoenix_4: -1834240334231301468
+      $monster_phoenix_5: 3600177901218182212
+      $monster_phoenix_6: 7805382329383307629
+      $monster_phoenix_7: -2533493527443538039
+      $monster_phoenix_8: -1480811366654831250
+      $monster_phoenix_9: -837530129392166846
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
