@@ -4764,7 +4764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerActionMenu
   _menuPanel: {fileID: 899831913}
-  _attackSubMenu: {fileID: 0}
+  _attackSubMenu: {fileID: 99025636}
   _moveButton: {fileID: 162679468}
   _attackButton: {fileID: 1644326261}
   _endTurnButton: {fileID: 1357702371}

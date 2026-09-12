@@ -36,23 +36,21 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
         //Nếu chọn ở ngoài vùng attack khả dĩ thì hiện là không attack được, gọi hiện menu lại một lần nữa
         //Về việc kiểm tra range này, nếu hành động là single attack thì check đơn giản, nếu hành động là straightline attack hoặc AOE thì yêu cầu phải có ít nhất 1 character mục tiêu nằm trong range
         //Nếu thỏa mãn toàn bộ điều kiện trên thì tiến hành handle attack, chúng sẽ không khác nhau về công thức tính damage, chỉ khác nhau về số lần lặp lại trên vùng attack đã được chọn
-        switch (CurrentAttackManagerState)
-        {
-            case (AttackManagerState.IDLE):
-                {
-                    return;
-                }
-            case (AttackManagerState.ATTACKMENUSHOW):
-                {
-                    Debug.Log(CurrentPlayer);
-                    _attackMenu.ShowMenuFor(CurrentPlayer);
-                    break;
-                }
-            default:
-                {
-                    return;
-                }
-        }
+        //switch (CurrentAttackManagerState)
+        //{
+        //    case (AttackManagerState.IDLE):
+        //        {
+        //            return;
+        //        }
+        //    case (AttackManagerState.ATTACKMENUSHOW):
+        //        {
+
+        //        }
+        //    default:
+        //        {
+        //            return;
+        //        }
+        //}
 
     }
     public bool isAttackInRange(Vector3 targetPosition, ActionData actionData)

@@ -55,6 +55,7 @@ public class PlayerAttackMenu : MonoBehaviour
         _activeAttackManager = player.GetAttackManager();
         _activeUnitPosition = player.GetCharWorldPosition();
         CurrentAttackState = AttackState.IDLE;
+        this.isAttackThisTurn = false;
         //Khi được gọi đến, AttackManager sẽ hiện một menu để chọn loại attack, menu này cũng sẽ hiện icon theo từng nút
         AttackSet _activeAttackSet = player.GetAttackSet();
         _normalAttackIconImage.sprite = _activeAttackSet.NormalAttack.SkillIcon;
@@ -99,6 +100,7 @@ public class PlayerAttackMenu : MonoBehaviour
         isAttackThisTurn = true;
         CurrentAttackState = AttackState.CALCULATEATTACKDAMAGE;
         HidePanel();
+        Debug.Log("Panel Hide");
     }
 
     private void OnSpecialAttackButtonClicked()
