@@ -165,3 +165,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94589f8914728ed4485196acdc156942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackManager
+  _attackableTilePrefab: {fileID: -2253911629886400664, guid: 9ada2bf89ea9a8a4bb39d508bec97bc9, type: 3}
+  _inputActionAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
