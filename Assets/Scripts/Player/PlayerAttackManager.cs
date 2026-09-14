@@ -71,9 +71,7 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
             }
             case (AttackManagerState.ATTACKAREAOFEFFECTPREVIEW):
             {
-
                 UpdatePreviewTiles();
-                ShowPreview();
                 if (_selectAction.WasPressedThisFrame())
                 {
                     CurrentAttackManagerState = AttackManagerState.ATTACKEXECUTION;
