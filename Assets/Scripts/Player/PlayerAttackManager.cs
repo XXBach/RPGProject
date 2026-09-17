@@ -157,6 +157,13 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
         if (hoveredNode == _lastHoveredNode) return; // ô chưa đổi, khỏi tính lại
         _lastHoveredNode = hoveredNode;
 
+        Vector2Int playerGridPos = GridSetup.Grid.GetGridPosition(transform.position);
+        if (hoveredNode.XCoordinate == playerGridPos.x && hoveredNode.YCoordinate == playerGridPos.y)
+        {
+            HideAllPreview();
+            return;
+        }
+
         List<PathNode> previewNodes = new List<PathNode>();
 
         if (IsOriginInAttackRange(hoveredNode))
@@ -180,19 +187,76 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
     }
     private List<PathNode> GetStraightLineNodes(PathNode hoveredNode, int AOERange)
     {
-        List<PathNode > nodes = new List<PathNode>();
+        List<PathNode> nodes = new List<PathNode>();
+        Vector2Int playerGridPos = GridSetup.Grid.GetGridPosition(transform.position);
+
+        int dx = hoveredNode.XCoordinate - playerGridPos.x;
+        int dy = hoveredNode.YCoordinate - playerGridPos.y;
+
+        int dirX = 0, dirY = 0;
+        if (Mathf.Abs(dx) >= Mathf.Abs(dy))
+        {
+            dirX = dx == 0 ? 0 : (int)Mathf.Sign(dx);
+        }
+        else
+        {
+            dirY = dy == 0 ? 0 : (int)Mathf.Sign(dy);
+        }
+
+        // Player đứng đúng ô đó -> không xác định được hướng, bỏ qua
+        if (dirX == 0 && dirY == 0) return nodes;
+
+        for (int i = 0; i < AOERange; i++)
+        {
+            int x = hoveredNode.XCoordinate + dirX * i;
+            int y = hoveredNode.YCoordinate + dirY * i;
+            PathNode node = GridSetup.Grid.GetGridObject(x, y);
+            if (node == null) break; // ra khỏi biên grid thì dừng
+            nodes.Add(node);
+        }
         return nodes;
     }
-    private List<PathNode> GetDiamondAreaNodes(PathNode hoaveredNode, int AOERange)
+    private List<PathNode> GetDiamondAreaNodes(PathNode hoveredNode, int AOERange)
     {
         List<PathNode> nodes = new List<PathNode>();
+        Vector2Int playerGridPos = GridSetup.Grid.GetGridPosition(transform.position);
+
+        int dx = hoveredNode.XCoordinate - playerGridPos.x;
+        int dy = hoveredNode.YCoordinate - playerGridPos.y;
+
+        int dirX = 0, dirY = 0;
+        if (Mathf.Abs(dx) >= Mathf.Abs(dy))
+        {
+            dirX = dx == 0 ? 0 : (int)Mathf.Sign(dx);
+        }
+        else
+        {
+            dirY = dy == 0 ? 0 : (int)Mathf.Sign(dy);
+        }
+
+        // Player đứng đúng ô đó -> không xác định được hướng, bỏ qua
+        if (dirX == 0 && dirY == 0) return nodes;
+
+        for (int i = 0; i < AOERange; i++)
+        {
+            int x = hoveredNode.XCoordinate + dirX * i;
+            int y = hoveredNode.YCoordinate + dirY * i;
+            PathNode node = GridSetup.Grid.GetGridObject(x, y);
+            if (node == null) break; // ra khỏi biên grid thì dừng
+            nodes.Add(node);
+        }
+
         return nodes;
     }
     private bool IsOriginInAttackRange(PathNode originNode)
     {
-        Vector3 nodeWorldPos = GridSetup.Grid.GetCellWorldPosition(originNode.XCoordinate, originNode.YCoordinate);
-        float distance = Vector3.Distance(transform.position, nodeWorldPos);
-        return distance <= CurrentPlayer.CurrentDatas.CurrentAttackRange;
+        Vector2Int playerGridPos = GridSetup.Grid.GetGridPosition(transform.position);
+
+        int dx = Mathf.Abs(originNode.XCoordinate - playerGridPos.x);
+        int dy = Mathf.Abs(originNode.YCoordinate - playerGridPos.y);
+        int gridDistance = dx + dy; // Manhattan: không cho phép đi chéo
+
+        return gridDistance <= CurrentPlayer.CurrentDatas.CurrentAttackRange;
     }
     private void ShowPreview(List<PathNode> AttackReachableNode)
     {
@@ -205,6 +269,7 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
         for (int i = 0; i < needed; i++) { 
             GameObject tile = _previewTilesPrefabPool[i];
             Vector3 cellCenter = GridSetup.Grid.GetCellWorldPosition(AttackReachableNode[i].XCoordinate, AttackReachableNode[i].YCoordinate);
+            cellCenter.x += 0.5f;
             tile.transform.position = cellCenter;
             tile.SetActive(true);
         }
