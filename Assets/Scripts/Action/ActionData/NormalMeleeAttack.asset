@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: NormalMeleeAttack
   m_EditorClassIdentifier: Assembly-CSharp::ActionData
   _actionType: 0
-  _actionRange: 1
+  _areaOfEffectRange: 1
   _skillMultiplier: 1
-  _manaCost: 0
+  _manaCost: 10
   _cooldownTime: 1
   _skillIcon: {fileID: -31149813515355934, guid: 89f34c47fcfd0d94186062f0f5be60a4, type: 3}

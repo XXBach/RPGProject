@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Experimental.GlobalIllumination;
@@ -7,4 +8,5 @@ public interface IMovement
     public UnityEvent<OnMovementEndArgs> GetOnMovementEnd();
     public void SetMovementState(MovementState state);
     public PathFinding GetPathFinding();
+    public void RangeVisualize(List<PathNode> ReachableNodes);
 }

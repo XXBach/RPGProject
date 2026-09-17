@@ -14,24 +14,33 @@ public enum AttackManagerState
 }
 public class PlayerAttackManager : MonoBehaviour, IAttackManager
 {
+    [Header("Preview Attack Range")]
     [SerializeField] private GameObject _attackableTilePrefab;
-    [SerializeField] private InputActionAsset _inputActionAsset;
-    public AttackManagerState CurrentAttackManagerState { get; set; }
-    
-    public int SkillChoice { get; set; }
-    private ICharacter CurrentPlayer { get; set; }
-
-    private PlayerAttackMenu _attackMenu;
-
-    private PathFinding _currentPlayerPathFinding;
-
-    private AttackSet _currentPlayerAttackSet;
-
-    private InputAction _selectAction;
-
     private List<GameObject> _previewTilesPrefabPool;
     private int _activePreviewCount;
     private PathNode _lastHoveredNode;
+
+
+
+    [Header("Player Control")]
+    [SerializeField] private InputActionAsset _inputActionAsset;
+    private InputAction _selectAction;
+
+
+
+    [Header("Interior Data")]
+    public AttackManagerState CurrentAttackManagerState { get; set; }    
+    public int SkillChoice { get; set; }
+
+    
+    
+    [Header("Player Relevant")]
+    private ICharacter CurrentPlayer { get; set; }
+    private PlayerAttackMenu _attackMenu;
+    private PathFinding _currentPlayerPathFinding;
+    private AttackSet _currentPlayerAttackSet;
+
+
     private void Awake()
     {
         CurrentAttackManagerState = AttackManagerState.IDLE;
@@ -65,8 +74,9 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
             }
             case (AttackManagerState.ATTACKRANGEVISUALIZE):
             {
-                this._currentPlayerPathFinding.GetReachableNodes(PlayerRelativePosition.x, PlayerRelativePosition.y, CurrentPlayer.CurrentDatas.CurrentAttackRange, true);
-                    CurrentAttackManagerState = AttackManagerState.ATTACKAREAOFEFFECTPREVIEW;
+                List<PathNode> reachableNode = this._currentPlayerPathFinding.GetReachableNodes(PlayerRelativePosition.x, PlayerRelativePosition.y, CurrentPlayer.CurrentDatas.CurrentAttackRange * 10, true);
+                this.CurrentPlayer.GetMovementManager().RangeVisualize(reachableNode);
+                CurrentAttackManagerState = AttackManagerState.ATTACKAREAOFEFFECTPREVIEW;
                 break;
             }
             case (AttackManagerState.ATTACKAREAOFEFFECTPREVIEW):
@@ -115,7 +125,7 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
         Vector2 mousePosition = Mouse.current.position.ReadValue();
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector2Int hoveredGridPos = GridSetup.Grid.GetGridPosition(mouseWorldPosition);
-        ActionData _selectedAction = new ActionData();
+        ActionData _selectedAction = ScriptableObject.CreateInstance<ActionData>();
 
         switch (SkillChoice)
         {
@@ -166,6 +176,7 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
         }
 
         ShowPreview(previewNodes);
+        //Destroy(_selectedAction);
     }
     private List<PathNode> GetStraightLineNodes(PathNode hoveredNode, int AOERange)
     {
@@ -193,7 +204,7 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
         }
         for (int i = 0; i < needed; i++) { 
             GameObject tile = _previewTilesPrefabPool[i];
-            Vector3 cellCenter = GridSetup.Grid.GetCellWorldPosition(AttackReachableNode[i].XCoordinate, AttackReachableNode[i].YCoordinate) + new Vector3(GridSetup.Grid.CellSize, GridSetup.Grid.CellSize) * 0.5f;
+            Vector3 cellCenter = GridSetup.Grid.GetCellWorldPosition(AttackReachableNode[i].XCoordinate, AttackReachableNode[i].YCoordinate);
             tile.transform.position = cellCenter;
             tile.SetActive(true);
         }
@@ -212,5 +223,9 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
     }
     public void SetCurrentAttackManagerState(AttackManagerState state) { 
         CurrentAttackManagerState = state;
+    }
+    public void SetCurrentSkillChoice(int SkillChoice)
+    {
+        this.SkillChoice = SkillChoice;
     }
 }

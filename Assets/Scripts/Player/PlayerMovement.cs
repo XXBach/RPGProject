@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour, IMovement
             this.MCMovementState = MovementState.IDLE;
         }
     }
-    private void RangeVisualize(List<PathNode>ReachableNodes)
+    public void RangeVisualize(List<PathNode>ReachableNodes)
     {
         int needed = ReachableNodes.Count;
         while (_tilePool.Count < needed)

@@ -133,4 +133,8 @@ public class EnemyMovement : MonoBehaviour, IMovement
     public PathFinding GetPathFinding() { 
         return _pathFinding;
     }
+    public void RangeVisualize(List<PathNode> reachableNodes)
+    {
+
+    }
 }

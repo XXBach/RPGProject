@@ -108,11 +108,11 @@ public class PlayerActionMenu : MonoBehaviour
     {
         if (isAttackThisTurn) return;
         isAttackThisTurn = true;
-
+        HidePanel();
         _attackSubMenu.ShowMenuFor(_activeMovement.gameObject.GetComponent<ICharacter>());
 
         //_activeAttackManager.SetCurrentAttackManagerState(AttackManagerState.ATTACKMENUSHOW);
-        HidePanel();
+        
         // TODO: khi có PlayerATTACK, gọi tương tự:
         // _activeATTACK.BeginATTACKTargeting();
     }
