@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using System;
 using Random = UnityEngine.Random;
 using TMPro;
+using Unity.VisualScripting;
 /*<Summary>
     TurnManager quản lý thứ tự lượt của các unit trong game.
     TurnManager sẽ gọi PlayerActionMenu.ShowMenuFor(unit) mỗi khi tới lượt 1 unit
@@ -157,5 +158,14 @@ public class TurnManager : MonoBehaviour
     public void SetTurnNumber()
     {
         _textMeshPro.text = "Turn: " + _turnNumber;
+    }
+
+    public ICharacter FindCharAtPosition(Vector3 worldposition)
+    {
+        foreach(ICharacter character in this._characterList)
+        {
+            if (Vector3.Distance(character.GetCharWorldPosition(), worldposition) <= 0.03) return character;
+        }
+        return null;
     }
 }

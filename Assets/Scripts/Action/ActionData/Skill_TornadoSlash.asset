@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Skill_TornadoSlash
   m_EditorClassIdentifier: Assembly-CSharp::ActionData
   _actionType: 2
-  _actionRange: 2
+  _areaOfEffectRange: 2
+  _attackRange: 4
   _skillMultiplier: 2
   _manaCost: 50
   _cooldownTime: 5

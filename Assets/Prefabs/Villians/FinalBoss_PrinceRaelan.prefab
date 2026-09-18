@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   _baseStats: {fileID: 11400000, guid: 0586066ee8a55f14e8af050d27c63819, type: 2}
+  _attackSet: {fileID: 11400000, guid: 4d059c60999837940b993b60d763ad21, type: 2}
+  _combatVisualData: {fileID: 11400000, guid: 66d596214eb008943b87e40c80c2d0bc, type: 2}
 --- !u!114 &8055171366292807777
 MonoBehaviour:
   m_ObjectHideFlags: 0

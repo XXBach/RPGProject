@@ -3424,7 +3424,7 @@ MonoBehaviour:
   cellSize: 1
   PathFindingDebugObjectPrefab: {fileID: 4058781854477358372, guid: ce7cdfd4a1ce14f419efba7b2831c68f, type: 3}
   isShowDebug: 0
-  showGridInEditor: 1
+  showGridInEditor: 0
 --- !u!4 &592202580
 Transform:
   m_ObjectHideFlags: 0
@@ -15323,6 +15323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1893830953}
   - component: {fileID: 1893830954}
+  - component: {fileID: 1893830955}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -15358,6 +15359,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _mainChar_PrinceEldric_Prefab: {fileID: 4213868686189531104, guid: 2ae54edddc6802045b7c781dce259d35, type: 3}
+  _turnManager: {fileID: 1803089569}
+--- !u!114 &1893830955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893830952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2173f12ce237ec0479e001c074129a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombatSceneLoader
+  _combatSceneName: CombatScene
   _turnManager: {fileID: 1803089569}
 --- !u!1 &1902042171
 GameObject:

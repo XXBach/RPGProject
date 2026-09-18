@@ -131,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _baseStats: {fileID: 11400000, guid: 8140deced401cb648a487d35fd755377, type: 2}
   _attackSet: {fileID: 11400000, guid: 4d059c60999837940b993b60d763ad21, type: 2}
+  _combatVisualData: {fileID: 11400000, guid: c39edc686c9ba8b44acae3fd5f73996c, type: 2}
   _movementManager: {fileID: 0}
   _attackManager: {fileID: 0}
 --- !u!114 &8342545293501007909

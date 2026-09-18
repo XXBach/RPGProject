@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 public interface ICharacter
 {
@@ -9,4 +10,5 @@ public interface ICharacter
     public string GetName();
     public CharacterData CurrentDatas { get; }
     public AttackSet GetAttackSet();
+    public CombatVisualData GetCombatVisualData();
 }

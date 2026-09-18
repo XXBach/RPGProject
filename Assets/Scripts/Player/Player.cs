@@ -5,6 +5,7 @@ public class Player : MonoBehaviour, ICharacter
     public CharacterData CurrentDatas { get; set; }
     [SerializeField] private CharacterBaseStats _baseStats;
     [SerializeField] private AttackSet _attackSet;
+    [SerializeField] private CombatVisualData _combatVisualData;
     [SerializeField] private PlayerMovement _movementManager;
     [SerializeField] private PlayerAttackManager _attackManager;
     private void Awake()
@@ -58,5 +59,9 @@ public class Player : MonoBehaviour, ICharacter
     public AttackSet GetAttackSet()
     {
         return _attackSet;
+    }
+    public CombatVisualData GetCombatVisualData()
+    {
+        return this._combatVisualData;
     }
 }

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ActionData
   _actionType: 0
   _areaOfEffectRange: 1
+  _attackRange: 2
   _skillMultiplier: 1
   _manaCost: 10
   _cooldownTime: 1

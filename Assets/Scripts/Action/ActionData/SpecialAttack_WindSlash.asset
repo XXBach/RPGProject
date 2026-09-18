@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SpecialAttack_WindSlash
   m_EditorClassIdentifier: Assembly-CSharp::ActionData
   _actionType: 1
-  _actionRange: 2
+  _areaOfEffectRange: 2
+  _attackRange: 3
   _skillMultiplier: 1.5
   _manaCost: 10
   _cooldownTime: 2

@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour, ICharacter
     public CharacterData CurrentDatas { get; set; }
     [SerializeField] private CharacterBaseStats _baseStats;
     [SerializeField] private AttackSet _attackSet;
+    [SerializeField] private CombatVisualData _combatVisualData;
     private EnemyMovement _enemyMovement;
     private EnemyAttackManager _enemyAttackManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -64,5 +65,9 @@ public class Enemy : MonoBehaviour, ICharacter
     public AttackSet GetAttackSet()
     {
         return _attackSet;
+    }
+    public CombatVisualData GetCombatVisualData()
+    {
+        return this._combatVisualData;
     }
 }
