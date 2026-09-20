@@ -33,9 +33,9 @@ public enum TurnManagerPhase
 //}
 public class TurnManager : MonoBehaviour
 {
-    private int _turnNumber;
+    public int _turnNumber;
     [SerializeField] private PlayerActionMenu _actionMenu;
-    private List<ICharacter> _characterList = new List<ICharacter>();
+    public List<ICharacter> _characterList = new List<ICharacter>();
     private TurnManagerPhase _currentPhase;
     private UnityEvent _endTurnEvent;
     private int currentCharacterIndex = 0;

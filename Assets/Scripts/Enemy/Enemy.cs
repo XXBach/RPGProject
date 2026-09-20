@@ -15,6 +15,7 @@ public class CharacterData
 public class Enemy : MonoBehaviour, ICharacter
 {
     public CharacterData CurrentDatas { get; set; }
+    [SerializeField] private SpawningPosition _spawningPosition;
     [SerializeField] private CharacterBaseStats _baseStats;
     [SerializeField] private AttackSet _attackSet;
     [SerializeField] private CombatVisualData _combatVisualData;
@@ -69,5 +70,9 @@ public class Enemy : MonoBehaviour, ICharacter
     public CombatVisualData GetCombatVisualData()
     {
         return this._combatVisualData;
+    }
+    public SpawningPosition GetSpawningPosition()
+    {
+        return this._spawningPosition;
     }
 }

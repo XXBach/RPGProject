@@ -101,6 +101,7 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
             }
             case (AttackManagerState.SHOWCOMBATSCENE):
             {
+                
                 break;
             }
             default:
@@ -329,6 +330,7 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
             } : null
         };
 
+        CurrentPlayer.CurrentDatas.CurrentMP -= selectedAction.ManaCost;
         CombatSignal.FireCombatScene(combatData);
         CurrentAttackManagerState = AttackManagerState.SHOWCOMBATSCENE;
     }

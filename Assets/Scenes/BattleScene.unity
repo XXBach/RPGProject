@@ -198,14 +198,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7133811860246195979, guid: db980037b0a38fa42a4b281fb53fa254, type: 3}
+  m_Sprite: {fileID: -8070199099230232510, guid: 3a12b6e7d6f4d4e49b49f3417fced49a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4702,14 +4702,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7133811860246195979, guid: db980037b0a38fa42a4b281fb53fa254, type: 3}
+  m_Sprite: {fileID: -874693368402397265, guid: 3a12b6e7d6f4d4e49b49f3417fced49a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15175,6 +15175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ff206b288036d4eb30221042a623e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurnManager
+  _turnNumber: 0
   _actionMenu: {fileID: 899831917}
   _textMeshPro: {fileID: 1218594983}
 --- !u!4 &1803089570
@@ -15324,6 +15325,7 @@ GameObject:
   - component: {fileID: 1893830953}
   - component: {fileID: 1893830954}
   - component: {fileID: 1893830955}
+  - component: {fileID: 1893830956}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -15353,13 +15355,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1893830952}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4afefa71a5d51ec4bbe82db742797081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _mainChar_PrinceEldric_Prefab: {fileID: 4213868686189531104, guid: 2ae54edddc6802045b7c781dce259d35, type: 3}
-  _turnManager: {fileID: 1803089569}
 --- !u!114 &1893830955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15374,6 +15374,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CombatSceneLoader
   _combatSceneName: CombatScene
   _turnManager: {fileID: 1803089569}
+--- !u!114 &1893830956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893830952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f158d521fee1824ca34a0cf528a69c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawningScript
+  _characterPrefabs:
+  - {fileID: 4213868686189531104, guid: 2ae54edddc6802045b7c781dce259d35, type: 3}
+  - {fileID: 7746255441833299275, guid: 00414dc675a34034a94e0597ab539f63, type: 3}
+  _currentTurnManager: {fileID: 1803089569}
 --- !u!1 &1902042171
 GameObject:
   m_ObjectHideFlags: 0
@@ -15423,8 +15439,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
   m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ReferencePixelsPerUnit: 16
+  m_ScaleFactor: 2.37
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0

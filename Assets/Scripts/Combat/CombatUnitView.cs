@@ -26,6 +26,19 @@ public class CombatUnitView : MonoBehaviour
         PlayIdle();
     }
 
+    public void SetupVisualOnly(AnimatorOverrideController overrideController, Vector3 spawnPosition, bool isFacingRight)
+    {
+        transform.position = spawnPosition;
+        _spriteRenderer.flipX = !isFacingRight;
+
+        if (overrideController != null)
+        {
+            _animator.runtimeAnimatorController = overrideController;
+        }
+        PlayIdle();
+    }
+
+
     public void PlayRun() => _animator.SetTrigger(TRIGGER_RUN);
     public void PlayIdle() => _animator.SetTrigger(TRIGGER_IDLE);
     public void PlayAttack(ActionData usedAction) => _animator.SetTrigger(TRIGGER_ATTACK);

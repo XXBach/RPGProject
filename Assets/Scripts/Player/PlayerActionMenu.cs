@@ -6,6 +6,7 @@ public enum CharacterState
     IDLE = 0,
     MOVE = 1,
     ATTACK = 2,
+    ENDTURN = 3
 }
 
 /// <summary>
@@ -97,18 +98,18 @@ public class PlayerActionMenu : MonoBehaviour
 
     private void OnMoveButtonClicked()
     {
+        HidePanel();
         if (isMoveThisTurn) return;
         isMoveThisTurn = true;
         CurrentAction = CharacterState.MOVE;
-        HidePanel();
         _activeMovement.SetMovementState(MovementState.MOVEMENTRANGEVISUAL);
     }
 
     private void OnAttackButtonClicked()
     {
+        HidePanel();
         if (isAttackThisTurn) return;
         isAttackThisTurn = true;
-        HidePanel();
         _attackSubMenu.ShowMenuFor(_activeMovement.gameObject.GetComponent<ICharacter>());
 
         //_activeAttackManager.SetCurrentAttackManagerState(AttackManagerState.ATTACKMENUSHOW);

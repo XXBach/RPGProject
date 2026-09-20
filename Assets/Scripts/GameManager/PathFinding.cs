@@ -62,9 +62,6 @@ public class PathFinding
             currentNode = currentNode.CameFromNode;
         }
         pathList.Reverse();
-        foreach (PathNode node in pathList) {
-            Debug.Log($"Node {node}");
-        }
         return pathList;
     }
     private int CalculateDistanceCost(PathNode a, PathNode b) {

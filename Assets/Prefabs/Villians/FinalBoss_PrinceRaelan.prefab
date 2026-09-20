@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522d01accda5fe84d9345c37930d3802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  _spawningPosition: {fileID: 11400000, guid: 8c7dedc745d4c1c429197ec4dea60a18, type: 2}
   _baseStats: {fileID: 11400000, guid: 0586066ee8a55f14e8af050d27c63819, type: 2}
   _attackSet: {fileID: 11400000, guid: 4d059c60999837940b993b60d763ad21, type: 2}
   _combatVisualData: {fileID: 11400000, guid: 66d596214eb008943b87e40c80c2d0bc, type: 2}

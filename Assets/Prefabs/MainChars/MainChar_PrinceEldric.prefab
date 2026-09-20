@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 980680dd84e6da342ac0573230bf9c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _spawningPosition: {fileID: 11400000, guid: 87c1c6caf09a0c24ea756ff1fecd986b, type: 2}
   _baseStats: {fileID: 11400000, guid: 8140deced401cb648a487d35fd755377, type: 2}
   _attackSet: {fileID: 11400000, guid: 4d059c60999837940b993b60d763ad21, type: 2}
   _combatVisualData: {fileID: 11400000, guid: c39edc686c9ba8b44acae3fd5f73996c, type: 2}
@@ -168,3 +169,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackManager
   _attackableTilePrefab: {fileID: -2253911629886400664, guid: 9ada2bf89ea9a8a4bb39d508bec97bc9, type: 3}
   _inputActionAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  _currentTurnManager: {fileID: 0}
