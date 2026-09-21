@@ -4,9 +4,10 @@ using UnityEngine.Events;
 public enum CharacterState
 {
     IDLE = 0,
-    MOVE = 1,
-    ATTACK = 2,
-    ENDTURN = 3
+    CALCULATING = 1,
+    MOVE = 2,
+    ATTACK = 3,
+    ENDTURN = 4
 }
 
 /// <summary>

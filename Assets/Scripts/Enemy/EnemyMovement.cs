@@ -7,9 +7,7 @@ using UnityEngine.Events;
 public class EnemyMovement : MonoBehaviour, IMovement
 {
     public UnityEvent<OnMovementEndArgs> OnMovementEnd;
-    [SerializeField] private InputActionAsset _inputActionAsset;
-    private float _moveSpeed;
-    private InputAction _selectAction;
+    private int _moveSpeed;
     private PathFinding _pathFinding;
     private List<PathNode> _path;
     private Coroutine _handleMovementCoroutine;
@@ -17,46 +15,30 @@ public class EnemyMovement : MonoBehaviour, IMovement
     private Animator _animator;
     private MovementState _movementState;
 
-    
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+        _movementState = MovementState.IDLE;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _pathFinding = new PathFinding(GridSetup.Grid);
-        _selectAction = _inputActionAsset.FindAction("Select");
         this._moveSpeed = this.GetComponent<Enemy>().CurrentDatas.CurrentSpeed;
-        _animator = GetComponent<Animator>();
+
     }
-
-    // Update is called once per frame
-    void Update()
+    public void MoveToTargetNearestCell(PlayerCharsPosition target)
     {
-        if (_selectAction.WasPressedThisFrame() && !_isMoving)
-        {
-            Vector2 mousePosition = Mouse.current.position.ReadValue();
-            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            Vector2Int DestinationGridPosition = new Vector2Int();
-            DestinationGridPosition = _pathFinding.Grid.GetGridPosition(mouseWorldPosition);
-            if (DestinationGridPosition.x == -1 && DestinationGridPosition.y == -1)
-            {
-                Debug.Log("Outofbound");
-                return;
-            }
-
-            PathNode destinationNode = _pathFinding.Grid.GetGridObject(DestinationGridPosition.x, DestinationGridPosition.y);
-            if (destinationNode.State != 0)
-            {
-                Debug.Log("Unwalkable");
-                return;
-            }
-            Vector2Int CurrentGridPosition = GridSetup.Grid.GetGridPosition(transform.position);
-            _path = _pathFinding.FindPath(DestinationGridPosition.x, DestinationGridPosition.y);
-            _handleMovementCoroutine = StartCoroutine(HandleMovement());
-            CameraSignals.RequestMove(mouseWorldPosition, smooth: true);
-        }
+        Vector2Int CurrentPosition = GridSetup.Grid.GetGridPosition(transform.position);
+        List<PathNode> MovementRange = _pathFinding.GetReachableNodes(CurrentPosition.x, CurrentPosition.y, _moveSpeed);
+        Vector2Int NearestCoordinate = FindNearestPossibleCoordinatesToTarget(target.PlayerCharCoodinates, MovementRange);
+        MoveToTargetCell(NearestCoordinate);
     }
-    private void HandleTurn()
+    public void MoveToTargetCell(Vector2Int CellCoodinates)
     {
-
+        _path = _pathFinding.FindPath(CellCoodinates.x, CellCoodinates.y);
+        StartCoroutine(HandleMovement());
     }
     private IEnumerator HandleMovement()
     {
@@ -102,26 +84,6 @@ public class EnemyMovement : MonoBehaviour, IMovement
 
         return (Vector3.Distance(this.transform.position, currentPointToReach) <= 0.05f);
     }
-    private void OnEnable()
-    {
-        _inputActionAsset.FindActionMap("Player").Enable();
-    }
-    private void OnDisable()
-    {
-        _inputActionAsset.FindActionMap("Player").Disable();
-    }
-    private void OnDrawGizmos()
-    {
-        if (_path == null) return;
-
-        Gizmos.color = Color.green;
-        for (int i = 0; i < _path.Count - 1; i++)
-        {
-            Vector3 from = new Vector3(_path[i].XCoordinate, _path[i].YCoordinate) + Vector3.one * 0.5f;
-            Vector3 to = new Vector3(_path[i + 1].XCoordinate, _path[i + 1].YCoordinate) + Vector3.one * 0.5f;
-            Gizmos.DrawLine(from, to);
-        }
-    }
     public void SetMovementState(MovementState movementState)
     {
         _movementState = movementState;
@@ -136,5 +98,36 @@ public class EnemyMovement : MonoBehaviour, IMovement
     public void RangeVisualize(List<PathNode> reachableNodes)
     {
 
+    }
+    public Vector2Int FindNearestPossibleCoordinatesToTarget(Vector2Int TargetCoordinates, List<PathNode> MovementRange)
+    {
+        Vector2Int NearestCoordinates = new Vector2Int(MovementRange[0].XCoordinate, MovementRange[0].YCoordinate);
+        float NearestRelativeDistance = Vector2.Distance(TargetCoordinates, NearestCoordinates);
+        foreach (var Cell in MovementRange)
+        {
+            float relativeDistance = Vector2.Distance(TargetCoordinates, new Vector2Int(Cell.XCoordinate, Cell.YCoordinate));
+            if (NearestRelativeDistance > relativeDistance)
+            {
+                NearestRelativeDistance = relativeDistance;
+                NearestCoordinates = new Vector2Int(Cell.XCoordinate, Cell.YCoordinate);
+            }
+        }
+        return NearestCoordinates;
+    }
+    public Vector2Int FindFurthestPossibleCoodinates(PlayerCharsPosition target, List<PathNode> MovementRange)
+    {
+        Vector2Int FurthestPossibleCoordinates = new Vector2Int();
+        return FurthestPossibleCoordinates;
+    }
+    public bool IsCharInValidRange(PlayerCharsPosition target, List<PathNode> ValidRange)
+    {
+        foreach (PathNode gridcell in ValidRange)
+        {
+            if (target.PlayerCharCoodinates.x == gridcell.XCoordinate && target.PlayerCharCoodinates.y == gridcell.YCoordinate)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -28,9 +28,13 @@ public class GridSetup : MonoBehaviour
     [SerializeField] private bool showGridInEditor = false;
     private UnityEvent<OnMovementEndArgs> OnMovementEnd = new UnityEvent<OnMovementEndArgs>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
         Grid = new Grid<PathNode>(width, height, cellSize, _font, Vector3.zero, (Grid<PathNode> g, int x, int y) => CreatePathNode(g, x, y));
+    }
+    private void Start()
+    {
+       
         OnMovementEnd.AddListener(args => UpdateNodeState(args.FinalPosition, args.FinalNodeState));
         if (isShowDebug) SetupGridDebugObjects();
     }
