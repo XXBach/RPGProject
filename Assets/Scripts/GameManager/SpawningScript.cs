@@ -7,7 +7,7 @@ public class SpawningScript : MonoBehaviour
     [SerializeField] private List<GameObject> _characterPrefabs;
     [SerializeField] private TurnManager _currentTurnManager;
 
-    private void Start()
+    private void Awake()
     {
         StartSceneSpawning();
     }
@@ -19,8 +19,10 @@ public class SpawningScript : MonoBehaviour
             ICharacter ICharHolder = character.GetComponent<ICharacter>();
             SpawningPosition CharSpawningPosition = ICharHolder.GetSpawningPosition();
             Vector3 CharSpawningWorldPos = GridSetup.Grid.GetCellWorldPosition(CharSpawningPosition.XCoordinate, CharSpawningPosition.YCoordinate);
-            Instantiate(character, CharSpawningWorldPos, Quaternion.identity);
-            _currentTurnManager.RegisterCharacter(ICharHolder);
+            CharSpawningWorldPos = CharSpawningWorldPos + new Vector3(0.5f, 0.5f);
+            GameObject characterSpawn = Instantiate(character, CharSpawningWorldPos, Quaternion.identity);
+            Debug.Log(characterSpawn.GetComponent<ICharacter>());
+            _currentTurnManager.RegisterCharacter(characterSpawn.GetComponent<ICharacter>());
         }
     }
     public void TurnBasedSpawning(int TurnsBetweenWaves, GameObject _characterSpawn)
@@ -30,8 +32,9 @@ public class SpawningScript : MonoBehaviour
             ICharacter ICharHolder = _characterSpawn.GetComponent<ICharacter>();
             SpawningPosition CharSpawningPosition = ICharHolder.GetSpawningPosition();
             Vector3 CharSpawningWorldPos = GridSetup.Grid.GetCellWorldPosition(CharSpawningPosition.XCoordinate, CharSpawningPosition.YCoordinate);
-            Instantiate(_characterSpawn, CharSpawningWorldPos, Quaternion.identity);
-            _currentTurnManager.RegisterCharacter(ICharHolder);
+            CharSpawningWorldPos = CharSpawningWorldPos + new Vector3(0.5f, 0.5f);
+            GameObject characterSpawn = Instantiate(_characterSpawn, CharSpawningWorldPos, Quaternion.identity);
+            _currentTurnManager.RegisterCharacter(characterSpawn.GetComponent<ICharacter>());
             _characterPrefabs.Add(_characterSpawn);
         }
     }

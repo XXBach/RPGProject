@@ -69,4 +69,8 @@ public class Player : MonoBehaviour, ICharacter
     {
         return this._spawningPosition;
     }
+    public EnemyAI? GetEnemyAI()
+    {
+        return null;
+    }
 }

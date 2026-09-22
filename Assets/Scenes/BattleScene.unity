@@ -3424,7 +3424,7 @@ MonoBehaviour:
   cellSize: 1
   PathFindingDebugObjectPrefab: {fileID: 4058781854477358372, guid: ce7cdfd4a1ce14f419efba7b2831c68f, type: 3}
   isShowDebug: 0
-  showGridInEditor: 0
+  showGridInEditor: 1
 --- !u!4 &592202580
 Transform:
   m_ObjectHideFlags: 0

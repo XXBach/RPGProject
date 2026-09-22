@@ -25,12 +25,6 @@ public enum TurnManagerPhase
     WAITINGFORENDTURNSIGNAL = 2,
     ENDTURN = 3,
 }
-//[Serializable] 
-//public class ICharacter
-//{
-//    [SerializeField] private MonoBehaviour _characters;
-//    public ICharacter Character => _characters as ICharacter;
-//}
 public class TurnManager : MonoBehaviour
 {
     public int _turnNumber;
@@ -86,7 +80,15 @@ public class TurnManager : MonoBehaviour
     {
         OrderedTurns = OrderingList();
         currentCharacterIndex = 0;
-        this._actionMenu.ShowMenuFor(this.OrderedTurns[0]);
+        if (OrderedTurns[currentCharacterIndex] is Player)
+        {
+            Debug.Log(this.OrderedTurns[currentCharacterIndex]);
+            this._actionMenu.ShowMenuFor(this.OrderedTurns[currentCharacterIndex]);
+        }
+        else if (OrderedTurns[currentCharacterIndex] is Enemy)
+        {
+            this.OrderedTurns[currentCharacterIndex].GetEnemyAI()._characterCurrentState = CharacterState.CALCULATING;
+        }
         this._turnNumber++;
         SetTurnNumber();
         _currentPhase = TurnManagerPhase.WAITINGFORENDTURNSIGNAL;
@@ -99,6 +101,7 @@ public class TurnManager : MonoBehaviour
     public void HandleEndTurnSignal()
     {
         currentCharacterIndex++;
+        Debug.Log(currentCharacterIndex);
         if (currentCharacterIndex >= _characterList.Count) _currentPhase = TurnManagerPhase.ENDTURN;
         else _currentPhase = TurnManagerPhase.EXECUTETURN;
     }
@@ -125,11 +128,13 @@ public class TurnManager : MonoBehaviour
             _characterList.Remove(characterRef);
         }
         _characterList = orderedList;
+
         return orderedList;
     }
     public ICharacter GetHighestSpeedCharRef()
     {
         ICharacter CurrentCharRef = _characterList[0];
+        
         foreach (var characterRef in _characterList)
         {
             if (CurrentCharRef.GetCurrentSpeed() > characterRef.GetCurrentSpeed()) CurrentCharRef = characterRef;
@@ -152,6 +157,7 @@ public class TurnManager : MonoBehaviour
     {
         if (!_characterList.Contains(character))
         {
+            Debug.Log($"Successfully Added {character} to list");
             _characterList.Add(character);
         }
     }

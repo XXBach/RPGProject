@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7707372253756559401}
   - component: {fileID: 4709301514018845152}
   - component: {fileID: 8055171366292807777}
+  - component: {fileID: 1614231203056668297}
+  - component: {fileID: -1254553499388655817}
   m_Layer: 0
   m_Name: FinalBoss_PrinceRaelan
   m_TagString: Untagged
@@ -147,4 +149,47 @@ MonoBehaviour:
   OnMovementEnd:
     m_PersistentCalls:
       m_Calls: []
-  _inputActionAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+--- !u!114 &1614231203056668297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7746255441833299275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e318ae1828c8746419248827bc6e9a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
+  _currentTurnManager: {fileID: 0}
+  _enemyMovementManager: {fileID: 8055171366292807777}
+  _enemyAttackManager: {fileID: -1254553499388655817}
+  _characterCurrentState: 0
+  OnTurnEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TurnManager, Assembly-CSharp
+        m_MethodName: SetIsTurnEnded
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-1254553499388655817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7746255441833299275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62b9d7162a3ca148b45bbecbeb5f12e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAttackManager
+  _skillchoice: 0

@@ -102,22 +102,46 @@ public class EnemyMovement : MonoBehaviour, IMovement
     public Vector2Int FindNearestPossibleCoordinatesToTarget(Vector2Int TargetCoordinates, List<PathNode> MovementRange)
     {
         Vector2Int NearestCoordinates = new Vector2Int(MovementRange[0].XCoordinate, MovementRange[0].YCoordinate);
-        float NearestRelativeDistance = Vector2.Distance(TargetCoordinates, NearestCoordinates);
+        int NearestRelativeDistance = GetManhattanDistance(TargetCoordinates, NearestCoordinates);
+
         foreach (var Cell in MovementRange)
         {
-            float relativeDistance = Vector2.Distance(TargetCoordinates, new Vector2Int(Cell.XCoordinate, Cell.YCoordinate));
-            if (NearestRelativeDistance > relativeDistance)
+            Vector2Int cellCoordinates = new Vector2Int(Cell.XCoordinate, Cell.YCoordinate);
+            int relativeDistance = GetManhattanDistance(TargetCoordinates, cellCoordinates);
+
+            if (relativeDistance < NearestRelativeDistance)
             {
                 NearestRelativeDistance = relativeDistance;
-                NearestCoordinates = new Vector2Int(Cell.XCoordinate, Cell.YCoordinate);
+                NearestCoordinates = cellCoordinates;
             }
         }
         return NearestCoordinates;
     }
-    public Vector2Int FindFurthestPossibleCoodinates(PlayerCharsPosition target, List<PathNode> MovementRange)
+    public Vector2Int FindNearestPossibleCoordinates(PlayerCharsPosition target, List<PathNode> MovementRange, int SkillRange)
     {
-        Vector2Int FurthestPossibleCoordinates = new Vector2Int();
-        return FurthestPossibleCoordinates;
+        //Mục tiêu: Lấy ô gần nhất trong tầm di chuyển của Enemy mà kẻ địch nằm trong tầm tấn công
+        //Lây ô với LowestGCost
+        //Duyệt xem từ ô đó với tầm tấn công đó thì có thể đánh tới target không
+        //Không thì duyệt tiếp bỏ ô đó ra
+        //Có thì return tọa độ ô đó
+        PathNode NearestPossibleNode = new PathNode(GridSetup.Grid, 0, 0);
+        List<PathNode> Checked = new List<PathNode>();
+        List<PathNode> ReachableNodesFromNode = new List<PathNode>();
+        while(MovementRange.Count != 0)
+        {
+            NearestPossibleNode = _pathFinding.getLowestGCostNode(MovementRange);
+            MovementRange.Remove(NearestPossibleNode);
+            Checked.Add(NearestPossibleNode);
+
+            ReachableNodesFromNode = _pathFinding.GetReachableNodes(NearestPossibleNode.XCoordinate, NearestPossibleNode.YCoordinate, SkillRange * 10);
+            if (IsCharInValidRange(target, ReachableNodesFromNode))
+            {
+                MovementRange.AddRange(Checked);
+                Vector2Int Result = new Vector2Int(NearestPossibleNode.XCoordinate, NearestPossibleNode.YCoordinate);
+                return Result;
+            }
+        }
+        return new Vector2Int(-100, -100);
     }
     public bool IsCharInValidRange(PlayerCharsPosition target, List<PathNode> ValidRange)
     {
@@ -129,5 +153,10 @@ public class EnemyMovement : MonoBehaviour, IMovement
             }
         }
         return false;
+    }
+
+    private int GetManhattanDistance(Vector2Int a, Vector2Int b)
+    {
+        return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y);
     }
 }

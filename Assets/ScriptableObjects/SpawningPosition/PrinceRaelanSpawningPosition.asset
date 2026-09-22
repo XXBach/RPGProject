@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PrinceRaelanSpawningPosition
   m_EditorClassIdentifier: Assembly-CSharp::SpawningPosition
   _xCoordinate: 10
-  _yCoordinate: 10
+  _yCoordinate: 1

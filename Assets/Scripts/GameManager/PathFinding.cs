@@ -126,7 +126,7 @@ public class PathFinding
         return reachableNodes;
     }
 
-    private PathNode getLowestGCostNode(List<PathNode> pathNodeList)
+    public PathNode getLowestGCostNode(List<PathNode> pathNodeList)
     {
         PathNode lowest = pathNodeList[0];
         for (int i = 1; i < pathNodeList.Count; i++)

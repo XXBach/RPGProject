@@ -19,8 +19,7 @@ public class Enemy : MonoBehaviour, ICharacter
     [SerializeField] private CharacterBaseStats _baseStats;
     [SerializeField] private AttackSet _attackSet;
     [SerializeField] private CombatVisualData _combatVisualData;
-    private EnemyMovement _enemyMovement;
-    private EnemyAttackManager _enemyAttackManager;
+    private EnemyAI _currentAIAgent;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
@@ -33,6 +32,7 @@ public class Enemy : MonoBehaviour, ICharacter
         CurrentDatas.CurrentMP = _baseStats.MaxMP;
         CurrentDatas.Name = _baseStats.CharName;
         CurrentDatas.CurrentAttackRange = _baseStats.BaseAttackRange;
+        _currentAIAgent = GetComponent<EnemyAI>();
     }
 
     // Update is called once per frame
@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour, ICharacter
     }
     public IMovement GetMovementManager()
     {
-        return _enemyMovement;
+        return _currentAIAgent.GetEnemyMovement();
     }
     public int GetCurrentSpeed()
     {
@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour, ICharacter
     }
     public IAttackManager GetAttackManager()
     {
-        return _enemyAttackManager;
+        return _currentAIAgent.GetEnemyAttackManager();
     }
     public AttackSet GetAttackSet()
     {
@@ -74,5 +74,9 @@ public class Enemy : MonoBehaviour, ICharacter
     public SpawningPosition GetSpawningPosition()
     {
         return this._spawningPosition;
+    }
+    public EnemyAI? GetEnemyAI()
+    {
+        return _currentAIAgent;
     }
 }

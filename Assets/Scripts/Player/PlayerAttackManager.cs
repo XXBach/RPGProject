@@ -112,8 +112,10 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
     }
     public bool isAttackInRange(Vector3 targetPosition, ActionData actionData)
     {
-        float distance = Vector3.Distance(transform.position, targetPosition);
-        return distance <= GetComponent<Player>().CurrentDatas.CurrentAttackRange * actionData.AreaOfEffectRange;
+        Vector2Int selfGridPos = GridSetup.Grid.GetGridPosition(transform.position);
+        Vector2Int targetGridPos = GridSetup.Grid.GetGridPosition(targetPosition);
+        int gridDistance = Mathf.Abs(targetGridPos.x - selfGridPos.x) + Mathf.Abs(targetGridPos.y - selfGridPos.y);
+        return gridDistance <= GetComponent<Player>().CurrentDatas.CurrentAttackRange * actionData.AreaOfEffectRange;
     }
     private void UpdatePreviewTiles(ActionData _selectedAction, out List<PathNode> previewNodes)
     {
@@ -155,7 +157,7 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
                     previewNodes = GetStraightLineNodes(hoveredNode, _selectedAction.AreaOfEffectRange);
                     break;
                 case ActionType.AreaOfEffectAttack:
-                    previewNodes = GetDiamondAreaNodes(hoveredNode, _selectedAction.AreaOfEffectRange);
+                    previewNodes = _currentPlayerPathFinding.GetReachableNodes(hoveredNode.XCoordinate, hoveredNode.YCoordinate, _selectedAction.AreaOfEffectRange * 10, false);
                     break;
             }
         }
@@ -197,7 +199,7 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
         int dirX = 0, dirY = 0;
         if (Mathf.Abs(dx) >= Mathf.Abs(dy))
         {
-            dirX = dx == 0 ? 0 : (int)Mathf.Sign(dx);
+            dirX = dx == 0 ? 0 : (int)Mathf.Sign(dx); //Hàm Signed là hàm trả về giá trị 1 nếu dương, -1 nếu âm
         }
         else
         {
@@ -215,38 +217,6 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
             if (node == null) break; // ra khỏi biên grid thì dừng
             nodes.Add(node);
         }
-        return nodes;
-    }
-    private List<PathNode> GetDiamondAreaNodes(PathNode hoveredNode, int AOERange)
-    {
-        List<PathNode> nodes = new List<PathNode>();
-        Vector2Int playerGridPos = GridSetup.Grid.GetGridPosition(transform.position);
-
-        int dx = hoveredNode.XCoordinate - playerGridPos.x;
-        int dy = hoveredNode.YCoordinate - playerGridPos.y;
-
-        int dirX = 0, dirY = 0;
-        if (Mathf.Abs(dx) >= Mathf.Abs(dy))
-        {
-            dirX = dx == 0 ? 0 : (int)Mathf.Sign(dx);
-        }
-        else
-        {
-            dirY = dy == 0 ? 0 : (int)Mathf.Sign(dy);
-        }
-
-        // Player đứng đúng ô đó -> không xác định được hướng, bỏ qua
-        if (dirX == 0 && dirY == 0) return nodes;
-
-        for (int i = 0; i < AOERange; i++)
-        {
-            int x = hoveredNode.XCoordinate + dirX * i;
-            int y = hoveredNode.YCoordinate + dirY * i;
-            PathNode node = GridSetup.Grid.GetGridObject(x, y);
-            if (node == null) break; // ra khỏi biên grid thì dừng
-            nodes.Add(node);
-        }
-
         return nodes;
     }
     private List<ICharacter> GetTargetAtHoveredNode(List<PathNode> hoveredNodes)
