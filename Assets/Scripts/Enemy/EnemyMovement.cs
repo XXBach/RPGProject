@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+[DefaultExecutionOrder(-90)]
 public class EnemyMovement : MonoBehaviour, IMovement
 {
     public UnityEvent<OnMovementEndArgs> OnMovementEnd;

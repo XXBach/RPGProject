@@ -13,6 +13,7 @@ public enum AttackManagerState
     ATTACKEXECUTION = 4,
     SHOWCOMBATSCENE = 5
 }
+[DefaultExecutionOrder(-70)]
 public class PlayerAttackManager : MonoBehaviour, IAttackManager
 {
     [Header("Preview Attack Range")]
@@ -41,7 +42,9 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
     private PlayerAttackMenu _attackMenu;
     private PathFinding _currentPlayerPathFinding;
     private AttackSet _currentPlayerAttackSet;
-
+    private ActionData _currentSelectedAction;
+    private List<PathNode> _currentHoveredNodes;
+    private List<PathNode> _cachedPreviewNodes = new List<PathNode>();
 
     private void Awake()
     {
@@ -49,6 +52,8 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
         _currentTurnManager = FindAnyObjectByType<TurnManager>();
         _previewTilesPrefabPool = new List<GameObject>();
         _activePreviewCount = 0;
+        _currentSelectedAction = ScriptableObject.CreateInstance<ActionData>();
+        _currentHoveredNodes = new List<PathNode>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -65,8 +70,7 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
         //Lấy vị trí Player và biên ra tọa độ x, y
         Vector3 PlayerPosition = this.gameObject.transform.position;
         Vector2Int PlayerRelativePosition = GridSetup.Grid.GetGridPosition(PlayerPosition);
-        ActionData _selectedAction = ScriptableObject.CreateInstance<ActionData>();
-        List<PathNode> hoveredNode = new List<PathNode>();
+
         //Nếu không có target nào trên ô đó thì hiện là không attack được, gọi hiện menu lại một lần nữa
         //Nếu chọn ở ngoài vùng attack khả dĩ thì hiện là không attack được, gọi hiện menu lại một lần nữa
         //Về việc kiểm tra range này, nếu hành động là single attack thì check đơn giản, nếu hành động là straightline attack hoặc AOE thì yêu cầu phải có ít nhất 1 character mục tiêu nằm trong range
@@ -79,24 +83,32 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
             }
             case (AttackManagerState.ATTACKRANGEVISUALIZE):
             {
-                _selectedAction = GetSelectedAction();
-                List<PathNode> reachableNode = this._currentPlayerPathFinding.GetReachableNodes(PlayerRelativePosition.x, PlayerRelativePosition.y, _selectedAction.AttackRange * 10, true);
+                _currentSelectedAction = GetSelectedAction();
+                List<PathNode> reachableNode = this._currentPlayerPathFinding.GetReachableNodes(PlayerRelativePosition.x, PlayerRelativePosition.y, _currentSelectedAction.AttackRange * 10, false);
                 this.CurrentPlayer.GetMovementManager().RangeVisualize(reachableNode);
                 CurrentAttackManagerState = AttackManagerState.ATTACKAREAOFEFFECTPREVIEW;
                 break;
             }
             case (AttackManagerState.ATTACKAREAOFEFFECTPREVIEW):
             {
-                UpdatePreviewTiles(_selectedAction, out hoveredNode);
-                if (_selectAction.WasPressedThisFrame())
-                {
-                    CurrentAttackManagerState = AttackManagerState.ATTACKEXECUTION;
-                }
-                break;
+                    UpdatePreviewTiles(_currentSelectedAction, out _currentHoveredNodes);
+                    if (_selectAction.WasPressedThisFrame())
+                    {
+                        if (_currentHoveredNodes != null && _currentHoveredNodes.Count > 0)
+                        {
+                            CurrentAttackManagerState = AttackManagerState.ATTACKEXECUTION;
+                        }
+                        else
+                        {
+                            Debug.Log("Vị trí click không hợp lệ để tấn công, giữ nguyên preview.");
+                            // Không đổi state — người chơi có thể di chuột và bấm lại
+                        }
+                    }
+                    break;
             }
             case (AttackManagerState.ATTACKEXECUTION):
             {
-                AttackExecute(_selectedAction, hoveredNode);
+                AttackExecute(_currentSelectedAction, _currentHoveredNodes);
                 break;
             }
             case (AttackManagerState.SHOWCOMBATSCENE):
@@ -130,17 +142,25 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
         {
             HideAllPreview();
             _lastHoveredNode = null;
+            _cachedPreviewNodes = new List<PathNode>();
+            previewNodes = _cachedPreviewNodes;
             return;
         }
 
         PathNode hoveredNode = GridSetup.Grid.GetGridObject(hoveredGridPos.x, hoveredGridPos.y);
-        if (hoveredNode == _lastHoveredNode) return; // ô chưa đổi, khỏi tính lại
+        if (hoveredNode == _lastHoveredNode)
+        {
+            previewNodes = _cachedPreviewNodes;
+            return;
+        }// ô chưa đổi, khỏi tính lại
         _lastHoveredNode = hoveredNode;
-
+        List<PathNode> newPreviewNodes = new List<PathNode>();
         Vector2Int playerGridPos = GridSetup.Grid.GetGridPosition(transform.position);
         if (hoveredNode.XCoordinate == playerGridPos.x && hoveredNode.YCoordinate == playerGridPos.y)
         {
             HideAllPreview();
+            _cachedPreviewNodes = newPreviewNodes;
+            previewNodes = _cachedPreviewNodes;
             return;
         }
 
@@ -151,18 +171,20 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
             switch (_selectedAction.ActionType)
             {
                 case ActionType.SingleAttack:
-                    previewNodes.Add(hoveredNode);
+                    newPreviewNodes.Add(hoveredNode);
                     break;
                 case ActionType.StraightLineAttack:
-                    previewNodes = GetStraightLineNodes(hoveredNode, _selectedAction.AreaOfEffectRange);
+                    newPreviewNodes = GetStraightLineNodes(hoveredNode, _selectedAction.AreaOfEffectRange);
                     break;
                 case ActionType.AreaOfEffectAttack:
-                    previewNodes = _currentPlayerPathFinding.GetReachableNodes(hoveredNode.XCoordinate, hoveredNode.YCoordinate, _selectedAction.AreaOfEffectRange * 10, false);
+                    newPreviewNodes = _currentPlayerPathFinding.GetReachableNodes(hoveredNode.XCoordinate, hoveredNode.YCoordinate, _selectedAction.AreaOfEffectRange * 10, false);
                     break;
             }
         }
 
-        ShowPreview(previewNodes);
+        ShowPreview(newPreviewNodes);
+        _cachedPreviewNodes = newPreviewNodes;
+        previewNodes = _cachedPreviewNodes;
         //Destroy(_selectedAction);
     }
     private ActionData GetSelectedAction()
@@ -222,8 +244,9 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
     private List<ICharacter> GetTargetAtHoveredNode(List<PathNode> hoveredNodes)
     {
         List<ICharacter> targets = new List<ICharacter>();
-        foreach(PathNode node in hoveredNodes) {
-            Vector3 nodeCoordinates = GridSetup.Grid.GetCellWorldPosition(node.XCoordinate, node.YCoordinate);
+        foreach (PathNode node in hoveredNodes)
+        {
+            Vector3 nodeCoordinates = GridSetup.Grid.GetCellWorldPosition(node.XCoordinate, node.YCoordinate) + new Vector3(0.5f, 0.5f) * GridSetup.Grid.CellSize; // quy về tâm ô, khớp vị trí thật của nhân vật   
             targets.Add(_currentTurnManager.FindCharAtPosition(nodeCoordinates));
         }
         return targets;

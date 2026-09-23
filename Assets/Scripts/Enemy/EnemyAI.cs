@@ -11,7 +11,7 @@ public class PlayerCharsPosition
     public Vector2Int PlayerCharCoodinates;
 }
 
-
+[DefaultExecutionOrder(-80)]
 public class EnemyAI : MonoBehaviour
 {
     [Header("Turn Manager")]

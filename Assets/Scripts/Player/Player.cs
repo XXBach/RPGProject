@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[DefaultExecutionOrder(-100)]
 public class Player : MonoBehaviour, ICharacter
 {
     public CharacterData CurrentDatas { get; set; }

@@ -15,7 +15,7 @@ public class ObstacleLayerData
     public Tilemap TileMap;
     public ObstacleType ObstacleType;
 }
-
+[DefaultExecutionOrder(-200)]
 public class GridSetup : MonoBehaviour
 {
     public static Grid<PathNode> Grid { get; set; }

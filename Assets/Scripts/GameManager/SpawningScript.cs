@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
+[DefaultExecutionOrder(-150)]
 public class SpawningScript : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _characterPrefabs;

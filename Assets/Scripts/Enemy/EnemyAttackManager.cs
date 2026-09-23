@@ -147,10 +147,10 @@ public class EnemyAttackManager : MonoBehaviour, IAttackManager
     private void AttackProcessing(ActionData selectedAction, List<PlayerCharsPosition> ValidTargets)
     {
         List<int> damagetotargets = new List<int>();
-        foreach (ICharacter target in ValidTargets)
+        foreach (PlayerCharsPosition target in ValidTargets)
         {
             int damageToTarget = target != null
-                ? CalculateDamage(_currentEnemy, target, selectedAction)
+                ? CalculateDamage(_currentEnemy, target.PlayerChar, selectedAction)
                 : 0;
             damagetotargets.Add(damageToTarget);
         }

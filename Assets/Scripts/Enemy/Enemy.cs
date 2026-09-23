@@ -12,6 +12,7 @@ public class CharacterData
     public int CurrentMP;
     public int CurrentAttackRange;
 }
+[DefaultExecutionOrder(-100)]
 public class Enemy : MonoBehaviour, ICharacter
 {
     public CharacterData CurrentDatas { get; set; }

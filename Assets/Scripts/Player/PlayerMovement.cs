@@ -17,6 +17,7 @@ public class OnMovementEndArgs
     public Vector2Int FinalPosition;
     public NodeState FinalNodeState;
 }
+[DefaultExecutionOrder(-90)]
 public class PlayerMovement : MonoBehaviour, IMovement
 {
     public MovementState MCMovementState;
