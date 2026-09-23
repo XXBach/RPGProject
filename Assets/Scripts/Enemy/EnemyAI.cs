@@ -30,14 +30,14 @@ public class EnemyAI : MonoBehaviour
     {
         _enemyMovementManager ??= GetComponent<EnemyMovement>();
         _enemyAttackManager ??= GetComponent<EnemyAttackManager>();
-        _currentAttackSet = GetComponent<Enemy>().GetAttackSet();
-        _currentData = GetComponent<Enemy>().CurrentDatas;
         _characterCurrentState = CharacterState.IDLE;
         _playerCharPositionList = new List<PlayerCharsPosition>();
     }
     private void Start()
     {
         _currentTurnManager ??= FindAnyObjectByType<TurnManager>();
+        _currentAttackSet = GetComponent<Enemy>().GetAttackSet();
+        _currentData = GetComponent<Enemy>().CurrentDatas;
     }
     private void Update()
     {
@@ -46,6 +46,7 @@ public class EnemyAI : MonoBehaviour
         {
             case CharacterState.IDLE:
                 {
+                    _playerCharPositionList = GetPlayerCharPositionList();
                     break;
                 }
             case CharacterState.CALCULATING:
@@ -53,7 +54,8 @@ public class EnemyAI : MonoBehaviour
                     Vector2Int CurrentPosition = GridSetup.Grid.GetGridPosition(transform.position);
                     List<PathNode> ValidRange = _enemyMovementManager.GetPathFinding().GetReachableNodes(CurrentPosition.x, CurrentPosition.y, (_currentData.CurrentMovementRange + GetHighestSkillRange(out _enemyAttackManager._skillchoice)) * 10, false);
                     List<PathNode> AttackRange = _enemyMovementManager.GetPathFinding().GetReachableNodes(CurrentPosition.x, CurrentPosition.y, (GetHighestSkillRange(out _enemyAttackManager._skillchoice)) * 10, false);
-                    Target = GetNearestPC(PCSortingHP());
+                    List<PlayerCharsPosition> PCSortedList = PCSortingHP();
+                    Target = GetNearestPC(PCSortedList);
                     //Nếu mục tiêu không yêu cầu di chuyển để đánh - không di chuyển, chỉ đánh
                     //Nếu mục tiêu yêu cầu di chuyển để đánh - di chuyển mức thấp nhất để đánh
                     //Nếu mục tiêu không nằm trong tầm di chuyển + đánh - di chuyển đến ô gần mục tiêu nhất có thể
@@ -90,18 +92,22 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    public void GetPlayerCharPositionList()
+    public List<PlayerCharsPosition> GetPlayerCharPositionList()
     {
+        List<PlayerCharsPosition> PCCharPositionList = new List<PlayerCharsPosition>();
         foreach(ICharacter character in _currentTurnManager._characterList)
         {
             if(character is Player)
             {
                 PlayerCharsPosition pcp = new PlayerCharsPosition();
                 pcp.PlayerChar = character;
-                pcp.PlayerCharCoodinates = new Vector2Int(character.GetSpawningPosition().XCoordinate, character.GetSpawningPosition().YCoordinate);
-                this._playerCharPositionList.Add(pcp);
+                Vector3 PCCurrentWorldPos = character.GetCharWorldPosition();
+                Vector2Int PCCurrentRelativePos = GridSetup.Grid.GetGridPosition(PCCurrentWorldPos);
+                pcp.PlayerCharCoodinates = PCCurrentRelativePos;
+                PCCharPositionList.Add(pcp);
             }
         }
+        return PCCharPositionList;
     }
 
     public int GetHighestSkillRange(out int skillchoice)
@@ -134,10 +140,13 @@ public class EnemyAI : MonoBehaviour
 
 
     public List<PlayerCharsPosition> PCSortingHP(){
+        //Điều chỉnh phần này
         List<PlayerCharsPosition> PCSortedHPList = new List<PlayerCharsPosition>();
-        foreach(PlayerCharsPosition PCCharsPos in this._playerCharPositionList)
+        int count = this._playerCharPositionList.Count;
+        for(int i = 0; i < count; i++)
         {
             PlayerCharsPosition LowestHPPCthisturn = GetLowestHPPC();
+            Debug.Log(LowestHPPCthisturn);
             PCSortedHPList.Add(LowestHPPCthisturn);
             _playerCharPositionList.Remove(LowestHPPCthisturn);
         }
@@ -147,6 +156,7 @@ public class EnemyAI : MonoBehaviour
     public PlayerCharsPosition GetLowestHPPC()
     {
         PlayerCharsPosition LowestHPPC = _playerCharPositionList[0];
+        Debug.Log(LowestHPPC);
         int LowestHP = LowestHPPC.PlayerChar.CurrentDatas.CurrentHealth;
         foreach (var Character in _playerCharPositionList)
         { 
@@ -175,12 +185,14 @@ public class EnemyAI : MonoBehaviour
     }
     public PlayerCharsPosition GetNearestPC(List<PlayerCharsPosition> CharList)
     {
-        PlayerCharsPosition NearestPC = _playerCharPositionList[0];
-        float NearestRelativeDistance = Vector2.Distance(NearestPC.PlayerCharCoodinates, GridSetup.Grid.GetGridPosition(transform.position));
+        PlayerCharsPosition NearestPC = CharList[0];
+        Vector2Int selfGridPos = GridSetup.Grid.GetGridPosition(transform.position);
+        int NearestRelativeDistance = GetManhattanDistance(NearestPC.PlayerCharCoodinates, selfGridPos);
+
         foreach (var Character in CharList)
         {
-            float relativeDistance = Vector2.Distance(Character.PlayerCharCoodinates, GridSetup.Grid.GetGridPosition(transform.position));
-            if (NearestRelativeDistance > relativeDistance)
+            int relativeDistance = GetManhattanDistance(Character.PlayerCharCoodinates, selfGridPos);
+            if (relativeDistance < NearestRelativeDistance)
             {
                 NearestRelativeDistance = relativeDistance;
                 NearestPC = Character;
@@ -227,5 +239,9 @@ public class EnemyAI : MonoBehaviour
     public EnemyAttackManager GetEnemyAttackManager()
     {
         return _enemyAttackManager;
+    }
+    private int GetManhattanDistance(Vector2Int a, Vector2Int b)
+    {
+        return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y);
     }
 }

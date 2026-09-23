@@ -56,7 +56,7 @@ public class TurnManager : MonoBehaviour
                 HandleStartTurn();
                 break;
             case TurnManagerPhase.EXECUTETURN:
-                HandleTurnExecution(currentCharacterIndex);
+                HandleTurnExecution();
                 break;
             case TurnManagerPhase.WAITINGFORENDTURNSIGNAL:
                 if(_isTurnEnded)
@@ -67,7 +67,7 @@ public class TurnManager : MonoBehaviour
                 }
                 else
                 {
-                    HandleTurnExecution(currentCharacterIndex);
+                    HandleTurnExecution();
                 }
                 break;
             case TurnManagerPhase.ENDTURN:
@@ -82,7 +82,6 @@ public class TurnManager : MonoBehaviour
         currentCharacterIndex = 0;
         if (OrderedTurns[currentCharacterIndex] is Player)
         {
-            Debug.Log(this.OrderedTurns[currentCharacterIndex]);
             this._actionMenu.ShowMenuFor(this.OrderedTurns[currentCharacterIndex]);
         }
         else if (OrderedTurns[currentCharacterIndex] is Enemy)
@@ -93,9 +92,16 @@ public class TurnManager : MonoBehaviour
         SetTurnNumber();
         _currentPhase = TurnManagerPhase.WAITINGFORENDTURNSIGNAL;
     }
-    public void HandleTurnExecution(int i)
+    public void HandleTurnExecution()
     {
-        this._actionMenu.ShowMenuFor(this.OrderedTurns[i]);
+        if (OrderedTurns[currentCharacterIndex] is Player)
+        {
+            this._actionMenu.ShowMenuFor(this.OrderedTurns[currentCharacterIndex]);
+        }
+        else if (OrderedTurns[currentCharacterIndex] is Enemy)
+        {
+            this.OrderedTurns[currentCharacterIndex].GetEnemyAI()._characterCurrentState = CharacterState.CALCULATING;
+        }
         _currentPhase = TurnManagerPhase.WAITINGFORENDTURNSIGNAL;
     }
     public void HandleEndTurnSignal()
@@ -121,25 +127,32 @@ public class TurnManager : MonoBehaviour
     public List<ICharacter> OrderingList()
     {
         List<ICharacter> orderedList = new List<ICharacter>();
-        ICharacter characterRef = null;
-        for (int i = 0; i < _characterList.Count; i++) {
-            characterRef = GetHighestSpeedCharRef();
+        int count = _characterList.Count; // chốt trước, không phụ thuộc list đang bị xóa dần
+        for (int i = 0; i < count; i++)
+        {
+            ICharacter characterRef = GetHighestSpeedCharRef();
             orderedList.Add(characterRef);
             _characterList.Remove(characterRef);
         }
         _characterList = orderedList;
-
         return orderedList;
     }
     public ICharacter GetHighestSpeedCharRef()
     {
         ICharacter CurrentCharRef = _characterList[0];
-        
+
         foreach (var characterRef in _characterList)
         {
-            if (CurrentCharRef.GetCurrentSpeed() > characterRef.GetCurrentSpeed()) CurrentCharRef = characterRef;
-            else if (CurrentCharRef.GetCurrentSpeed() == characterRef.GetCurrentSpeed()) return GetHigherMPCharRef(CurrentCharRef,characterRef);
-            else continue;
+            if (characterRef == CurrentCharRef) continue;
+
+            if (characterRef.GetCurrentSpeed() > CurrentCharRef.GetCurrentSpeed())
+            {
+                CurrentCharRef = characterRef;
+            }
+            else if (characterRef.GetCurrentSpeed() == CurrentCharRef.GetCurrentSpeed())
+            {
+                CurrentCharRef = GetHigherMPCharRef(CurrentCharRef, characterRef);
+            }
         }
         return CurrentCharRef;
     }
