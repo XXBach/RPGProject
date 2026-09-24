@@ -32,7 +32,7 @@ public class EnemyMovement : MonoBehaviour, IMovement
     public void MoveToTargetNearestCell(PlayerCharsPosition target)
     {
         Vector2Int CurrentPosition = GridSetup.Grid.GetGridPosition(transform.position);
-        List<PathNode> MovementRange = _pathFinding.GetReachableNodes(CurrentPosition.x, CurrentPosition.y, _moveSpeed);
+        List<PathNode> MovementRange = _pathFinding.GetReachableNodes(CurrentPosition.x, CurrentPosition.y, this.GetComponent<Enemy>().CurrentDatas.CurrentMovementRange * 10);
         Vector2Int NearestCoordinate = FindNearestPossibleCoordinatesToTarget(target.PlayerCharCoodinates, MovementRange);
         MoveToTargetCell(NearestCoordinate);
     }
@@ -120,26 +120,15 @@ public class EnemyMovement : MonoBehaviour, IMovement
     }
     public Vector2Int FindNearestPossibleCoordinates(PlayerCharsPosition target, List<PathNode> MovementRange, int SkillRange)
     {
-        //Mục tiêu: Lấy ô gần nhất trong tầm di chuyển của Enemy mà kẻ địch nằm trong tầm tấn công
-        //Lây ô với LowestGCost
-        //Duyệt xem từ ô đó với tầm tấn công đó thì có thể đánh tới target không
-        //Không thì duyệt tiếp bỏ ô đó ra
-        //Có thì return tọa độ ô đó
-        PathNode NearestPossibleNode = new PathNode(GridSetup.Grid, 0, 0);
-        List<PathNode> Checked = new List<PathNode>();
-        List<PathNode> ReachableNodesFromNode = new List<PathNode>();
-        while(MovementRange.Count != 0)
-        {
-            NearestPossibleNode = _pathFinding.getLowestGCostNode(MovementRange);
-            MovementRange.Remove(NearestPossibleNode);
-            Checked.Add(NearestPossibleNode);
+        List<PathNode> orderedByDistance = new List<PathNode>(MovementRange);
+        orderedByDistance.Sort((a, b) => a.GCost.CompareTo(b.GCost)); // snapshot thứ tự trước khi grid bị reset
 
-            ReachableNodesFromNode = _pathFinding.GetReachableNodes(NearestPossibleNode.XCoordinate, NearestPossibleNode.YCoordinate, SkillRange * 10);
-            if (IsCharInValidRange(target, ReachableNodesFromNode))
+        foreach (PathNode node in orderedByDistance)
+        {
+            List<PathNode> reachableFromNode = _pathFinding.GetReachableNodes(node.XCoordinate, node.YCoordinate, SkillRange * 10);
+            if (IsCharInValidRange(target, reachableFromNode))
             {
-                MovementRange.AddRange(Checked);
-                Vector2Int Result = new Vector2Int(NearestPossibleNode.XCoordinate, NearestPossibleNode.YCoordinate);
-                return Result;
+                return new Vector2Int(node.XCoordinate, node.YCoordinate);
             }
         }
         return new Vector2Int(-100, -100);

@@ -35,7 +35,7 @@ public class SpawningScript : MonoBehaviour
                 Vector3 spawningWorldPos = GridSetup.Grid.GetCellWorldPosition(spawningCoodinates.x, spawningCoodinates.y);
                 spawningWorldPos = spawningWorldPos + new Vector3(.5f, .5f);
                 GameObject spawned = Instantiate(prefab, spawningWorldPos, Quaternion.identity);
-                SpawnedCharacter.Add(data.CharacterPrefab.GetComponent<ICharacter>());
+                SpawnedCharacter.Add(spawned.GetComponent<ICharacter>());
             }
             else continue;
         }

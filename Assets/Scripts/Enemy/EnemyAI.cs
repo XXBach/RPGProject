@@ -142,7 +142,7 @@ public class EnemyAI : MonoBehaviour
         if (HighestSkillRange <= _currentAttackSet.SkillAttack.AttackRange && _currentData.CurrentMP >= _currentAttackSet.SkillAttack.ManaCost)
         {
             HighestSkillRange = _currentAttackSet.SkillAttack.AttackRange;
-            skillchoice = 1;
+            skillchoice = 3;
         }
         else if (HighestSkillRange <= _currentAttackSet.SpecialAttack.AttackRange && _currentData.CurrentMP >= _currentAttackSet.SpecialAttack.ManaCost)
         {
@@ -152,7 +152,7 @@ public class EnemyAI : MonoBehaviour
         else if (HighestSkillRange <= _currentAttackSet.NormalAttack.AttackRange && _currentData.CurrentMP >= _currentAttackSet.NormalAttack.ManaCost)
         {
             HighestSkillRange = _currentAttackSet.NormalAttack.AttackRange;
-            skillchoice = 3;
+            skillchoice = 1;
         }
         else
         {

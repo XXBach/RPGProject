@@ -73,7 +73,7 @@ public class TurnManager : MonoBehaviour
                     HandleEndTurnSignal();
                     _currentPhase = TurnManagerPhase.ENDTURN;
                 }
-                else
+                else if(OrderedTurns[currentCharacterIndex] is Player)
                 {
                     HandleTurnExecution();
                 }
