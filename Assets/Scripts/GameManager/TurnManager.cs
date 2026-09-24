@@ -29,20 +29,28 @@ public class TurnManager : MonoBehaviour
 {
     public int _turnNumber;
     [SerializeField] private PlayerActionMenu _actionMenu;
-    public List<ICharacter> _characterList = new List<ICharacter>();
+    [SerializeField] private SpawningScript _spawningScript;
+    public List<ICharacter> _characterList;
     private TurnManagerPhase _currentPhase;
     private UnityEvent _endTurnEvent;
     private int currentCharacterIndex = 0;
     [SerializeField] private TextMeshProUGUI _textMeshPro;
-    private List<ICharacter> OrderedTurns = new List<ICharacter>();
+    private List<ICharacter> OrderedTurns;
     private bool _isTurnEnded = false;
     public void SetIsTurnEnded()
     {
         _isTurnEnded = true;
     }
+    private void Awake()
+    {
+        _turnNumber = 0;
+        _characterList = new List<ICharacter>();
+        OrderedTurns = new List<ICharacter>();
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _characterList.AddRange(_spawningScript.HandleSpawn(_turnNumber));
         _currentPhase = TurnManagerPhase.STARTTURN;
         _turnNumber = 0;
     }
@@ -88,7 +96,7 @@ public class TurnManager : MonoBehaviour
         {
             this.OrderedTurns[currentCharacterIndex].GetEnemyAI()._characterCurrentState = CharacterState.CALCULATING;
         }
-        this._turnNumber++;
+        
         SetTurnNumber();
         _currentPhase = TurnManagerPhase.WAITINGFORENDTURNSIGNAL;
     }
@@ -116,6 +124,12 @@ public class TurnManager : MonoBehaviour
         _endTurnEvent?.Invoke();
         if(currentCharacterIndex >= _characterList.Count)
         {
+            this._turnNumber++;
+            List<ICharacter> spawnCharacters = _spawningScript.HandleSpawn(_turnNumber);
+            foreach(ICharacter character in spawnCharacters)
+            {
+                this.RegisterCharacter(character);
+            }
             _currentPhase = TurnManagerPhase.STARTTURN;
         }
         else

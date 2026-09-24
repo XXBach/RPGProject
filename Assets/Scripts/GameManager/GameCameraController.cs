@@ -46,6 +46,10 @@ public class GameCameraController : MonoBehaviour
 
     private void LateUpdate()
     {
+        Debug.Log(
+            $"[GameCameraController] Camera enabled = {_camera.enabled}"
+        );
+
         HandleZoom();
         HandlePan();
         HandleMoveToTarget();

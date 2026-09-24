@@ -243,6 +243,135 @@ MonoBehaviour:
   _specialAttackIconImage: {fileID: 647818870}
   _skillIconImage: {fileID: 1398266319}
   _worldOffset: {x: 0, y: 1, z: 0}
+--- !u!1 &146689088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 146689090}
+  - component: {fileID: 146689089}
+  m_Layer: 0
+  m_Name: BGM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &146689089
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146689088}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 29449f4294d773f49aa3c686f5b32043, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &146689090
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146689088}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &162679466
 GameObject:
   m_ObjectHideFlags: 0
@@ -3233,7 +3362,7 @@ Camera:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -3260,7 +3389,7 @@ Camera:
   field of view: 34
   orthographic: 1
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: -100
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -15177,6 +15306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurnManager
   _turnNumber: 0
   _actionMenu: {fileID: 899831917}
+  _spawningScript: {fileID: 1893830956}
   _textMeshPro: {fileID: 1218594983}
 --- !u!4 &1803089570
 Transform:
@@ -15324,7 +15454,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1893830953}
   - component: {fileID: 1893830954}
-  - component: {fileID: 1893830955}
   - component: {fileID: 1893830956}
   m_Layer: 0
   m_Name: GameManager
@@ -15360,20 +15489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afefa71a5d51ec4bbe82db742797081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!114 &1893830955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1893830952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2173f12ce237ec0479e001c074129a50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CombatSceneLoader
-  _combatSceneName: CombatScene
-  _turnManager: {fileID: 1803089569}
 --- !u!114 &1893830956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15386,10 +15501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f158d521fee1824ca34a0cf528a69c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawningScript
-  _characterPrefabs:
-  - {fileID: 4213868686189531104, guid: 2ae54edddc6802045b7c781dce259d35, type: 3}
-  - {fileID: 7746255441833299275, guid: 00414dc675a34034a94e0597ab539f63, type: 3}
-  _currentTurnManager: {fileID: 1803089569}
+  _currentSpawnScenario: {fileID: 11400000, guid: d633342c0e3cba442afc28ae4f88c4ff, type: 2}
 --- !u!1 &1902042171
 GameObject:
   m_ObjectHideFlags: 0
@@ -15494,6 +15606,54 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1943817663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1943817665}
+  - component: {fileID: 1943817664}
+  m_Layer: 0
+  m_Name: CombatSceneLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1943817664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943817663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2173f12ce237ec0479e001c074129a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombatSceneLoader
+  _combatSceneName: CombatScene
+  _turnManager: {fileID: 1803089569}
+  _battleCamera: {fileID: 519420031}
+  _battleCanvas: {fileID: 1902042174}
+--- !u!4 &1943817665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943817663}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1985908084
 GameObject:
   m_ObjectHideFlags: 0
@@ -15582,3 +15742,5 @@ SceneRoots:
   - {fileID: 1902042175}
   - {fileID: 972446436}
   - {fileID: 1803089570}
+  - {fileID: 146689090}
+  - {fileID: 1943817665}

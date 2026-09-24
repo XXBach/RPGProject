@@ -11,6 +11,5 @@ public interface ICharacter
     public CharacterData CurrentDatas { get; }
     public AttackSet GetAttackSet();
     public CombatVisualData GetCombatVisualData();
-    public SpawningPosition GetSpawningPosition();
     public EnemyAI? GetEnemyAI();
 }

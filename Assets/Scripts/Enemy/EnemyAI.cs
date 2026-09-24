@@ -26,6 +26,8 @@ public class EnemyAI : MonoBehaviour
     public UnityEvent OnTurnEnd;
 
     private List<PlayerCharsPosition> _playerCharPositionList;
+    private PlayerCharsPosition _pendingAttackTarget;
+    private bool _attackAfterMove;
     private void Awake()
     {
         _enemyMovementManager ??= GetComponent<EnemyMovement>();
@@ -56,30 +58,42 @@ public class EnemyAI : MonoBehaviour
                     List<PathNode> AttackRange = _enemyMovementManager.GetPathFinding().GetReachableNodes(CurrentPosition.x, CurrentPosition.y, (GetHighestSkillRange(out _enemyAttackManager._skillchoice)) * 10, false);
                     List<PlayerCharsPosition> PCSortedList = PCSortingHP();
                     Target = GetNearestPC(PCSortedList);
-                    //Nếu mục tiêu không yêu cầu di chuyển để đánh - không di chuyển, chỉ đánh
-                    //Nếu mục tiêu yêu cầu di chuyển để đánh - di chuyển mức thấp nhất để đánh
-                    //Nếu mục tiêu không nằm trong tầm di chuyển + đánh - di chuyển đến ô gần mục tiêu nhất có thể
+
                     if (IsCharInValidRange(Target, ValidRange))
                     {
                         if (IsCharInValidRange(Target, AttackRange))
                         {
+                            // Đã trong tầm đánh, không cần di chuyển -> đánh luôn
                             AttackTarget(Target);
                             _characterCurrentState = CharacterState.ENDTURN;
                         }
                         else
                         {
+                            // Cần di chuyển trước rồi mới đánh -> chờ movement xong
                             List<PathNode> MovementRange = _enemyMovementManager.GetPathFinding().GetReachableNodes(CurrentPosition.x, CurrentPosition.y, (_currentData.CurrentMovementRange) * 10, false);
                             Vector2Int TargetCoordinates = _enemyMovementManager.FindNearestPossibleCoordinates(Target, MovementRange, GetHighestSkillRange(out _enemyAttackManager._skillchoice));
+
+                            _pendingAttackTarget = Target;
+                            _attackAfterMove = true;
+                            _enemyMovementManager.GetOnMovementEnd().AddListener(HandleEnemyMovementFinished);
                             _enemyMovementManager.MoveToTargetCell(TargetCoordinates);
-                            AttackTarget(Target);
-                            _characterCurrentState = CharacterState.ENDTURN;
+                            _characterCurrentState = CharacterState.MOVE;
                         }
                     }
                     else
                     {
+                        // Không đủ tầm để tới đánh -> chỉ di chuyển lại gần, không đánh
+                        _pendingAttackTarget = null;
+                        _attackAfterMove = false;
+                        _enemyMovementManager.GetOnMovementEnd().AddListener(HandleEnemyMovementFinished);
                         _enemyMovementManager.MoveToTargetNearestCell(Target);
-                        _characterCurrentState = CharacterState.ENDTURN;
+                        _characterCurrentState = CharacterState.MOVE;
                     }
+                    break;
+                }
+            case CharacterState.MOVE:
+                {
+                    // Không làm gì cả, chỉ chờ HandleEnemyMovementFinished được gọi khi coroutine di chuyển kết thúc
                     break;
                 }
             default:
@@ -91,7 +105,18 @@ public class EnemyAI : MonoBehaviour
                 }
         }
     }
+    private void HandleEnemyMovementFinished(OnMovementEndArgs args)
+    {
+        _enemyMovementManager.GetOnMovementEnd().RemoveListener(HandleEnemyMovementFinished);
 
+        if (_attackAfterMove && _pendingAttackTarget != null)
+        {
+            AttackTarget(_pendingAttackTarget);
+        }
+
+        _pendingAttackTarget = null;
+        _characterCurrentState = CharacterState.ENDTURN;
+    }
     public List<PlayerCharsPosition> GetPlayerCharPositionList()
     {
         List<PlayerCharsPosition> PCCharPositionList = new List<PlayerCharsPosition>();

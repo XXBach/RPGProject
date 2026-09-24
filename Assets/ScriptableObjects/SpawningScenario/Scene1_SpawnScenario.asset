@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb18cc9d46866be43b120b56b0144737, type: 3}
+  m_Name: Scene1_SpawnScenario
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnScenario
+  Scenarios:
+  - CharacterPrefab: {fileID: 4213868686189531104, guid: 2ae54edddc6802045b7c781dce259d35, type: 3}
+    SpawningPosition: {x: 16, y: 18}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 4213868686189531104, guid: 2ae54edddc6802045b7c781dce259d35, type: 3}
+    SpawningPosition: {x: 6, y: 16}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 4213868686189531104, guid: 2ae54edddc6802045b7c781dce259d35, type: 3}
+    SpawningPosition: {x: 8, y: 14}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 4213868686189531104, guid: 2ae54edddc6802045b7c781dce259d35, type: 3}
+    SpawningPosition: {x: 10, y: 12}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 4213868686189531104, guid: 2ae54edddc6802045b7c781dce259d35, type: 3}
+    SpawningPosition: {x: 12, y: 10}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 00414dc675a34034a94e0597ab539f63, type: 3}
+    SpawningPosition: {x: 17, y: 4}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 00414dc675a34034a94e0597ab539f63, type: 3}
+    SpawningPosition: {x: 13, y: 1}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 00414dc675a34034a94e0597ab539f63, type: 3}
+    SpawningPosition: {x: 22, y: 1}
+    SpawningTurn: 0
