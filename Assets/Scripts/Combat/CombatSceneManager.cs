@@ -62,13 +62,13 @@ public class CombatSceneManager : MonoBehaviour
 
         var attackerSpawn = _leftSpawnPoint;
         _attackerView.gameObject.SetActive(true);
-        _attackerView.Setup(_data.Attacker.CombatParticipant, attackerSpawn.position, isFacingRight: true);
+        _attackerView.Setup(_data.Attacker.CombatParticipant, attackerSpawn.position, isFacingRight: false);
 
         if (_data.Defender?.CombatParticipant != null)
         {
             var defenderSpawn = _rightSpawnPoint;
             _defenderView.gameObject.SetActive(true);
-            _defenderView.Setup(_data.Defender.CombatParticipant, defenderSpawn.position, isFacingRight: false);
+            _defenderView.Setup(_data.Defender.CombatParticipant, defenderSpawn.position, isFacingRight: true);
         }
         else
         {

@@ -18,22 +18,16 @@ MonoBehaviour:
     SpawningTurn: 0
   - CharacterPrefab: {fileID: 4213868686189531104, guid: 2ae54edddc6802045b7c781dce259d35, type: 3}
     SpawningPosition: {x: 6, y: 16}
-    SpawningTurn: 0
-  - CharacterPrefab: {fileID: 4213868686189531104, guid: 2ae54edddc6802045b7c781dce259d35, type: 3}
-    SpawningPosition: {x: 8, y: 14}
-    SpawningTurn: 0
-  - CharacterPrefab: {fileID: 4213868686189531104, guid: 2ae54edddc6802045b7c781dce259d35, type: 3}
-    SpawningPosition: {x: 10, y: 12}
-    SpawningTurn: 0
+    SpawningTurn: 2
   - CharacterPrefab: {fileID: 4213868686189531104, guid: 2ae54edddc6802045b7c781dce259d35, type: 3}
     SpawningPosition: {x: 12, y: 10}
-    SpawningTurn: 0
+    SpawningTurn: 4
   - CharacterPrefab: {fileID: 7746255441833299275, guid: 00414dc675a34034a94e0597ab539f63, type: 3}
     SpawningPosition: {x: 17, y: 4}
     SpawningTurn: 0
   - CharacterPrefab: {fileID: 7746255441833299275, guid: 00414dc675a34034a94e0597ab539f63, type: 3}
     SpawningPosition: {x: 13, y: 1}
-    SpawningTurn: 0
+    SpawningTurn: 2
   - CharacterPrefab: {fileID: 7746255441833299275, guid: 00414dc675a34034a94e0597ab539f63, type: 3}
     SpawningPosition: {x: 22, y: 1}
-    SpawningTurn: 0
+    SpawningTurn: 4

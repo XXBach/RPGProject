@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 2939945257673309530, guid: 1ac8d54e4994d704595337ecc812a4e6, type: 3}
+  m_Sprite: {fileID: 5314218921721679196, guid: 1ac8d54e4994d704595337ecc812a4e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -129,7 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 980680dd84e6da342ac0573230bf9c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  _spawningPosition: {fileID: 11400000, guid: b68bae3f092031d4aaf43af324e937ad, type: 2}
   _baseStats: {fileID: 11400000, guid: 8140deced401cb648a487d35fd755377, type: 2}
   _attackSet: {fileID: 0}
   _combatVisualData: {fileID: 0}

@@ -37,6 +37,7 @@ public class TurnManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textMeshPro;
     private List<ICharacter> OrderedTurns;
     private bool _isTurnEnded = false;
+    private ICharacter _currentTurnCharacter;
     public void SetIsTurnEnded()
     {
         _isTurnEnded = true;
@@ -47,7 +48,6 @@ public class TurnManager : MonoBehaviour
         _characterList = new List<ICharacter>();
         OrderedTurns = new List<ICharacter>();
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _characterList.AddRange(_spawningScript.HandleSpawn(_turnNumber));
@@ -58,7 +58,7 @@ public class TurnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch(_currentPhase)
+        switch (_currentPhase)
         {
             case TurnManagerPhase.STARTTURN:
                 HandleStartTurn();
@@ -67,13 +67,13 @@ public class TurnManager : MonoBehaviour
                 HandleTurnExecution();
                 break;
             case TurnManagerPhase.WAITINGFORENDTURNSIGNAL:
-                if(_isTurnEnded)
+                if (_isTurnEnded)
                 {
                     _isTurnEnded = false;
                     HandleEndTurnSignal();
                     _currentPhase = TurnManagerPhase.ENDTURN;
                 }
-                else if(OrderedTurns[currentCharacterIndex] is Player)
+                else if (_currentTurnCharacter is Player) // FIX: dùng reference thay vì OrderedTurns[currentCharacterIndex]
                 {
                     HandleTurnExecution();
                 }
@@ -88,45 +88,59 @@ public class TurnManager : MonoBehaviour
     {
         OrderedTurns = OrderingList();
         currentCharacterIndex = 0;
-        if (OrderedTurns[currentCharacterIndex] is Player)
-        {
-            this._actionMenu.ShowMenuFor(this.OrderedTurns[currentCharacterIndex]);
-        }
-        else if (OrderedTurns[currentCharacterIndex] is Enemy)
-        {
-            this.OrderedTurns[currentCharacterIndex].GetEnemyAI()._characterCurrentState = CharacterState.CALCULATING;
-        }
-        
+        _currentTurnCharacter = OrderedTurns.Count > 0 ? OrderedTurns[0] : null; // FIX
+        StartTurnFor(_currentTurnCharacter);
         SetTurnNumber();
         _currentPhase = TurnManagerPhase.WAITINGFORENDTURNSIGNAL;
     }
+
     public void HandleTurnExecution()
     {
-        if (OrderedTurns[currentCharacterIndex] is Player)
-        {
-            this._actionMenu.ShowMenuFor(this.OrderedTurns[currentCharacterIndex]);
-        }
-        else if (OrderedTurns[currentCharacterIndex] is Enemy)
-        {
-            this.OrderedTurns[currentCharacterIndex].GetEnemyAI()._characterCurrentState = CharacterState.CALCULATING;
-        }
+        StartTurnFor(_currentTurnCharacter); // FIX: luôn dùng đúng reference hiện tại
         _currentPhase = TurnManagerPhase.WAITINGFORENDTURNSIGNAL;
     }
+    // TurnManager.cs
+    private void StartTurnFor(ICharacter character)
+    {
+        if (character == null) return;
+
+        CameraSignals.RequestMove(character.GetCharWorldPosition(), smooth: true); // FIX: lia camera tới unit đang đến lượt, dù là Player hay Enemy
+
+        if (character is Player)
+        {
+            this._actionMenu.ShowMenuFor(character);
+        }
+        else if (character is Enemy)
+        {
+            character.GetEnemyAI()._characterCurrentState = CharacterState.CALCULATING;
+        }
+    }
+
     public void HandleEndTurnSignal()
     {
-        currentCharacterIndex++;
-        Debug.Log(currentCharacterIndex);
-        if (currentCharacterIndex >= _characterList.Count) _currentPhase = TurnManagerPhase.ENDTURN;
-        else _currentPhase = TurnManagerPhase.EXECUTETURN;
+        // FIX: tra lại vị trí THỰC của _currentTurnCharacter trong OrderedTurns ngay lúc này,
+        // thay vì cộng dồn currentCharacterIndex mù quáng. Nhờ vậy dù bao nhiêu character đã bị
+        // xoá ở bất kỳ vị trí nào trong list (trước/sau nhân vật hiện tại), lượt kế tiếp vẫn luôn đúng.
+        int idx = OrderedTurns.IndexOf(_currentTurnCharacter);
+        currentCharacterIndex = idx + 1;
+
+        if (currentCharacterIndex >= OrderedTurns.Count)
+        {
+            _currentTurnCharacter = null;
+        }
+        else
+        {
+            _currentTurnCharacter = OrderedTurns[currentCharacterIndex];
+        }
     }
     public void HandleEndTurn()
     {
         _endTurnEvent?.Invoke();
-        if(currentCharacterIndex >= _characterList.Count)
+        if (currentCharacterIndex >= OrderedTurns.Count) // FIX: so sánh với OrderedTurns cho nhất quán với HandleEndTurnSignal
         {
             this._turnNumber++;
             List<ICharacter> spawnCharacters = _spawningScript.HandleSpawn(_turnNumber);
-            foreach(ICharacter character in spawnCharacters)
+            foreach (ICharacter character in spawnCharacters)
             {
                 this.RegisterCharacter(character);
             }
@@ -136,7 +150,6 @@ public class TurnManager : MonoBehaviour
         {
             _currentPhase = TurnManagerPhase.EXECUTETURN;
         }
-
     }
     public List<ICharacter> OrderingList()
     {
@@ -184,10 +197,27 @@ public class TurnManager : MonoBehaviour
     {
         if (!_characterList.Contains(character))
         {
-            Debug.Log($"Successfully Added {character} to list");
             _characterList.Add(character);
         }
     }
+
+    // FIX: thay hoàn toàn logic cộng/trừ index bằng thao tác đơn giản trên reference — không còn gì để tính sai
+    public void RemoveCharacter(ICharacter character)
+    {
+        if (character == null) return;
+
+        OrderedTurns.Remove(character);
+        _characterList.Remove(character);
+
+        if (character == _currentTurnCharacter)
+        {
+            // Trường hợp hiếm: nhân vật đang thi triển lượt của chính mình bị loại giữa chừng
+            // (vd sau này có counter-attack) -> kết thúc lượt ngay, tránh treo turn queue mãi mãi
+            _currentTurnCharacter = null;
+            SetIsTurnEnded();
+        }
+    }
+
     public void SetTurnNumber()
     {
         _textMeshPro.text = "Turn: " + _turnNumber;
@@ -195,9 +225,11 @@ public class TurnManager : MonoBehaviour
 
     public ICharacter FindCharAtPosition(Vector3 worldposition)
     {
-        foreach(ICharacter character in this._characterList)
+        Vector2Int targetGridPos = GridSetup.Grid.GetGridPosition(worldposition);
+        foreach (ICharacter character in this._characterList)
         {
-            if (Vector3.Distance(character.GetCharWorldPosition(), worldposition) <= 0.03) return character;
+            Vector2Int charGridPos = GridSetup.Grid.GetGridPosition(character.GetCharWorldPosition());
+            if (charGridPos == targetGridPos) return character;
         }
         return null;
     }

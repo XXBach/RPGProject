@@ -133,11 +133,11 @@ public class EnemyAttackManager : MonoBehaviour, IAttackManager
     }
     public void GetTargetsInRange(PlayerCharsPosition target, int AOERange, out List<PlayerCharsPosition> ValidTargets)
     {
-        List<PathNode> AttackReachableNodes = _currentEnemy.GetMovementManager().GetPathFinding().GetReachableNodes(target.PlayerCharCoodinates.x, target.PlayerCharCoodinates.y, AOERange);
+        List<PathNode> AttackReachableNodes = _currentEnemy.GetMovementManager().GetPathFinding().GetReachableNodes(target.PlayerCharCoodinates.x, target.PlayerCharCoodinates.y, AOERange, mode: PathfindingMode.Attack); // FIX: target đứng ngay đó là BlockedByCharacter, không được chặn việc lan AOE ra các ô xung quanh
         ValidTargets = new List<PlayerCharsPosition>();
         ValidTargets.Add(target);
-        
-        foreach(PathNode node in AttackReachableNodes)
+
+        foreach (PathNode node in AttackReachableNodes)
         {
             PlayerCharsPosition AdditionalTarget = _currentAI.GetCharInNode(node);
             if (AdditionalTarget != null) ValidTargets.Add(AdditionalTarget);
@@ -177,5 +177,10 @@ public class EnemyAttackManager : MonoBehaviour, IAttackManager
     {
         int damage = (int)Attacker.CurrentDatas.CurrentAttack * (int)selectedAction.SkillMultiplier - (int)Defender.CurrentDatas.CurrentDefense;
         return damage;
+    }
+    // EnemyAttackManager.cs
+    public void ResetAttackManager()
+    {
+        CurrentAttackManagerState = AttackManagerState.IDLE;
     }
 }

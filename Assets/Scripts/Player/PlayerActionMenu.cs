@@ -73,6 +73,8 @@ public class PlayerActionMenu : MonoBehaviour
     /// </summary>
     public void ClearActiveUnit()
     {
+        _activeMovement?.ResetMovement();
+        _activeAttackManager?.ResetAttackManager();
         _activeMovement = null;
         _activeUnitPosition = Vector3.zero;
         HidePanel();
@@ -122,11 +124,11 @@ public class PlayerActionMenu : MonoBehaviour
     private void OnEndTurnButtonClicked()
     {
         CurrentAction = CharacterState.IDLE;
+        _activeMovement?.ResetMovement();
+        _activeAttackManager?.ResetAttackManager();
         OnTurnEnd?.Invoke();
         HidePanel();
         ResetFlags();
-        // TODO: khi có PlayerENDTURN, gọi tương tự:
-        // _activeENDTURN.EndTurn();
     }
     private void ResetFlags()
     {

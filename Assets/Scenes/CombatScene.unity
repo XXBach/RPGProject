@@ -1944,9 +1944,9 @@ MonoBehaviour:
   _rightClashPoint: {fileID: 1676467493}
   _leftUnitView: {fileID: 219647412}
   _rightUnitView: {fileID: 589987900}
-  _runSpeed: 8
+  _runSpeed: 2
   _fightDuration: 2
-  _postDamageDelay: 0.4
+  _postDamageDelay: 1
 --- !u!4 &1949313596
 Transform:
   m_ObjectHideFlags: 0

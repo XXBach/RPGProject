@@ -39,8 +39,21 @@ public class EnemyMovement : MonoBehaviour, IMovement
     public void MoveToTargetCell(Vector2Int CellCoodinates)
     {
         _path = _pathFinding.FindPath(CellCoodinates.x, CellCoodinates.y);
+        if (_path == null || _path.Count == 0)
+        {
+            Debug.LogWarning("[EnemyMovement] Không tìm được đường đi hợp lệ tới đích, hủy di chuyển.");
+            Vector2Int currentPos = GridSetup.Grid.GetGridPosition(transform.position);
+            OnMovementEnd?.Invoke(new OnMovementEndArgs
+            {
+                PreviousPosition = currentPos,
+                FinalPosition = currentPos,
+                FinalNodeState = NodeState.BlockedByCharacter
+            });
+            return;
+        }
         StartCoroutine(HandleMovement());
     }
+    // EnemyMovement.cs - trong HandleMovement()
     private IEnumerator HandleMovement()
     {
         PathNode currentPoint = _path[0];
@@ -49,26 +62,26 @@ public class EnemyMovement : MonoBehaviour, IMovement
         currentPointPosition = currentPointPosition + Vector3.one * 0.5f;
         currentPointPosition.z = 0;
         PathNode endPoint = _path[_path.Count - 1];
-        while (true) {
+        while (true)
+        {
             _isMoving = true;
-            if(isArrived(currentPointPosition))
+            if (isArrived(currentPointPosition))
             {
                 if (_path[i] == endPoint)
                 {
+                    transform.position = currentPointPosition;
                     _isMoving = false;
                     OnMovementEnd?.Invoke(new OnMovementEndArgs
                     {
+                        PreviousPosition = GridSetup.Grid.GetGridPosition(transform.position),
                         FinalPosition = new Vector2Int(endPoint.XCoordinate, endPoint.YCoordinate),
-                        FinalNodeState = endPoint.State
+                        FinalNodeState = NodeState.BlockedByCharacter
                     });
                     yield break;
                 }
                 i++;
                 currentPoint = _path[i];
-                if (currentPoint.XCoordinate > _path[i - 1].XCoordinate)
-                {
-                    _animator.Play("PrinceRaelan_TurnRightAnim");
-                }
+                if (currentPoint.XCoordinate > _path[i - 1].XCoordinate) { _animator.Play("PrinceRaelan_TurnRightAnim"); }
                 else if (currentPoint.XCoordinate < _path[i - 1].XCoordinate) { _animator.Play("PrinceRaelan_TurnLeftAnim"); }
                 else if (currentPoint.YCoordinate > _path[i - 1].YCoordinate) { _animator.Play("PrinceRaelan_BehindAnim"); }
                 else if (currentPoint.YCoordinate < _path[i - 1].YCoordinate) { _animator.Play("PrinceRaelan_WalkingAnim"); }
@@ -77,6 +90,7 @@ public class EnemyMovement : MonoBehaviour, IMovement
                 currentPointPosition.z = 0;
             }
             transform.position = Vector3.MoveTowards(transform.position, currentPointPosition, _moveSpeed * Time.deltaTime);
+            CameraSignals.RequestMove(transform.position, smooth: true); // FIX: enemy di chuyển trước đây camera hoàn toàn không bám theo
             yield return null;
         }
     }
@@ -121,11 +135,13 @@ public class EnemyMovement : MonoBehaviour, IMovement
     public Vector2Int FindNearestPossibleCoordinates(PlayerCharsPosition target, List<PathNode> MovementRange, int SkillRange)
     {
         List<PathNode> orderedByDistance = new List<PathNode>(MovementRange);
-        orderedByDistance.Sort((a, b) => a.GCost.CompareTo(b.GCost)); // snapshot thứ tự trước khi grid bị reset
+        orderedByDistance.Sort((a, b) => a.GCost.CompareTo(b.GCost));
 
         foreach (PathNode node in orderedByDistance)
         {
-            List<PathNode> reachableFromNode = _pathFinding.GetReachableNodes(node.XCoordinate, node.YCoordinate, SkillRange * 10);
+            List<PathNode> reachableFromNode = _pathFinding.GetReachableNodes(
+                node.XCoordinate, node.YCoordinate, SkillRange * 10,
+                mode: PathfindingMode.Attack); // FIX: đang hỏi "có đánh được target không", không phải "có đi được không"
             if (IsCharInValidRange(target, reachableFromNode))
             {
                 return new Vector2Int(node.XCoordinate, node.YCoordinate);
@@ -148,5 +164,10 @@ public class EnemyMovement : MonoBehaviour, IMovement
     private int GetManhattanDistance(Vector2Int a, Vector2Int b)
     {
         return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y);
+    }
+    // EnemyMovement.cs
+    public void ResetMovement()
+    {
+        _movementState = MovementState.IDLE;
     }
 }

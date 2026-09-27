@@ -34,8 +34,16 @@ public class GridSetup : MonoBehaviour
     }
     private void Start()
     {
-       
-        OnMovementEnd.AddListener(args => UpdateNodeState(args.FinalPosition, args.FinalNodeState));
+        OnMovementEnd.AddListener(args =>
+        {
+            // Giải phóng ô cũ mà character vừa rời đi
+            PathNode previousNode = Grid.GetGridObject(args.PreviousPosition.x, args.PreviousPosition.y);
+            if (previousNode != null && previousNode.State == NodeState.BlockedByCharacter)
+            {
+                previousNode.State = NodeState.Walkable;
+            }
+            UpdateNodeState(args.FinalPosition, args.FinalNodeState);
+        });
         if (isShowDebug) SetupGridDebugObjects();
     }
     private void SetupGridDebugObjects()

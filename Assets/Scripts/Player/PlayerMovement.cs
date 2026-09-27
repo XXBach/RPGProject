@@ -12,8 +12,10 @@ public enum MovementState
     ARRIVED = 3,
 }
 
+// PlayerMovement.cs & EnemyMovement.cs - thêm PreviousPosition
 public class OnMovementEndArgs
 {
+    public Vector2Int PreviousPosition;
     public Vector2Int FinalPosition;
     public NodeState FinalNodeState;
 }
@@ -152,6 +154,7 @@ public class PlayerMovement : MonoBehaviour, IMovement
         bool isMovementValid = ReachableNodes.Any(x => x.XCoordinate == DestinationNode.XCoordinate && x.YCoordinate == DestinationNode.YCoordinate);
         return isMovementValid;
     }
+    // PlayerMovement.cs - trong HandleMovement()
     private IEnumerator HandleMovement()
     {
         PathNode currentPoint = _path[0];
@@ -167,9 +170,11 @@ public class PlayerMovement : MonoBehaviour, IMovement
             {
                 if (_path[i] == endPoint)
                 {
+                    transform.position = currentPointPosition;
                     _isMoving = false;
                     OnMovementEnd?.Invoke(new OnMovementEndArgs
                     {
+                        PreviousPosition = GridSetup.Grid.GetGridPosition(_path[0].XCoordinate == currentPoint.XCoordinate ? transform.position : transform.position),
                         FinalPosition = new Vector2Int(endPoint.XCoordinate, endPoint.YCoordinate),
                         FinalNodeState = NodeState.BlockedByCharacter
                     });
@@ -177,10 +182,7 @@ public class PlayerMovement : MonoBehaviour, IMovement
                 }
                 i++;
                 currentPoint = _path[i];
-                if (currentPoint.XCoordinate > _path[i - 1].XCoordinate)
-                {
-                    _animator.Play("PrinceEldric_TurnRightAnim");
-                }
+                if (currentPoint.XCoordinate > _path[i - 1].XCoordinate) { _animator.Play("PrinceEldric_TurnRightAnim"); }
                 else if (currentPoint.XCoordinate < _path[i - 1].XCoordinate) { _animator.Play("PrinceEldric_TurnLeftAnim"); }
                 else if (currentPoint.YCoordinate > _path[i - 1].YCoordinate) { _animator.Play("PrinceEldric_BehindAnim"); }
                 else if (currentPoint.YCoordinate < _path[i - 1].YCoordinate) { _animator.Play("PrinceEldric_IdleAnim"); }
@@ -189,6 +191,7 @@ public class PlayerMovement : MonoBehaviour, IMovement
                 currentPointPosition.z = 0;
             }
             transform.position = Vector3.MoveTowards(transform.position, currentPointPosition, _moveSpeed * Time.deltaTime);
+            CameraSignals.RequestMove(transform.position, smooth: true); // FIX: bám theo camera trong suốt quá trình di chuyển, không chỉ lúc kết thúc
             this.MCMovementState = MovementState.ARRIVED;
             this._previousState = MovementState.MOVING;
             yield return null;
@@ -230,5 +233,19 @@ public class PlayerMovement : MonoBehaviour, IMovement
     public PathFinding GetPathFinding()
     {
         return _pathFinding;
+    }
+    private void OnDestroy()
+    {
+        foreach (GameObject tile in _tilePool)
+        {
+            if (tile != null) Destroy(tile);
+        }
+    }
+    // PlayerMovement.cs
+    public void ResetMovement()
+    {
+        HideAllTiles();
+        MCMovementState = MovementState.IDLE;
+        _previousState = MovementState.IDLE;
     }
 }

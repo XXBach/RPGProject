@@ -2,6 +2,11 @@ using NUnit.Framework;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections.Generic;
+public enum PathfindingMode
+{
+    Movement, // Vật cản tĩnh (Blocked) VÀ character (BlockedByCharacter) đều chặn đường đi
+    Attack    // Chỉ vật cản tĩnh (Blocked) chặn; character đứng trên ô không chặn tầm đánh/AOE
+}
 public class PathFinding
 {
     private const int MOVE_STRAIGHT_COST = 10;
@@ -50,6 +55,7 @@ public class PathFinding
     public List<PathNode> FindPath(int destinationx, int destinationy)
     {
         PathNode endNode = GetNode(destinationx, destinationy);
+        if (endNode == null) return null; // FIX: tọa độ ngoài lưới (vd sentinel -100,-100) -> không có path, không crash
         return CalculatePath(endNode);
     }
     public List<PathNode> CalculatePath(PathNode endNode)
@@ -70,7 +76,7 @@ public class PathFinding
         int remaining = Mathf.Abs(xDistance - yDistance);
         return MOVE_DIAGONAL_COST * Mathf.Min(xDistance, yDistance) + MOVE_STRAIGHT_COST * remaining;
     }
-    public List<PathNode> GetReachableNodes(int startX, int startY, int movementRange, bool canMoveDiagonal = false)
+    public List<PathNode> GetReachableNodes( int startX, int startY, int movementRange, bool canMoveDiagonal = false,  PathfindingMode mode = PathfindingMode.Movement) // mặc định giữ hành vi cũ cho các chỗ gọi movement
     {
         PathNode startNode = _grid.GetGridObject(startX, startY);
 
@@ -101,28 +107,26 @@ public class PathFinding
             foreach (PathNode neighborNode in GetNeighborList(currentNode, canMoveDiagonal))
             {
                 if (_closedList.Contains(neighborNode)) continue;
-                if (neighborNode.State == NodeState.Blocked || neighborNode.State == NodeState.BlockedByCharacter)
+
+                if (IsBlockedForMode(neighborNode.State, mode)) // FIX: dùng hàm chung thay vì check cứng
                 {
                     _closedList.Add(neighborNode);
                     continue;
                 }
 
                 int tentativeGCost = currentNode.GCost + CalculateDistanceCost(currentNode, neighborNode);
-
-                // Chỉ đi tiếp nếu còn trong tầm di chuyển
                 if (tentativeGCost > movementRange) continue;
 
                 if (tentativeGCost < neighborNode.GCost)
                 {
                     neighborNode.CameFromNode = currentNode;
                     neighborNode.GCost = tentativeGCost;
-
                     if (!_openList.Contains(neighborNode)) _openList.Add(neighborNode);
                 }
             }
         }
 
-        reachableNodes.Remove(startNode); // thường không tính ô đứng làm ô "đi được"
+        reachableNodes.Remove(startNode);
         return reachableNodes;
     }
 
@@ -134,5 +138,12 @@ public class PathFinding
             if (pathNodeList[i].GCost < lowest.GCost) lowest = pathNodeList[i];
         }
         return lowest;
+    }
+
+    private bool IsBlockedForMode(NodeState state, PathfindingMode mode)
+    {
+        if (state == NodeState.Blocked) return true; // vật cản tĩnh luôn luôn chặn, bất kể mode
+        if (state == NodeState.BlockedByCharacter && mode == PathfindingMode.Movement) return true;
+        return false; // Attack mode: BlockedByCharacter được coi như Walkable
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 public class CharacterData
 {
     public string Name;
+    public int MaxHealth;
     public int CurrentHealth;
     public int CurrentAttack;
     public int CurrentDefense;
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour, ICharacter
     private void Start()
     {
         CurrentDatas = new CharacterData();
+        CurrentDatas.MaxHealth = _baseStats.MaxHealth;
         CurrentDatas.CurrentHealth = _baseStats.MaxHealth;
         CurrentDatas.CurrentAttack = _baseStats.BaseDamage;
         CurrentDatas.CurrentDefense = _baseStats.BaseDef;

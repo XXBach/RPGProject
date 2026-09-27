@@ -54,40 +54,54 @@ public class EnemyAI : MonoBehaviour
             case CharacterState.CALCULATING:
                 {
                     Vector2Int CurrentPosition = GridSetup.Grid.GetGridPosition(transform.position);
-                    List<PathNode> ValidRange = _enemyMovementManager.GetPathFinding().GetReachableNodes(CurrentPosition.x, CurrentPosition.y, (_currentData.CurrentMovementRange + GetHighestSkillRange(out _enemyAttackManager._skillchoice)) * 10, false);
-                    List<PathNode> AttackRange = _enemyMovementManager.GetPathFinding().GetReachableNodes(CurrentPosition.x, CurrentPosition.y, (GetHighestSkillRange(out _enemyAttackManager._skillchoice)) * 10, false);
+                    List<PathNode> ValidRange = _enemyMovementManager.GetPathFinding().GetReachableNodes(CurrentPosition.x, CurrentPosition.y, (_currentData.CurrentMovementRange + GetHighestSkillRange(out _enemyAttackManager._skillchoice)) * 10, false, mode: PathfindingMode.Attack);
+                    List<PathNode> AttackRange = _enemyMovementManager.GetPathFinding().GetReachableNodes(CurrentPosition.x, CurrentPosition.y, (GetHighestSkillRange(out _enemyAttackManager._skillchoice)) * 10, false, mode: PathfindingMode.Attack);
                     List<PlayerCharsPosition> PCSortedList = PCSortingHP();
-                    Target = GetNearestPC(PCSortedList);
 
-                    if (IsCharInValidRange(Target, ValidRange))
+                    // FIX: kiểm tra TRƯỚC xem có bất kỳ target nào đã nằm trong tầm đánh ngay hay không,
+                    // lấy target đầu tiên thỏa mãn trong danh sách, thay vì chỉ dựa vào 1 target ưu tiên theo HP
+                    PlayerCharsPosition ImmediateTarget = GetFirstTargetInRange(PCSortedList, AttackRange);
+
+                    if (ImmediateTarget != null)
                     {
-                        if (IsCharInValidRange(Target, AttackRange))
-                        {
-                            // Đã trong tầm đánh, không cần di chuyển -> đánh luôn
-                            AttackTarget(Target);
-                            _characterCurrentState = CharacterState.ENDTURN;
-                        }
-                        else
-                        {
-                            // Cần di chuyển trước rồi mới đánh -> chờ movement xong
-                            List<PathNode> MovementRange = _enemyMovementManager.GetPathFinding().GetReachableNodes(CurrentPosition.x, CurrentPosition.y, (_currentData.CurrentMovementRange) * 10, false);
-                            Vector2Int TargetCoordinates = _enemyMovementManager.FindNearestPossibleCoordinates(Target, MovementRange, GetHighestSkillRange(out _enemyAttackManager._skillchoice));
-
-                            _pendingAttackTarget = Target;
-                            _attackAfterMove = true;
-                            _enemyMovementManager.GetOnMovementEnd().AddListener(HandleEnemyMovementFinished);
-                            _enemyMovementManager.MoveToTargetCell(TargetCoordinates);
-                            _characterCurrentState = CharacterState.MOVE;
-                        }
+                        AttackTarget(ImmediateTarget);
+                        _characterCurrentState = CharacterState.ENDTURN;
                     }
                     else
                     {
-                        // Không đủ tầm để tới đánh -> chỉ di chuyển lại gần, không đánh
-                        _pendingAttackTarget = null;
-                        _attackAfterMove = false;
-                        _enemyMovementManager.GetOnMovementEnd().AddListener(HandleEnemyMovementFinished);
-                        _enemyMovementManager.MoveToTargetNearestCell(Target);
-                        _characterCurrentState = CharacterState.MOVE;
+                        Target = GetNearestPC(PCSortedList);
+
+                        if (IsCharInValidRange(Target, ValidRange))
+                        {
+                            List<PathNode> MovementRange = _enemyMovementManager.GetPathFinding().GetReachableNodes(
+                                CurrentPosition.x, CurrentPosition.y, (_currentData.CurrentMovementRange) * 10, false);
+                            Vector2Int TargetCoordinates = _enemyMovementManager.FindNearestPossibleCoordinates(
+                                Target, MovementRange, GetHighestSkillRange(out _enemyAttackManager._skillchoice));
+                            if (TargetCoordinates == new Vector2Int(-100, -100))
+                            {
+                                _pendingAttackTarget = null;
+                                _attackAfterMove = false;
+                                _enemyMovementManager.GetOnMovementEnd().AddListener(HandleEnemyMovementFinished);
+                                _enemyMovementManager.MoveToTargetNearestCell(Target);
+                                _characterCurrentState = CharacterState.MOVE;
+                            }
+                            else
+                            {
+                                _pendingAttackTarget = Target;
+                                _attackAfterMove = true;
+                                _enemyMovementManager.GetOnMovementEnd().AddListener(HandleEnemyMovementFinished);
+                                _enemyMovementManager.MoveToTargetCell(TargetCoordinates);
+                                _characterCurrentState = CharacterState.MOVE;
+                            }
+                        }
+                        else
+                        {
+                            _pendingAttackTarget = null;
+                            _attackAfterMove = false;
+                            _enemyMovementManager.GetOnMovementEnd().AddListener(HandleEnemyMovementFinished);
+                            _enemyMovementManager.MoveToTargetNearestCell(Target);
+                            _characterCurrentState = CharacterState.MOVE;
+                        }
                     }
                     break;
                 }
@@ -268,5 +282,17 @@ public class EnemyAI : MonoBehaviour
     private int GetManhattanDistance(Vector2Int a, Vector2Int b)
     {
         return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y);
+    }
+    // EnemyAI.cs - thêm hàm mới, đặt gần IsCharInValidRange
+    public PlayerCharsPosition GetFirstTargetInRange(List<PlayerCharsPosition> CharList, List<PathNode> ValidRange)
+    {
+        foreach (PlayerCharsPosition character in CharList)
+        {
+            if (IsCharInValidRange(character, ValidRange))
+            {
+                return character; // trả về ngay target đầu tiên thỏa mãn, không cần xét tiếp
+            }
+        }
+        return null;
     }
 }

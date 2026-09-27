@@ -99,7 +99,7 @@ public class PlayerAttackMenu : MonoBehaviour
         if (isAttackThisTurn) return;
         isAttackThisTurn = true;
         CurrentAttackState = AttackState.CALCULATEATTACKDAMAGE;
-        _activeAttackManager.SetCurrentSkillChoice(0);
+        _activeAttackManager.SetCurrentSkillChoice(1);
         _activeAttackManager.SetCurrentAttackManagerState(AttackManagerState.ATTACKRANGEVISUALIZE);
         HidePanel();
     }
@@ -109,7 +109,7 @@ public class PlayerAttackMenu : MonoBehaviour
         if (isAttackThisTurn) return;
         isAttackThisTurn = true;
         CurrentAttackState = AttackState.CALCULATEATTACKDAMAGE;
-        _activeAttackManager.SetCurrentSkillChoice(1);
+        _activeAttackManager.SetCurrentSkillChoice(2);
         _activeAttackManager.SetCurrentAttackManagerState(AttackManagerState.ATTACKRANGEVISUALIZE);
         HidePanel();
         // TODO: khi có PlayerATTACK, gọi tương tự:
@@ -121,7 +121,7 @@ public class PlayerAttackMenu : MonoBehaviour
         if (isAttackThisTurn) return;
         isAttackThisTurn = true;
         CurrentAttackState = AttackState.CALCULATEATTACKDAMAGE;
-        _activeAttackManager.SetCurrentSkillChoice(2);
+        _activeAttackManager.SetCurrentSkillChoice(3);
         _activeAttackManager.SetCurrentAttackManagerState(AttackManagerState.ATTACKRANGEVISUALIZE);
         HidePanel();
         // TODO: khi có PlayerENDTURN, gọi tương tự:

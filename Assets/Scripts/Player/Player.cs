@@ -18,6 +18,7 @@ public class Player : MonoBehaviour, ICharacter
     {
         CurrentDatas = new CharacterData();
         CurrentDatas.CurrentHealth = _baseStats.MaxHealth;
+        CurrentDatas.MaxHealth = _baseStats.MaxHealth;
         CurrentDatas.CurrentAttack = _baseStats.BaseDamage;
         CurrentDatas.CurrentDefense = _baseStats.BaseDef;
         CurrentDatas.CurrentMovementRange = _baseStats.MovementRange;

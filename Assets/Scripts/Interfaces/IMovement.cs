@@ -9,4 +9,5 @@ public interface IMovement
     public void SetMovementState(MovementState state);
     public PathFinding GetPathFinding();
     public void RangeVisualize(List<PathNode> ReachableNodes);
+    public void ResetMovement();
 }

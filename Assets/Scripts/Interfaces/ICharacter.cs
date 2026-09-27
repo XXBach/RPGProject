@@ -2,6 +2,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 public interface ICharacter
 {
+    GameObject gameObject { get; }
     public Vector3 GetCharWorldPosition();
     public IMovement GetMovementManager();
     public IAttackManager GetAttackManager();

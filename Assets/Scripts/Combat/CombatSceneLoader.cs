@@ -110,15 +110,12 @@ public class CombatSceneLoader : MonoBehaviour
         combatManager.StartCombat(_pendingData);
     }
 
-    private void HandleCombatFinished(
-        CombatSceneManager mgr,
-        CombatData result
-    )
+    private void HandleCombatFinished(CombatSceneManager mgr, CombatData result)
     {
-        if (mgr != null)
-        {
-            mgr.OnCombatFinished -= HandleCombatFinished;
-        }
+        if (mgr != null) mgr.OnCombatFinished -= HandleCombatFinished;
+
+        CheckAndRemoveDeadParticipant(result?.Attacker);
+        CheckAndRemoveDeadParticipant(result?.Defender);
 
         StartCoroutine(UnloadCombatSceneRoutine(result));
     }
@@ -271,35 +268,13 @@ public class CombatSceneLoader : MonoBehaviour
         }
     }
 
-    private void SetSceneCanvases(Scene scene, bool enabled)
+
+    private void CheckAndRemoveDeadParticipant(CombatParticipantResult result)
     {
-        if (!scene.IsValid() || !scene.isLoaded)
-            return;
-
-        foreach (var root in scene.GetRootGameObjects())
+        if (result?.CombatParticipant == null) return;
+        if (result.CombatParticipant.CurrentDatas.CurrentHealth <= 0)
         {
-            if (root == null)
-                continue;
-
-            Canvas[] canvases =
-                root.GetComponentsInChildren<Canvas>(true);
-
-            foreach (var canvas in canvases)
-            {
-                if (canvas == null)
-                    continue;
-
-                // Chỉ xử lý Canvas Overlay
-                if (canvas.renderMode == RenderMode.ScreenSpaceOverlay)
-                {
-                    canvas.enabled = enabled;
-
-                    Debug.Log(
-                        $"[CombatSceneLoader] " +
-                        $"{canvas.name} Canvas = {enabled}"
-                    );
-                }
-            }
+            _turnManager.RemoveCharacter(result.CombatParticipant);
         }
     }
 

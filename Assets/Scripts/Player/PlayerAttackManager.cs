@@ -82,13 +82,13 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
                 return;
             }
             case (AttackManagerState.ATTACKRANGEVISUALIZE):
-            {
-                _currentSelectedAction = GetSelectedAction();
-                List<PathNode> reachableNode = this._currentPlayerPathFinding.GetReachableNodes(PlayerRelativePosition.x, PlayerRelativePosition.y, _currentSelectedAction.AttackRange * 10, false);
-                this.CurrentPlayer.GetMovementManager().RangeVisualize(reachableNode);
-                CurrentAttackManagerState = AttackManagerState.ATTACKAREAOFEFFECTPREVIEW;
-                break;
-            }
+                {
+                    _currentSelectedAction = GetSelectedAction();
+                    List<PathNode> reachableNode = this._currentPlayerPathFinding.GetReachableNodes( PlayerRelativePosition.x, PlayerRelativePosition.y, _currentSelectedAction.AttackRange * 10, false, mode: PathfindingMode.Attack); // FIX: tầm đánh không bị chặn bởi character khác
+                    this.CurrentPlayer.GetMovementManager().RangeVisualize(reachableNode);
+                    CurrentAttackManagerState = AttackManagerState.ATTACKAREAOFEFFECTPREVIEW;
+                    break;
+                }
             case (AttackManagerState.ATTACKAREAOFEFFECTPREVIEW):
             {
                     UpdatePreviewTiles(_currentSelectedAction, out _currentHoveredNodes);
@@ -177,7 +177,7 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
                     newPreviewNodes = GetStraightLineNodes(hoveredNode, _selectedAction.AreaOfEffectRange);
                     break;
                 case ActionType.AreaOfEffectAttack:
-                    newPreviewNodes = _currentPlayerPathFinding.GetReachableNodes(hoveredNode.XCoordinate, hoveredNode.YCoordinate, _selectedAction.AreaOfEffectRange * 10, false);
+                    newPreviewNodes = _currentPlayerPathFinding.GetReachableNodes(hoveredNode.XCoordinate, hoveredNode.YCoordinate, _selectedAction.AreaOfEffectRange * 10, false, mode: PathfindingMode.Attack); // FIX: AOE lan qua được ô có character đứng
                     break;
             }
         }
@@ -264,22 +264,33 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
     private void ShowPreview(List<PathNode> AttackReachableNode)
     {
         int needed = AttackReachableNode.Count;
-        while (_previewTilesPrefabPool.Count < needed) { 
+        while (_previewTilesPrefabPool.Count < needed)
+        {
             GameObject tileprefab = Instantiate(_attackableTilePrefab);
             tileprefab.SetActive(false);
             _previewTilesPrefabPool.Add(tileprefab);
         }
-        for (int i = 0; i < needed; i++) { 
+        for (int i = 0; i < needed; i++)
+        {
             GameObject tile = _previewTilesPrefabPool[i];
             Vector3 cellCenter = GridSetup.Grid.GetCellWorldPosition(AttackReachableNode[i].XCoordinate, AttackReachableNode[i].YCoordinate);
             cellCenter.x += 0.5f;
             tile.transform.position = cellCenter;
             tile.SetActive(true);
         }
-        for (int i = needed; i < _activePreviewCount; i++) {
+        for (int i = needed; i < _activePreviewCount; i++)
+        {
             _previewTilesPrefabPool[i].SetActive(false);
         }
-        _activePreviewCount = 0;
+        _activePreviewCount = needed; // FIX: trước đây là = 0
+    }
+    public void ResetAttackManager()
+    {
+        HideAllPreview();
+        CurrentAttackManagerState = AttackManagerState.IDLE;
+        _lastHoveredNode = null;
+        _cachedPreviewNodes = new List<PathNode>();
+        _currentHoveredNodes = new List<PathNode>();
     }
     private void HideAllPreview()
     {
@@ -331,5 +342,12 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
     {
         int damage = (int)Attacker.CurrentDatas.CurrentAttack * (int)selectedAction.SkillMultiplier - (int)Defender.CurrentDatas.CurrentDefense;
         return damage;
+    }
+    private void OnDestroy()
+    {
+        foreach (GameObject tile in _previewTilesPrefabPool)
+        {
+            if (tile != null) Destroy(tile);
+        }
     }
 }

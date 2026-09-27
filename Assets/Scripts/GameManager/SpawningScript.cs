@@ -33,8 +33,12 @@ public class SpawningScript : MonoBehaviour
                 GameObject prefab = data.CharacterPrefab;
                 Vector2Int spawningCoodinates = data.SpawningPosition;
                 Vector3 spawningWorldPos = GridSetup.Grid.GetCellWorldPosition(spawningCoodinates.x, spawningCoodinates.y);
-                spawningWorldPos = spawningWorldPos + new Vector3(.5f, .5f);
+                spawningWorldPos = spawningWorldPos + new Vector3(.5f, .5f) * GridSetup.Grid.CellSize; // FIX: thiếu nhân CellSize
                 GameObject spawned = Instantiate(prefab, spawningWorldPos, Quaternion.identity);
+
+                PathNode spawnNode = GridSetup.Grid.GetGridObject(spawningCoodinates.x, spawningCoodinates.y);
+                if (spawnNode != null) spawnNode.State = NodeState.BlockedByCharacter; // đánh dấu ngay khi spawn
+
                 SpawnedCharacter.Add(spawned.GetComponent<ICharacter>());
             }
             else continue;

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterBaseStats
   _charName: EldricUnit
   _maxHealth: 100
-  _baseDamage: 10
+  _baseDamage: 50
   _baseDef: 15
   _baseSpeed: 3
   _baseAttackRange: 1
