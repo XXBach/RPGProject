@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
 public enum ObstacleType
@@ -26,7 +27,6 @@ public class GridSetup : MonoBehaviour
     [SerializeField] private Transform PathFindingDebugObjectPrefab;
     [SerializeField] private bool isShowDebug = false;
     [SerializeField] private bool showGridInEditor = false;
-    private UnityEvent<OnMovementEndArgs> OnMovementEnd = new UnityEvent<OnMovementEndArgs>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -34,16 +34,6 @@ public class GridSetup : MonoBehaviour
     }
     private void Start()
     {
-        OnMovementEnd.AddListener(args =>
-        {
-            // Giải phóng ô cũ mà character vừa rời đi
-            PathNode previousNode = Grid.GetGridObject(args.PreviousPosition.x, args.PreviousPosition.y);
-            if (previousNode != null && previousNode.State == NodeState.BlockedByCharacter)
-            {
-                previousNode.State = NodeState.Walkable;
-            }
-            UpdateNodeState(args.FinalPosition, args.FinalNodeState);
-        });
         if (isShowDebug) SetupGridDebugObjects();
     }
     private void SetupGridDebugObjects()
@@ -92,11 +82,7 @@ public class GridSetup : MonoBehaviour
     }
     public void UpdateNodeState(Vector2Int FinalPosition, NodeState newState)
     {
-        PathNode node = Grid.GetGridObject(FinalPosition.x, FinalPosition.y);
-        if (node != null)
-        {
-            node.State = newState;
-        }
+        Grid.GetGridObject(FinalPosition.x, FinalPosition.y).State = newState;
     }
     private void OnDrawGizmos()
     {
@@ -118,4 +104,15 @@ public class GridSetup : MonoBehaviour
             Gizmos.DrawLine(start, end);
         }
     }
+    private void OnEnable() { MovementSignal.MovementEnded += HandleMovementEnd; }
+    private void OnDisable() { MovementSignal.MovementEnded -= HandleMovementEnd; }
+
+    private void HandleMovementEnd(OnMovementEndArgs args)
+    {
+        PathNode previousNode = Grid.GetGridObject(args.PreviousPosition.x, args.PreviousPosition.y);
+        if (previousNode != null && previousNode.State == NodeState.BlockedByCharacter)
+            previousNode.State = NodeState.Walkable;
+        UpdateNodeState(args.FinalPosition, args.FinalNodeState);
+    }
+
 }

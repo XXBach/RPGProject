@@ -1,8 +1,9 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 [System.Serializable]
 public class CharacterData
 {
+    public Sprite CharAvt;
     public string Name;
     public int MaxHealth;
     public int CurrentHealth;
@@ -12,6 +13,7 @@ public class CharacterData
     public int CurrentSpeed;
     public int CurrentMP;
     public int CurrentAttackRange;
+    public int MaxMP;
 }
 [DefaultExecutionOrder(-100)]
 public class Enemy : MonoBehaviour, ICharacter
@@ -34,6 +36,8 @@ public class Enemy : MonoBehaviour, ICharacter
         CurrentDatas.CurrentMP = _baseStats.MaxMP;
         CurrentDatas.Name = _baseStats.CharName;
         CurrentDatas.CurrentAttackRange = _baseStats.BaseAttackRange;
+        CurrentDatas.CharAvt = _baseStats.CharAvt;
+        CurrentDatas.MaxMP = _baseStats.MaxMP;
         _currentAIAgent = GetComponent<EnemyAI>();
     }
 

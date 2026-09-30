@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour, IMovement
     private void HandleTurn()
     {
         Vector2Int playerPosition = GridSetup.Grid.GetGridPosition(this.transform.position);
-        List<PathNode> ReachableNodes = _pathFinding.GetReachableNodes(playerPosition.x, playerPosition.y, this._movementRange * 10);
+        List<PathNode> ReachableNodes = _pathFinding.GetReachableNodes(playerPosition.x, playerPosition.y, this._movementRange * 10, false, PathfindingMode.Movement);
 
         if (this.MCMovementState == MovementState.MOVEMENTRANGEVISUAL)
         {
@@ -77,6 +77,7 @@ public class PlayerMovement : MonoBehaviour, IMovement
             }
             if (_selectAction.WasPressedThisFrame())
             {
+                Debug.Log($"Event fired for {GridSetup.Grid.GetGridPosition(this.gameObject.transform.position)}");
                 Vector2 mousePosition = Mouse.current.position.ReadValue();
                 Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
                 Vector2Int DestinationGridPosition = new Vector2Int();
@@ -128,7 +129,6 @@ public class PlayerMovement : MonoBehaviour, IMovement
         for (int i = 0; i < needed; i++)
         {
             PathNode node = ReachableNodes[i];
-            node.State = NodeState.Walkable;
 
             GameObject tile = _tilePool[i];
             tile.transform.position = GridSetup.Grid.GetCellWorldPosition(node.XCoordinate, node.YCoordinate);
@@ -157,6 +157,7 @@ public class PlayerMovement : MonoBehaviour, IMovement
     // PlayerMovement.cs - trong HandleMovement()
     private IEnumerator HandleMovement()
     {
+        Vector2Int startGridPos = GridSetup.Grid.GetGridPosition(transform.position);
         PathNode currentPoint = _path[0];
         int i = 0;
         Vector3 currentPointPosition = new Vector3(currentPoint.XCoordinate, currentPoint.YCoordinate);
@@ -172,12 +173,14 @@ public class PlayerMovement : MonoBehaviour, IMovement
                 {
                     transform.position = currentPointPosition;
                     _isMoving = false;
-                    OnMovementEnd?.Invoke(new OnMovementEndArgs
+                    var args = new OnMovementEndArgs
                     {
-                        PreviousPosition = GridSetup.Grid.GetGridPosition(_path[0].XCoordinate == currentPoint.XCoordinate ? transform.position : transform.position),
+                        PreviousPosition = startGridPos,
                         FinalPosition = new Vector2Int(endPoint.XCoordinate, endPoint.YCoordinate),
                         FinalNodeState = NodeState.BlockedByCharacter
-                    });
+                    };
+                    MovementSignal.FireMovementEnded(args); // grid cập nhật TRƯỚC
+                    OnMovementEnd?.Invoke(args);            // rồi mới tới EnemyAI...
                     yield break;
                 }
                 i++;
@@ -209,14 +212,6 @@ public class PlayerMovement : MonoBehaviour, IMovement
     public UnityEvent<OnMovementEndArgs> GetOnMovementEnd()
     {
         return this.OnMovementEnd;
-    }
-    private void OnEnable()
-    {
-        _inputActionAsset.FindActionMap("Player").Enable();
-    }
-    private void OnDisable()
-    {
-        _inputActionAsset.FindActionMap("Player").Disable();
     }
     private void OnDrawGizmos()
     {

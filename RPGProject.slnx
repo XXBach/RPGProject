@@ -1,4 +1,4 @@
-<Solution>
+﻿<Solution>
   <Project Path="Unity.Timeline.csproj" />
   <Project Path="Unity.PlasticSCM.Editor.csproj" />
   <Project Path="Unity.2D.Aseprite.Editor.csproj" />
@@ -39,6 +39,7 @@
   <Project Path="Unity.2D.Tooling.Editor.csproj" />
   <Project Path="Unity.VisualScripting.State.csproj" />
   <Project Path="Unity.InternalAPIEditorBridge.001.csproj" />
+  <Project Path="Assembly-CSharp-firstpass.csproj" />
   <Project Path="Unity.InputSystem.ForUI.csproj" />
   <Project Path="Unity.Collections.CodeGen.csproj" />
   <Project Path="Unity.2D.Tilemap.Extras.csproj" />

@@ -56,6 +56,7 @@ public class EnemyMovement : MonoBehaviour, IMovement
     // EnemyMovement.cs - trong HandleMovement()
     private IEnumerator HandleMovement()
     {
+        Vector2Int startGridPos = GridSetup.Grid.GetGridPosition(transform.position);
         PathNode currentPoint = _path[0];
         int i = 0;
         Vector3 currentPointPosition = new Vector3(currentPoint.XCoordinate, currentPoint.YCoordinate);
@@ -71,12 +72,14 @@ public class EnemyMovement : MonoBehaviour, IMovement
                 {
                     transform.position = currentPointPosition;
                     _isMoving = false;
-                    OnMovementEnd?.Invoke(new OnMovementEndArgs
+                    var args = new OnMovementEndArgs
                     {
-                        PreviousPosition = GridSetup.Grid.GetGridPosition(transform.position),
+                        PreviousPosition = startGridPos,
                         FinalPosition = new Vector2Int(endPoint.XCoordinate, endPoint.YCoordinate),
                         FinalNodeState = NodeState.BlockedByCharacter
-                    });
+                    };
+                    MovementSignal.FireMovementEnded(args); // grid cập nhật TRƯỚC
+                    OnMovementEnd?.Invoke(args);            // rồi mới tới EnemyAI...
                     yield break;
                 }
                 i++;

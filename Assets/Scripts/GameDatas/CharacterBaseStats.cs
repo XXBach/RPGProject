@@ -1,8 +1,9 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 [CreateAssetMenu(fileName = "CharacterBaseStats", menuName = "Scriptable Objects/CharacterBaseStats")]
 public class CharacterBaseStats : ScriptableObject
 {
+    [SerializeField] private Sprite _charAvt; 
     [SerializeField] private string _charName;
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _baseDamage;
@@ -12,6 +13,7 @@ public class CharacterBaseStats : ScriptableObject
     [SerializeField] private int _movementRange;
     [SerializeField] private int _maxMP;
 
+    public Sprite CharAvt => _charAvt;
     public string CharName => _charName;
     public int MaxHealth => _maxHealth;
     public int BaseDamage => _baseDamage;

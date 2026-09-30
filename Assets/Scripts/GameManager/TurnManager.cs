@@ -29,6 +29,7 @@ public class TurnManager : MonoBehaviour
 {
     public int _turnNumber;
     [SerializeField] private PlayerActionMenu _actionMenu;
+    [SerializeField] private StatsMenuManager _statsMenu;
     [SerializeField] private SpawningScript _spawningScript;
     public List<ICharacter> _characterList;
     private TurnManagerPhase _currentPhase;
@@ -114,6 +115,7 @@ public class TurnManager : MonoBehaviour
         {
             character.GetEnemyAI()._characterCurrentState = CharacterState.CALCULATING;
         }
+        this._statsMenu.ShowStatMenuFor(character);
     }
 
     public void HandleEndTurnSignal()

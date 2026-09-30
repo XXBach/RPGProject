@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.TextCore.Text;
 
 
@@ -16,6 +17,7 @@ public class SpawnData
 public class SpawningScript : MonoBehaviour
 {
     [SerializeField] private SpawnScenario _currentSpawnScenario;
+    [SerializeField] private InputActionAsset _inputActionAsset;
 
     /*
      Giải thuật: Có 2 hàm - Spawn khi bắt đầu và Spawn khi gọi hết hàm
@@ -44,5 +46,13 @@ public class SpawningScript : MonoBehaviour
             else continue;
         }
         return SpawnedCharacter;
+    }
+    private void OnEnable()
+    {
+        _inputActionAsset.FindActionMap("Player").Enable();
+    }
+    private void OnDisable()
+    {
+        _inputActionAsset.FindActionMap("Player").Disable();
     }
 }

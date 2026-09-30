@@ -26,6 +26,8 @@ public class Player : MonoBehaviour, ICharacter
         CurrentDatas.CurrentMP = _baseStats.MaxMP;
         CurrentDatas.Name = _baseStats.CharName;
         CurrentDatas.CurrentAttackRange = _baseStats.BaseAttackRange;
+        CurrentDatas.CharAvt = _baseStats.CharAvt;
+        CurrentDatas.MaxMP = _baseStats.MaxMP;
     }
 
     // Update is called once per frame

@@ -27,7 +27,6 @@ public class CharacterHealthBar : MonoBehaviour
 
         int currentHP = _character.CurrentDatas.CurrentHealth;
         int maxHP = _character.CurrentDatas.MaxHealth;
-        Debug.Log($"HP: {currentHP}/{maxHP}");
         if (maxHP <= 0) return;
 
         _fillImage.fillAmount = Mathf.Clamp01((float)currentHP / maxHP);
