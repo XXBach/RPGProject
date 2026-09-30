@@ -245,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CombatUnitView
   _spriteRenderer: {fileID: 219647414}
   _animator: {fileID: 219647413}
+  _popupOffset: {x: 0, y: 1.2, z: 0}
 --- !u!95 &219647413
 Animator:
   serializedVersion: 7
@@ -1331,6 +1332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CombatUnitView
   _spriteRenderer: {fileID: 589987902}
   _animator: {fileID: 589987901}
+  _popupOffset: {x: 0, y: 1.2, z: 0}
 --- !u!95 &589987901
 Animator:
   serializedVersion: 7
@@ -1490,6 +1492,54 @@ Transform:
   - {fileID: 589987899}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1057662987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1057662988}
+  - component: {fileID: 1057662989}
+  m_Layer: 0
+  m_Name: DamagePopUpSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1057662988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057662987}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1057662989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057662987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a21b71a10d98f742b2fb59f26fa9e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamagePopupSpawner
+  _popupPrefab: {fileID: 1260472028507988365, guid: 9f11ab8c4f166cc45bd6ab7bc8c2eee5, type: 3}
+  _normalColor: {r: 1, g: 1, b: 1, a: 1}
+  _finalBlowColor: {r: 1, g: 0.85, b: 0.2, a: 1}
+  _zeroDamageColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
 --- !u!1 &1262396152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,8 +1994,11 @@ MonoBehaviour:
   _rightClashPoint: {fileID: 1676467493}
   _leftUnitView: {fileID: 219647412}
   _rightUnitView: {fileID: 589987900}
+  _popupSpawner: {fileID: 1057662989}
   _runSpeed: 2
-  _fightDuration: 2
+  _firstHitDelay: 0.35
+  _hitInterval: 0.3
+  _tailDuration: 0.8
   _postDamageDelay: 1
 --- !u!4 &1949313596
 Transform:
@@ -2005,3 +2058,4 @@ SceneRoots:
   - {fileID: 2796715}
   - {fileID: 1262396154}
   - {fileID: 1789483562}
+  - {fileID: 1057662988}

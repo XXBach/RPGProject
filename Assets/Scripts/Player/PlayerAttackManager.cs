@@ -178,6 +178,9 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
                     break;
                 case ActionType.AreaOfEffectAttack:
                     newPreviewNodes = _currentPlayerPathFinding.GetReachableNodes(hoveredNode.XCoordinate, hoveredNode.YCoordinate, _selectedAction.AreaOfEffectRange * 10, false, mode: PathfindingMode.Attack); // FIX: AOE lan qua được ô có character đứng
+                    // FIX: GetReachableNodes luôn loại bỏ ô xuất phát khỏi kết quả -> phải tự thêm ô trung tâm vào ĐẦU danh sách.
+                    // Nhờ vậy (1) character đứng đúng ô trung tâm cũng trúng AOE, (2) thứ tự danh sách là "gần tâm -> xa tâm".
+                    if (!newPreviewNodes.Contains(hoveredNode)) newPreviewNodes.Insert(0, hoveredNode);
                     break;
             }
         }
@@ -241,15 +244,35 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
         }
         return nodes;
     }
+
+    /// <summary>
+    /// Trả về danh sách mục tiêu HỢP LỆ trong vùng effect, theo đúng thứ tự ô (gần/đầu tiên -> xa).
+    /// Ô trống, ô chứa chính người tấn công và character trùng lặp đều bị bỏ qua,
+    /// nên phần tử [0] luôn là mục tiêu hợp lệ gần nhất (nếu có).
+    /// </summary>
     private List<ICharacter> GetTargetAtHoveredNode(List<PathNode> hoveredNodes)
     {
         List<ICharacter> targets = new List<ICharacter>();
         foreach (PathNode node in hoveredNodes)
         {
             Vector3 nodeCoordinates = GridSetup.Grid.GetCellWorldPosition(node.XCoordinate, node.YCoordinate) + new Vector3(0.5f, 0.5f) * GridSetup.Grid.CellSize; // quy về tâm ô, khớp vị trí thật của nhân vật   
-            targets.Add(_currentTurnManager.FindCharAtPosition(nodeCoordinates));
+            ICharacter character = _currentTurnManager.FindCharAtPosition(nodeCoordinates);
+            if (IsValidTarget(character) && !targets.Contains(character))
+            {
+                targets.Add(character);
+            }
         }
         return targets;
+    }
+
+    /// <summary>
+    /// Định nghĩa "mục tiêu hợp lệ". Hiện tại: có tồn tại và không phải chính người tấn công.
+    /// Nếu muốn chặn friendly fire (chỉ đánh được Enemy) thì đổi thành:
+    ///     return character != null && character != CurrentPlayer && character is Enemy;
+    /// </summary>
+    private bool IsValidTarget(ICharacter character)
+    {
+        return character != null && character != CurrentPlayer;
     }
     private bool IsOriginInAttackRange(PathNode originNode)
     {
@@ -309,14 +332,18 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
     }
     private void AttackExecute(ActionData selectedAction, List<PathNode> hoveredNodes)
     {
-        List<ICharacter> targets = GetTargetAtHoveredNode(hoveredNodes); // lấy từ preview đã chọn, có thể null
-        List<int> damagetotargets = new List<int>();
+        // Danh sách mục tiêu hợp lệ trong vùng effect, đã sắp xếp gần -> xa, KHÔNG chứa null
+        List<ICharacter> targets = GetTargetAtHoveredNode(hoveredNodes);
+
+        // FIX: tính damage cho TOÀN BỘ mục tiêu và đóng gói từng người vào kết quả
+        List<CombatParticipantResult> defenderResults = new List<CombatParticipantResult>();
         foreach (ICharacter target in targets)
         {
-            int damageToTarget = target != null
-                ? CalculateDamage(CurrentPlayer, target, selectedAction)
-                : 0;
-            damagetotargets.Add(damageToTarget);
+            defenderResults.Add(new CombatParticipantResult
+            {
+                CombatParticipant = target,
+                DamageTaken = CalculateDamage(CurrentPlayer, target, selectedAction)
+            });
         }
 
         var combatData = new CombatData
@@ -326,13 +353,12 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
             {
                 CombatParticipant = CurrentPlayer,
                 DamageTaken = 0 // nếu sau này có counter-attack thì tính ở đây
-            },
-            Defender = targets[0] != null ? new CombatParticipantResult
-            {
-                CombatParticipant = targets[0],
-                DamageTaken = damagetotargets[0]
-            } : null
+            }
         };
+
+        // FIX: phần tử đầu (mục tiêu hợp lệ gần nhất, kể cả khi ô đầu tiên trống) -> Defender;
+        // các mục tiêu còn lại -> AdditionalDefenders. Danh sách rỗng -> Defender = null như cũ.
+        combatData.SetDefenders(defenderResults);
 
         CurrentPlayer.CurrentDatas.CurrentMP -= selectedAction.ManaCost;
         CombatSignal.FireCombatScene(combatData);

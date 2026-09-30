@@ -115,44 +115,67 @@ public class EnemyAttackManager : MonoBehaviour, IAttackManager
 
         return new Vector2Int(dirX, dirY);
     }
+
+    /// <summary>
+    /// Thêm mục tiêu vào danh sách nếu hợp lệ và chưa có trong danh sách (so sánh theo character thật).
+    /// </summary>
+    private void TryAddTarget(List<PlayerCharsPosition> list, PlayerCharsPosition candidate)
+    {
+        if (candidate == null || candidate.PlayerChar == null) return;
+        if (list.Exists(t => t.PlayerChar == candidate.PlayerChar)) return;
+        list.Add(candidate);
+    }
+
     public void GetTargetsInRange(PlayerCharsPosition target, Vector2Int DirectionVector, int AOERange, out List<PlayerCharsPosition> ValidTargets)
     {
-        PathNode CurrentTargetNode = GridSetup.Grid.GetGridObject(target.PlayerCharCoodinates.x, target.PlayerCharCoodinates.y);
+        // Target chính luôn nằm ở đầu danh sách
         ValidTargets = new List<PlayerCharsPosition>();
         ValidTargets.Add(target);
         if (DirectionVector.x == 0 && DirectionVector.y == 0) return;
-        
+
+        // FIX: duyệt dọc theo hướng, bắt đầu từ chính ô của target (i = 0).
+        // Trước đây i = 0 làm target bị thêm lần 2 -> nhận damage 2 lần; nay TryAddTarget loại trùng.
+        // FIX: ra khỏi biên lưới (GetGridObject trả null) thì dừng thay vì truyền null vào GetCharInNode -> NullReference.
         for(int i = 0; i < AOERange; i++)
         {
-            int x = CurrentTargetNode.XCoordinate + DirectionVector.x * i;
-            int y = CurrentTargetNode.YCoordinate + DirectionVector.y * i;
+            int x = target.PlayerCharCoodinates.x + DirectionVector.x * i;
+            int y = target.PlayerCharCoodinates.y + DirectionVector.y * i;
             PathNode CheckNode = GridSetup.Grid.GetGridObject(x, y);
+            if (CheckNode == null) break;
+
             PlayerCharsPosition AdditionalTarget = _currentAI.GetCharInNode(CheckNode);
-            if (AdditionalTarget != null) ValidTargets.Add(AdditionalTarget);
+            TryAddTarget(ValidTargets, AdditionalTarget);
         }
     }
     public void GetTargetsInRange(PlayerCharsPosition target, int AOERange, out List<PlayerCharsPosition> ValidTargets)
     {
-        List<PathNode> AttackReachableNodes = _currentEnemy.GetMovementManager().GetPathFinding().GetReachableNodes(target.PlayerCharCoodinates.x, target.PlayerCharCoodinates.y, AOERange, mode: PathfindingMode.Attack); // FIX: target đứng ngay đó là BlockedByCharacter, không được chặn việc lan AOE ra các ô xung quanh
+        // FIX: thiếu "* 10" -> mỗi bước đi tốn 10 cost nên trước đây AOERange = 2 (cost tối đa 2) không lan tới ô nào.
+        // Attack mode: target đứng ngay đó là BlockedByCharacter, không được chặn việc lan AOE ra các ô xung quanh
+        List<PathNode> AttackReachableNodes = _currentEnemy.GetMovementManager().GetPathFinding().GetReachableNodes(target.PlayerCharCoodinates.x, target.PlayerCharCoodinates.y, AOERange * 10, mode: PathfindingMode.Attack);
         ValidTargets = new List<PlayerCharsPosition>();
-        ValidTargets.Add(target);
+        ValidTargets.Add(target); // ô trung tâm (GetReachableNodes đã loại ô xuất phát) luôn là target chính
 
+        // AttackReachableNodes được sắp xếp gần tâm -> xa tâm
         foreach (PathNode node in AttackReachableNodes)
         {
             PlayerCharsPosition AdditionalTarget = _currentAI.GetCharInNode(node);
-            if (AdditionalTarget != null) ValidTargets.Add(AdditionalTarget);
+            TryAddTarget(ValidTargets, AdditionalTarget);
         }
     }
 
     private void AttackProcessing(ActionData selectedAction, List<PlayerCharsPosition> ValidTargets)
     {
-        List<int> damagetotargets = new List<int>();
+        // FIX: tính damage và đóng gói kết quả cho TOÀN BỘ mục tiêu (trước đây chỉ ValidTargets[0] được dùng)
+        List<CombatParticipantResult> defenderResults = new List<CombatParticipantResult>();
         foreach (PlayerCharsPosition target in ValidTargets)
         {
-            int damageToTarget = target != null
-                ? CalculateDamage(_currentEnemy, target.PlayerChar, selectedAction)
-                : 0;
-            damagetotargets.Add(damageToTarget);
+            if (target == null || target.PlayerChar == null) continue;
+
+            defenderResults.Add(new CombatParticipantResult
+            {
+                CombatParticipant = target.PlayerChar,
+                DamageTaken = CalculateDamage(_currentEnemy, target.PlayerChar, selectedAction)
+            });
         }
 
         var combatData = new CombatData
@@ -162,13 +185,9 @@ public class EnemyAttackManager : MonoBehaviour, IAttackManager
             {
                 CombatParticipant = _currentEnemy,
                 DamageTaken = 0 // nếu sau này có counter-attack thì tính ở đây
-            },
-            Defender = ValidTargets[0] != null ? new CombatParticipantResult
-            {
-                CombatParticipant = ValidTargets[0].PlayerChar,
-                DamageTaken = damagetotargets[0]
-            } : null
+            }
         };
+        combatData.SetDefenders(defenderResults);
 
         _currentEnemy.CurrentDatas.CurrentMP -= selectedAction.ManaCost;
         CombatSignal.FireCombatScene(combatData);

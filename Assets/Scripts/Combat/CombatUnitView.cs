@@ -9,9 +9,9 @@ public class CombatUnitView : MonoBehaviour
     private const string TRIGGER_ATTACK = "Attack";
     private const string TRIGGER_HIT = "Hit";
     private const string TRIGGER_DEATH = "Death";
-
     private bool _isFacingRight;
-
+    [SerializeField] private Vector3 _popupOffset = new Vector3(0f, 1.2f, 0f);
+    public Vector3 PopupWorldPosition => transform.position + _popupOffset;
     public void Setup(ICharacter character, Vector3 spawnPosition, bool isFacingRight)
     {
         transform.position = spawnPosition;

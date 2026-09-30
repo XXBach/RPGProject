@@ -16,7 +16,8 @@ public class ActionData : ScriptableObject
     [SerializeField] private int _manaCost;
     [SerializeField] private int _cooldownTime;
     [SerializeField] private Sprite _skillIcon;
-
+    [SerializeField] private int _hitCount = 4;
+    public int HitCount { get { return _hitCount; } set { _hitCount = value; } }
     public ActionType ActionType {  get { return _actionType; } set { _actionType = value; } }
     public int AreaOfEffectRange {  get { return _areaOfEffectRange; } set { _areaOfEffectRange = value; } }
     public float SkillMultiplier {  get { return _skillMultiplier; } set { _skillMultiplier = value; } }

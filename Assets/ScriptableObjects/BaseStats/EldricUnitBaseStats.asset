@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a406516f97771f4f842e9464b9c21f6, type: 3}
   m_Name: EldricUnitBaseStats
   m_EditorClassIdentifier: Assembly-CSharp::CharacterBaseStats
+  _charAvt: {fileID: 2934522192164345145, guid: b7886bd75ef82314da1a7ba724ab095b, type: 3}
   _charName: EldricUnit
   _maxHealth: 100
   _baseDamage: 50

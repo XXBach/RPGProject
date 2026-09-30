@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a406516f97771f4f842e9464b9c21f6, type: 3}
   m_Name: PrinceRaelanBaseStat
   m_EditorClassIdentifier: Assembly-CSharp::CharacterBaseStats
+  _charAvt: {fileID: -8504942418980563729, guid: cea74143710bcc44d828529ba944320b, type: 3}
   _charName: RaelanStormRider
   _maxHealth: 100
   _baseDamage: 50

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a406516f97771f4f842e9464b9c21f6, type: 3}
   m_Name: PrinceEldricBaseStat
   m_EditorClassIdentifier: Assembly-CSharp::CharacterBaseStats
+  _charAvt: {fileID: -1518631245518299591, guid: 2ef895c5b5c9f80499afcf65d9d9544e, type: 3}
   _charName: EldricStormRider
   _maxHealth: 100
-  _baseDamage: 10
+  _baseDamage: 50
   _baseDef: 15
   _baseSpeed: 3
   _baseAttackRange: 1

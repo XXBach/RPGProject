@@ -1,4 +1,3 @@
-using UnityEngine;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -25,9 +24,14 @@ public class CombatSceneManager : MonoBehaviour
     [SerializeField] private CombatUnitView _leftUnitView;
     [SerializeField] private CombatUnitView _rightUnitView;
 
+    [Header("Damage Popup")]
+    [SerializeField] private DamagePopupSpawner _popupSpawner; // NEW
+
     [Header("Timing")]
     [SerializeField] private float _runSpeed = 8f;
-    [SerializeField] private float _fightDuration = 1.2f;
+    [SerializeField] private float _firstHitDelay = 0.35f;   // NEW: chờ anim Attack vung tới đoạn chạm
+    [SerializeField] private float _hitInterval = 0.3f;      // NEW: khoảng cách giữa các hit
+    [SerializeField] private float _tailDuration = 0.8f;     // NEW: chờ sau hit cuối cho popup diễn xong (thay _fightDuration)
     [SerializeField] private float _postDamageDelay = 0.4f;
 
     public event Action<CombatSceneManager, CombatData> OnCombatFinished;
@@ -35,6 +39,7 @@ public class CombatSceneManager : MonoBehaviour
     private CombatData _data;
     private CombatUnitView _attackerView;
     private CombatUnitView _defenderView; // có thể null nếu không có Defender
+
     public void StartCombat(CombatData data)
     {
         _data = data;
@@ -56,7 +61,6 @@ public class CombatSceneManager : MonoBehaviour
     // ---------------- INIT ----------------
     private void SetupViews()
     {
-        // Attacker luôn hiện, chọn bên trái/phải theo vị trí lưới thật
         _attackerView = _leftUnitView;
         _defenderView = _rightUnitView;
 
@@ -85,7 +89,6 @@ public class CombatSceneManager : MonoBehaviour
         Vector3 attackerTarget = _leftClashPoint.position;
         Vector3 defenderTarget = _rightClashPoint.position;
 
-        // Chạy đồng thời cả 2 bên tới điểm giữa
         while (true)
         {
             bool attackerArrived = MoveTowards(_attackerView.transform, attackerTarget);
@@ -110,20 +113,59 @@ public class CombatSceneManager : MonoBehaviour
     private IEnumerator FightingPhase()
     {
         _attackerView.PlayAttack(_data.UsedAction);
-        if (_data.Defender?.CombatParticipant != null)
+
+        bool hasDefender = _data.Defender?.CombatParticipant != null;
+        if (!hasDefender)
         {
-            // Nếu muốn: defender không chết ngay -> play Hit anim,
-            // nếu damage sẽ giết chết -> play Death anim sau delay nhỏ
-            _defenderView.PlayHit(_data.Defender.WillDie);
+            yield return new WaitForSeconds(_firstHitDelay + _tailDuration);
+            yield break;
         }
-        yield return new WaitForSeconds(_fightDuration);
+
+        // Chia tổng damage thành nhiều hit
+        int hitCount = _data.UsedAction != null ? Mathf.Max(1, _data.UsedAction.HitCount) : 1;
+        int[] hitDamages = SplitDamage(Mathf.Max(0, _data.Defender.DamageTaken), hitCount);
+
+        yield return new WaitForSeconds(_firstHitDelay);
+
+        for (int i = 0; i < hitCount; i++)
+        {
+            bool isLastHit = i == hitCount - 1;
+
+            // Chỉ hit cuối mới chơi Death (nếu chết), các hit trước chơi Hit bình thường
+            _defenderView.PlayHit(isLastHit && _data.Defender.WillDie);
+            _popupSpawner.Spawn(_defenderView.PopupWorldPosition, hitDamages[i], isLastHit);
+
+            if (!isLastHit)
+                yield return new WaitForSeconds(_hitInterval);
+        }
+
+        yield return new WaitForSeconds(_tailDuration);
+    }
+
+    /// <summary>
+    /// Chia đều total thành count phần, phần dư dồn vào các hit đầu. Tổng luôn = total.
+    /// VD: 10 chia 3 -> [4, 3, 3]
+    /// </summary>
+    private int[] SplitDamage(int total, int count)
+    {
+        int[] result = new int[count];
+        int baseValue = total / count;
+        int remainder = total % count;
+        for (int i = 0; i < count; i++)
+            result[i] = baseValue + (i < remainder ? 1 : 0);
+        return result;
     }
 
     // ---------------- APPLY DAMAGE ----------------
     private void ApplyDamagePhase()
     {
-        ApplyDamageTo(_data.Attacker);   // trường hợp có phản đòn (counter-attack), damage=0 nếu không có
-        ApplyDamageTo(_data.Defender);
+        ApplyDamageTo(_data.Attacker);
+
+        // FIX: áp damage cho mục tiêu chính VÀ toàn bộ mục tiêu phụ trúng AOE/StraightLine
+        foreach (CombatParticipantResult defender in _data.GetAllDefenders())
+        {
+            ApplyDamageTo(defender);
+        }
     }
 
     private void ApplyDamageTo(CombatParticipantResult result)

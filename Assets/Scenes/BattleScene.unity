@@ -5379,6 +5379,8 @@ GameObject:
   - component: {fileID: 995120810}
   - component: {fileID: 995120809}
   - component: {fileID: 995120811}
+  - component: {fileID: 995120813}
+  - component: {fileID: 995120812}
   m_Layer: 5
   m_Name: StatsMenu
   m_TagString: Untagged
@@ -5465,6 +5467,36 @@ MonoBehaviour:
   AtkStat: {fileID: 1389042189}
   DefStat: {fileID: 1179978049}
   SpeedStat: {fileID: 1218535433}
+--- !u!114 &995120812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995120807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de9380daf50ea44c8515ac15326e2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatsMenuFader
+  _panel: {fileID: 995120808}
+  _canvas: {fileID: 1902042174}
+  _normalAlpha: 1
+  _hoverAlpha: 0.25
+  _fadeDuration: 0.15
+  _detectPadding: 40
+--- !u!225 &995120813
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995120807}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1020384871
 GameObject:
   m_ObjectHideFlags: 0
