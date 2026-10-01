@@ -13,13 +13,13 @@ public class EnemyMovement : MonoBehaviour, IMovement
     private List<PathNode> _path;
     private Coroutine _handleMovementCoroutine;
     private bool _isMoving = false;
-    private Animator _animator;
+    private CharacterOverworldAnimator _characterAnimator;
     private MovementState _movementState;
 
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
+        _characterAnimator = GetComponent<CharacterOverworldAnimator>();
         _movementState = MovementState.IDLE;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -72,6 +72,7 @@ public class EnemyMovement : MonoBehaviour, IMovement
                 {
                     transform.position = currentPointPosition;
                     _isMoving = false;
+                    _characterAnimator?.PlayIdle();
                     var args = new OnMovementEndArgs
                     {
                         PreviousPosition = startGridPos,
@@ -84,10 +85,7 @@ public class EnemyMovement : MonoBehaviour, IMovement
                 }
                 i++;
                 currentPoint = _path[i];
-                if (currentPoint.XCoordinate > _path[i - 1].XCoordinate) { _animator.Play("PrinceRaelan_TurnRightAnim"); }
-                else if (currentPoint.XCoordinate < _path[i - 1].XCoordinate) { _animator.Play("PrinceRaelan_TurnLeftAnim"); }
-                else if (currentPoint.YCoordinate > _path[i - 1].YCoordinate) { _animator.Play("PrinceRaelan_BehindAnim"); }
-                else if (currentPoint.YCoordinate < _path[i - 1].YCoordinate) { _animator.Play("PrinceRaelan_WalkingAnim"); }
+                _characterAnimator?.PlayWalk(new Vector2Int(_path[i - 1].XCoordinate, _path[i - 1].YCoordinate), new Vector2Int(currentPoint.XCoordinate, currentPoint.YCoordinate));
                 currentPointPosition = new Vector3(currentPoint.XCoordinate, currentPoint.YCoordinate);
                 currentPointPosition = currentPointPosition + Vector3.one * 0.5f;
                 currentPointPosition.z = 0;

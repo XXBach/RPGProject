@@ -54,7 +54,7 @@ public class CharacterHealthBar : MonoBehaviour
         {
             _turnManager.RemoveCharacter(_character);
         }
-
+        CharacterSignal.FireCharacterDied(_character);
         Destroy(_character.gameObject);
     }
 }

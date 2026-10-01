@@ -235,4 +235,18 @@ public class TurnManager : MonoBehaviour
         }
         return null;
     }
+    public int CountAliveEnemies()
+    {
+        int count = 0;
+        foreach (ICharacter character in _characterList)
+        {
+            if (character is Enemy enemy && enemy != null)
+            {
+                // Enemy vừa spawn chưa chạy Start() thì CurrentDatas còn null -> vẫn tính là còn sống
+                if (enemy.CurrentDatas != null && enemy.CurrentDatas.CurrentHealth <= 0) continue;
+                count++;
+            }
+        }
+        return count;
+    }
 }

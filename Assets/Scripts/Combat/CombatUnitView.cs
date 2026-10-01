@@ -18,7 +18,7 @@ public class CombatUnitView : MonoBehaviour
         _isFacingRight = isFacingRight;
         _spriteRenderer.flipX = !isFacingRight;
 
-        var visualData = character.GetCombatVisualData();
+        var visualData = character.GetCharacterVisualData();
         if (visualData != null && visualData.OverrideController != null)
         {
             _animator.runtimeAnimatorController = visualData.OverrideController;

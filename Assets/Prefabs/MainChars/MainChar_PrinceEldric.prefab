@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 7300915161940059987}
   - component: {fileID: 8342545293501007909}
   - component: {fileID: 9020716087075385406}
+  - component: {fileID: -8462578509868576272}
   m_Layer: 0
   m_Name: MainChar_PrinceEldric
   m_TagString: Untagged
@@ -181,7 +182,7 @@ Animator:
   m_GameObject: {fileID: 4213868686189531104}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dc3052f02829caf4faa0638a490b1989, type: 2}
+  m_Controller: {fileID: 9100000, guid: 58b60296936c49e4c92f464429a70286, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -210,6 +211,7 @@ MonoBehaviour:
   _combatVisualData: {fileID: 11400000, guid: c39edc686c9ba8b44acae3fd5f73996c, type: 2}
   _movementManager: {fileID: 0}
   _attackManager: {fileID: 0}
+  _isKeyPlayer: 0
 --- !u!114 &8342545293501007909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +247,18 @@ MonoBehaviour:
   _attackableTilePrefab: {fileID: -2253911629886400664, guid: 9ada2bf89ea9a8a4bb39d508bec97bc9, type: 3}
   _inputActionAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   _currentTurnManager: {fileID: 0}
+--- !u!114 &-8462578509868576272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4213868686189531104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b5192cd6b9cfb04b9ef0ae7cf139ae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterOverworldAnimator
 --- !u!1 &7114913053909631559
 GameObject:
   m_ObjectHideFlags: 0

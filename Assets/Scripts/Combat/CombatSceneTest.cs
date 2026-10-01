@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class CombatSceneTest : MonoBehaviour
 {
     [SerializeField] private CombatUnitView _view;
-    [SerializeField] private CombatVisualData _testVisual;
+    [SerializeField] private CharacterVisualData _testVisual;
     [SerializeField] private InputActionAsset _inputActionAsset;
 
     private InputAction _runAction;

@@ -11,6 +11,6 @@ public interface ICharacter
     public string GetName();
     public CharacterData CurrentDatas { get; }
     public AttackSet GetAttackSet();
-    public CombatVisualData GetCombatVisualData();
+    public CharacterVisualData GetCharacterVisualData();
     public EnemyAI? GetEnemyAI();
 }

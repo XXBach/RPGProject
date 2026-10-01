@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour, IMovement
     private List<PathNode> _path;
     private Coroutine _handleMovementCoroutine;
     private bool _isMoving = false;
-    private Animator _animator;
+    private CharacterOverworldAnimator _characterAnimator;
     private List<GameObject> _tilePool = new List<GameObject>();
     private MovementState _previousState;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour, IMovement
         _selectAction = _inputActionAsset.FindAction("Select");
         this._moveSpeed = this.gameObject.GetComponent<Player>().CurrentDatas.CurrentSpeed;
         this._movementRange = this.gameObject.GetComponent<Player>().CurrentDatas.CurrentMovementRange;
-        _animator = GetComponent<Animator>();
+        _characterAnimator = GetComponent<CharacterOverworldAnimator>();
     }
 
     // Update is called once per frame
@@ -173,28 +173,31 @@ public class PlayerMovement : MonoBehaviour, IMovement
                 {
                     transform.position = currentPointPosition;
                     _isMoving = false;
+                    _characterAnimator?.PlayIdle(); // MỚI: về Idle khi tới đích
                     var args = new OnMovementEndArgs
                     {
                         PreviousPosition = startGridPos,
                         FinalPosition = new Vector2Int(endPoint.XCoordinate, endPoint.YCoordinate),
                         FinalNodeState = NodeState.BlockedByCharacter
                     };
-                    MovementSignal.FireMovementEnded(args); // grid cập nhật TRƯỚC
-                    OnMovementEnd?.Invoke(args);            // rồi mới tới EnemyAI...
+                    MovementSignal.FireMovementEnded(args);
+                    OnMovementEnd?.Invoke(args);
                     yield break;
                 }
                 i++;
                 currentPoint = _path[i];
-                if (currentPoint.XCoordinate > _path[i - 1].XCoordinate) { _animator.Play("PrinceEldric_TurnRightAnim"); }
-                else if (currentPoint.XCoordinate < _path[i - 1].XCoordinate) { _animator.Play("PrinceEldric_TurnLeftAnim"); }
-                else if (currentPoint.YCoordinate > _path[i - 1].YCoordinate) { _animator.Play("PrinceEldric_BehindAnim"); }
-                else if (currentPoint.YCoordinate < _path[i - 1].YCoordinate) { _animator.Play("PrinceEldric_IdleAnim"); }
+
+                // THAY toàn bộ chuỗi if/else + tên anim hardcode bằng 1 dòng:
+                _characterAnimator?.PlayWalk(
+                    new Vector2Int(_path[i - 1].XCoordinate, _path[i - 1].YCoordinate),
+                    new Vector2Int(currentPoint.XCoordinate, currentPoint.YCoordinate));
+
                 currentPointPosition = new Vector3(currentPoint.XCoordinate, currentPoint.YCoordinate);
                 currentPointPosition = currentPointPosition + Vector3.one * 0.5f;
                 currentPointPosition.z = 0;
             }
             transform.position = Vector3.MoveTowards(transform.position, currentPointPosition, _moveSpeed * Time.deltaTime);
-            CameraSignals.RequestMove(transform.position, smooth: true); // FIX: bám theo camera trong suốt quá trình di chuyển, không chỉ lúc kết thúc
+            CameraSignals.RequestMove(transform.position, smooth: true);
             this.MCMovementState = MovementState.ARRIVED;
             this._previousState = MovementState.MOVING;
             yield return null;

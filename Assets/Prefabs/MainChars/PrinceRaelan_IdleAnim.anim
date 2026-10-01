@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PrinceEldric_IdleAnim
+  m_Name: PrinceRaelan_IdleAnim
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,7 +21,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -4047362954944273868, guid: 04eb8b44640802b4384162b7d4ebbd12, type: 3}
+      value: {fileID: 2985941754784712184, guid: 398357c07fe4e7b42a1c8d39c2fdf63b, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,7 +44,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -4047362954944273868, guid: 04eb8b44640802b4384162b7d4ebbd12, type: 3}
+    - {fileID: 2985941754784712184, guid: 398357c07fe4e7b42a1c8d39c2fdf63b, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

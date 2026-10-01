@@ -5,9 +5,11 @@ public class Player : MonoBehaviour, ICharacter
     public CharacterData CurrentDatas { get; set; }
     [SerializeField] private CharacterBaseStats _baseStats;
     [SerializeField] private AttackSet _attackSet;
-    [SerializeField] private CombatVisualData _combatVisualData;
+    [SerializeField] private CharacterVisualData _visualData;
     [SerializeField] private PlayerMovement _movementManager;
     [SerializeField] private PlayerAttackManager _attackManager;
+    [SerializeField] private bool _isKeyPlayer = false;
+    public bool IsKeyPlayer => _isKeyPlayer;
     private void Awake()
     {
         _movementManager ??= GetComponent<PlayerMovement>();
@@ -63,9 +65,9 @@ public class Player : MonoBehaviour, ICharacter
     {
         return _attackSet;
     }
-    public CombatVisualData GetCombatVisualData()
+    public CharacterVisualData GetCharacterVisualData()
     {
-        return this._combatVisualData;
+        return this._visualData;
     }
     public EnemyAI? GetEnemyAI()
     {

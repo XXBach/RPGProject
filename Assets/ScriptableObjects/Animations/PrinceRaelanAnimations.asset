@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87453f09ec006384ca87a141f38c9983, type: 3}
   m_Name: PrinceRaelanAnimations
   m_EditorClassIdentifier: Assembly-CSharp::CombatVisualData
-  _overrideController: {fileID: 22100000, guid: 77f57a99449a2ed4092ddb2a13c5bb9d, type: 2}
+  _combatSceneOverrideController: {fileID: 22100000, guid: 77f57a99449a2ed4092ddb2a13c5bb9d, type: 2}
+  _battleSceneOverrideController: {fileID: 22100000, guid: 82007283c5be8cc40bb3873556b1a1e4, type: 2}
