@@ -332,10 +332,7 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
     }
     private void AttackExecute(ActionData selectedAction, List<PathNode> hoveredNodes)
     {
-        // Danh sách mục tiêu hợp lệ trong vùng effect, đã sắp xếp gần -> xa, KHÔNG chứa null
         List<ICharacter> targets = GetTargetAtHoveredNode(hoveredNodes);
-
-        // FIX: tính damage cho TOÀN BỘ mục tiêu và đóng gói từng người vào kết quả
         List<CombatParticipantResult> defenderResults = new List<CombatParticipantResult>();
         foreach (ICharacter target in targets)
         {
@@ -355,11 +352,7 @@ public class PlayerAttackManager : MonoBehaviour, IAttackManager
                 DamageTaken = 0 // nếu sau này có counter-attack thì tính ở đây
             }
         };
-
-        // FIX: phần tử đầu (mục tiêu hợp lệ gần nhất, kể cả khi ô đầu tiên trống) -> Defender;
-        // các mục tiêu còn lại -> AdditionalDefenders. Danh sách rỗng -> Defender = null như cũ.
         combatData.SetDefenders(defenderResults);
-
         CurrentPlayer.CurrentDatas.CurrentMP -= selectedAction.ManaCost;
         CombatSignal.FireCombatScene(combatData);
         CurrentAttackManagerState = AttackManagerState.SHOWCOMBATSCENE;

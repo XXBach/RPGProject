@@ -211,7 +211,7 @@ MonoBehaviour:
   _visualData: {fileID: 11400000, guid: 10ce59a1b0e0f3744a4020e0f1156f45, type: 2}
   _movementManager: {fileID: 0}
   _attackManager: {fileID: 0}
-  _isKeyPlayer: 1
+  _isKeyPlayer: 0
 --- !u!114 &8342545293501007909
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18354,7 +18354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f158d521fee1824ca34a0cf528a69c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawningScript
-  _currentSpawnScenario: {fileID: 11400000, guid: d633342c0e3cba442afc28ae4f88c4ff, type: 2}
+  _currentSpawnScenario: {fileID: 11400000, guid: 2e6b10d0495768b43b783c9e59d740d6, type: 2}
   _inputActionAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &1902042171
 GameObject:
