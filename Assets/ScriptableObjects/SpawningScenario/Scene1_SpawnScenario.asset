@@ -14,20 +14,122 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnScenario
   Scenarios:
   - CharacterPrefab: {fileID: 4213868686189531104, guid: 2ae54edddc6802045b7c781dce259d35, type: 3}
+    SpawningPosition: {x: 16, y: 17}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 306292639645758786, guid: 9480bb6be5b7ecc46a3c0b1ab1be1b48, type: 3}
+    SpawningPosition: {x: 15, y: 17}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 306292639645758786, guid: 9480bb6be5b7ecc46a3c0b1ab1be1b48, type: 3}
+    SpawningPosition: {x: 17, y: 17}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 306292639645758786, guid: 9480bb6be5b7ecc46a3c0b1ab1be1b48, type: 3}
     SpawningPosition: {x: 16, y: 18}
     SpawningTurn: 0
-  - CharacterPrefab: {fileID: 4213868686189531104, guid: 2ae54edddc6802045b7c781dce259d35, type: 3}
-    SpawningPosition: {x: 6, y: 16}
-    SpawningTurn: 2
-  - CharacterPrefab: {fileID: 4213868686189531104, guid: 2ae54edddc6802045b7c781dce259d35, type: 3}
-    SpawningPosition: {x: 12, y: 10}
-    SpawningTurn: 4
-  - CharacterPrefab: {fileID: 7746255441833299275, guid: 00414dc675a34034a94e0597ab539f63, type: 3}
-    SpawningPosition: {x: 17, y: 4}
+  - CharacterPrefab: {fileID: 306292639645758786, guid: 9480bb6be5b7ecc46a3c0b1ab1be1b48, type: 3}
+    SpawningPosition: {x: 16, y: 16}
     SpawningTurn: 0
   - CharacterPrefab: {fileID: 7746255441833299275, guid: 00414dc675a34034a94e0597ab539f63, type: 3}
+    SpawningPosition: {x: 12, y: 3}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 4213868686189531104, guid: 2e84c3bc644436d459d4cf707f8f3fbd, type: 3}
+    SpawningPosition: {x: 6, y: 19}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 306292639645758786, guid: 148ddf8ed556b2d409a8cac9802603ec, type: 3}
+    SpawningPosition: {x: 7, y: 19}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 306292639645758786, guid: 148ddf8ed556b2d409a8cac9802603ec, type: 3}
+    SpawningPosition: {x: 7, y: 18}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 306292639645758786, guid: 148ddf8ed556b2d409a8cac9802603ec, type: 3}
+    SpawningPosition: {x: 7, y: 20}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 306292639645758786, guid: 148ddf8ed556b2d409a8cac9802603ec, type: 3}
+    SpawningPosition: {x: 8, y: 19}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 306292639645758786, guid: 01e838d1f72707f4e80c8f4741ba0f44, type: 3}
+    SpawningPosition: {x: 12, y: 10}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 306292639645758786, guid: 01e838d1f72707f4e80c8f4741ba0f44, type: 3}
+    SpawningPosition: {x: 9, y: 13}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 4213868686189531104, guid: ec0d0168cadaa5f409bf9212b95f03d2, type: 3}
+    SpawningPosition: {x: 6, y: 16}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 306292639645758786, guid: 01e838d1f72707f4e80c8f4741ba0f44, type: 3}
+    SpawningPosition: {x: 21, y: 11}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 306292639645758786, guid: 01e838d1f72707f4e80c8f4741ba0f44, type: 3}
+    SpawningPosition: {x: 26, y: 16}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 4213868686189531104, guid: 36e9a4618f0d6104894ff57e13418456, type: 3}
+    SpawningPosition: {x: 17, y: 6}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 306292639645758786, guid: 8a1353b427e5c1040b0cc41b744b1a2b, type: 3}
+    SpawningPosition: {x: 16, y: 6}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 306292639645758786, guid: 8a1353b427e5c1040b0cc41b744b1a2b, type: 3}
+    SpawningPosition: {x: 18, y: 6}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 306292639645758786, guid: 8a1353b427e5c1040b0cc41b744b1a2b, type: 3}
+    SpawningPosition: {x: 16, y: 7}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 306292639645758786, guid: 8a1353b427e5c1040b0cc41b744b1a2b, type: 3}
+    SpawningPosition: {x: 18, y: 7}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 372624283e082a14dad333a4151943d8, type: 3}
     SpawningPosition: {x: 13, y: 1}
-    SpawningTurn: 2
-  - CharacterPrefab: {fileID: 7746255441833299275, guid: 00414dc675a34034a94e0597ab539f63, type: 3}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 372624283e082a14dad333a4151943d8, type: 3}
+    SpawningPosition: {x: 13, y: 2}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 372624283e082a14dad333a4151943d8, type: 3}
+    SpawningPosition: {x: 11, y: 2}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 372624283e082a14dad333a4151943d8, type: 3}
+    SpawningPosition: {x: 11, y: 1}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 3597f819137996a40ae62db9bfe8c89c, type: 3}
+    SpawningPosition: {x: 33, y: 20}
+    SpawningTurn: 3
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 4499360ff18dab74ca38d69d2b3f66ff, type: 3}
+    SpawningPosition: {x: 34, y: 21}
+    SpawningTurn: 3
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 4499360ff18dab74ca38d69d2b3f66ff, type: 3}
+    SpawningPosition: {x: 35, y: 21}
+    SpawningTurn: 3
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 4499360ff18dab74ca38d69d2b3f66ff, type: 3}
+    SpawningPosition: {x: 34, y: 19}
+    SpawningTurn: 3
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 4499360ff18dab74ca38d69d2b3f66ff, type: 3}
+    SpawningPosition: {x: 35, y: 19}
+    SpawningTurn: 3
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 2b427deac913dcf4dad4c07a60478e9d, type: 3}
+    SpawningPosition: {x: 24, y: 2}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 2b427deac913dcf4dad4c07a60478e9d, type: 3}
+    SpawningPosition: {x: 22, y: 2}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 56bb50b2a9087c6408849a64a706a805, type: 3}
+    SpawningPosition: {x: 23, y: 2}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 2b427deac913dcf4dad4c07a60478e9d, type: 3}
     SpawningPosition: {x: 22, y: 1}
-    SpawningTurn: 4
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 2b427deac913dcf4dad4c07a60478e9d, type: 3}
+    SpawningPosition: {x: 24, y: 1}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 5c6b62c864ff63f449cc4287f98c5a33, type: 3}
+    SpawningPosition: {x: 17, y: 5}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 26c1d5e30d3707141b2299ac3d7ae9f6, type: 3}
+    SpawningPosition: {x: 16, y: 4}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 26c1d5e30d3707141b2299ac3d7ae9f6, type: 3}
+    SpawningPosition: {x: 16, y: 3}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 26c1d5e30d3707141b2299ac3d7ae9f6, type: 3}
+    SpawningPosition: {x: 18, y: 4}
+    SpawningTurn: 0
+  - CharacterPrefab: {fileID: 7746255441833299275, guid: 26c1d5e30d3707141b2299ac3d7ae9f6, type: 3}
+    SpawningPosition: {x: 18, y: 3}
+    SpawningTurn: 0

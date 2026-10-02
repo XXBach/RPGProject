@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87453f09ec006384ca87a141f38c9983, type: 3}
+  m_Name: LucasUnit_Animations
+  m_EditorClassIdentifier: Assembly-CSharp::CombatVisualData
+  _combatSceneOverrideController: {fileID: 22100000, guid: 94148c3a68ebb934d9cb57d6aa18f8b5, type: 2}
+  _battleSceneOverrideController: {fileID: 22100000, guid: 02b92a3d757d4804a8ad706b2314a4a5, type: 2}

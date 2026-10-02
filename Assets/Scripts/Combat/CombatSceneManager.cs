@@ -14,6 +14,9 @@ public enum CombatPhase
 
 public class CombatSceneManager : MonoBehaviour
 {
+    [Header("Info Banner")]
+    [SerializeField] private CombatInfoBanner _infoBanner;
+
     [Header("Spawn / Clash Points")]
     [SerializeField] private Transform _leftSpawnPoint;
     [SerializeField] private Transform _rightSpawnPoint;
@@ -49,10 +52,12 @@ public class CombatSceneManager : MonoBehaviour
     private IEnumerator RunCombatSequence()
     {
         SetupViews();
+        ShowInfoBanner();                       // MỚI
 
         yield return StartCoroutine(RunInPhase());
         yield return StartCoroutine(FightingPhase());
         ApplyDamagePhase();
+        _infoBanner?.Hide();                    // MỚI: ẩn khi đã xong đòn đánh
         yield return new WaitForSeconds(_postDamageDelay);
 
         OnCombatFinished?.Invoke(this, _data);
@@ -173,5 +178,16 @@ public class CombatSceneManager : MonoBehaviour
         if (result?.CombatParticipant == null || result.DamageTaken <= 0) return;
         var data = result.CombatParticipant.CurrentDatas;
         data.CurrentHealth = Mathf.Max(0, data.CurrentHealth - result.DamageTaken);
+    }
+
+    private void ShowInfoBanner()
+    {
+        if (_infoBanner == null) return;
+
+        ICharacter attacker = _data.Attacker?.CombatParticipant;
+        string attackerName = attacker != null ? attacker.GetName() : "???";
+        string skillName = _data.UsedAction != null ? _data.UsedAction.ActionName : "";
+
+        _infoBanner.Show(attackerName, skillName);
     }
 }

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a406516f97771f4f842e9464b9c21f6, type: 3}
+  m_Name: GorranIronvaleBaseStat
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterBaseStats
+  _charAvt: {fileID: 2934522192164345145, guid: b7886bd75ef82314da1a7ba724ab095b, type: 3}
+  _charName: GorranIronvale
+  _maxHealth: 150
+  _baseDamage: 40
+  _baseDef: 20
+  _baseSpeed: 2
+  _baseAttackRange: 1
+  _movementRange: 4
+  _maxMP: 75

@@ -19,5 +19,5 @@ MonoBehaviour:
   _baseDef: 15
   _baseSpeed: 3
   _baseAttackRange: 1
-  _movementRange: 5
+  _movementRange: 4
   _maxMP: 100

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GorranUnit_BattleSceneController
+  m_Controller: {fileID: 9100000, guid: 58b60296936c49e4c92f464429a70286, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 7d67936420e2a3b4abda4a59ee9ab24b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3a17e276cfc28e241a66686c0065b7a6, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 034335af1cbc72443be4f316c4db5933, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 52ffcc954823d6d468950eb01ce37d7f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0a05c2327e240ea4d89841ea11849c13, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: efa12ed2d16cdb54894734b48a17fd58, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a073b78d884b7f74a8e735558c1e95b6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 94e8b938eab522e4e91c681afaf5f753, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 11f88443b77de99478e40dc7c228d570, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2b03c056dd8bc6a439a979e8081cc6e3, type: 2}

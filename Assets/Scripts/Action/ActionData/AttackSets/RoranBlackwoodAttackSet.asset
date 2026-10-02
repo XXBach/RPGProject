@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 553e0e87eb5385e45af8a0a7f2dca58b, type: 3}
+  m_Name: RoranBlackwoodAttackSet
+  m_EditorClassIdentifier: Assembly-CSharp::AttackSet
+  _normalAttack: {fileID: 11400000, guid: fa48ed9ff924c1c4eb2428a7de8fa96b, type: 2}
+  _specialAttack: {fileID: 11400000, guid: 21e7089da892c3e4493e6e6f1270ce5d, type: 2}
+  _skillAttack: {fileID: 11400000, guid: 234b45c94fa5b3b4daa3f66a6bf0fef2, type: 2}

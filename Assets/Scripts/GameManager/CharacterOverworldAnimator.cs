@@ -19,13 +19,21 @@ public class CharacterOverworldAnimator : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
 
-        // Mỗi nhân vật lấy override controller riêng từ CharacterVisualData của chính nó
         ICharacter character = GetComponent<ICharacter>();
         CharacterVisualData visual = character?.GetCharacterVisualData();
-        if (visual != null && visual.BattleSceneOverrideController != null)
+
+        if (visual == null)
         {
-            _animator.runtimeAnimatorController = visual.BattleSceneOverrideController;
+            Debug.LogWarning($"[{name}] Chưa gán CharacterVisualData trên Player/Enemy.", this);
+            return;
         }
+        if (visual.BattleSceneOverrideController == null)
+        {
+            Debug.LogWarning($"[{name}] {visual.name} chưa gán Battle Scene Override Controller.", this);
+            return;
+        }
+        _animator.runtimeAnimatorController = visual.BattleSceneOverrideController;
+        Debug.Log($"[{name}] Dùng controller: {_animator.runtimeAnimatorController.name}", this);
     }
 
     public void PlayIdle() => PlayState(IDLE);
@@ -52,8 +60,12 @@ public class CharacterOverworldAnimator : MonoBehaviour
 
     private void PlayState(int hash)
     {
-        // Không phát lại nếu đang ở đúng state (tránh anim bị reset mỗi ô khi đi thẳng)
         if (_currentStateHash == hash) return;
+        if (!_animator.HasState(0, hash))
+        {
+            Debug.LogWarning($"[{name}] Animator không có state này (sai tên state?).", this);
+            return;
+        }
         _currentStateHash = hash;
         _animator.Play(hash);
     }
